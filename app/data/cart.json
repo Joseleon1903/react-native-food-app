@@ -1,0 +1,27 @@
+{
+    "cart":[
+        {
+            "_id": "653b6588541d2aa2c1e89cd1",
+            "userId": "6537a4448cd1bd140ebddcee",
+            "productId": {
+                "_id": "65316771f94c6496dc84f3bd",
+                "title": "Margherita Pizza",
+                "restaurant": "6530ebbcc9e72013e5b65933",
+                "rating": 4.5,
+                "ratingCount": "150",
+                "imageUrl": [
+                    "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+                    "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp"
+                ]
+            },
+            "additives": [
+                "Extra Cheese",
+                "Mushrooms"
+            ],
+            "instructions": "",
+            "totalPrice": 25.98,
+            "quantity": 2,
+            "__v": 0
+        }
+    ]
+}

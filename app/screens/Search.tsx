@@ -6,14 +6,14 @@ import {Feather, AntDesign } from '@expo/vector-icons';
 import styles from "./search.style";
 import LottieView from "lottie-react-native";
 
-const Search = () => {
+export default function Search(){
   const [searchKey, setSearchKey] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const animation = useRef(null);
 
   const handleSearch = async() =>{
     try {
-      const response = await axios.get(`https://travelapprailway-production.up.railway.app/api/places/search/${searchKey}`)
+      const response :any = "mockGet"; //await axios.get(`https://travelapprailway-production.up.railway.app/api/places/search/${searchKey}`)
       setSearchResults(response.data)
     } catch (error) {
       console.log("Failed to get products" , error);
@@ -53,7 +53,7 @@ const Search = () => {
     ): (
       <FlatList 
       data={searchResults}
-      keyExtractor={(item)=> item._id}
+      keyExtractor={(item : any)=> item._id}
       renderItem={({item})=> (
         <View style={styles.tile}>
        
@@ -66,7 +66,4 @@ const Search = () => {
     </SafeAreaView>
   );
 };
-
-export default Search;
-
 

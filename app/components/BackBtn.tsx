@@ -3,7 +3,12 @@ import React from 'react'
 import {Ionicons} from '@expo/vector-icons';
 import {COLORS, SIZES} from '../constants/theme'
 
-const BackBtn = ({onPress}) => {
+type BackBtnProps = {
+    onPress: () => void;
+
+};
+
+export default function BackBtn({ onPress }: BackBtnProps){
   return (
     <TouchableOpacity onPress={onPress} style={styles.backbtn}>
         <Ionicons
@@ -14,8 +19,6 @@ const BackBtn = ({onPress}) => {
     </TouchableOpacity>
   )
 }
-
-export default BackBtn
 
 const styles = StyleSheet.create({
     backbtn: {

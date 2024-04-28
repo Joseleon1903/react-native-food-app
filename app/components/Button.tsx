@@ -8,11 +8,18 @@ import {
 import React from "react";
 import { COLORS } from "../constants/theme";
 
-const Button = ({ title, onPress, isValid, loader }) => {
+type ButtonProps = {
+  title: number;
+  onPress: () => void;
+  isValid : boolean;
+  loader : any;
+};
+
+export default function Button({ title, onPress, isValid, loader }: ButtonProps ){
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={styles.btnStyle(!isValid ?  COLORS.gray: COLORS.primary)}
+      style={styles.btnStyle}
     >
       {!loader  ? (
         <Text style={styles.btnTxt}>{title}</Text>
@@ -22,22 +29,19 @@ const Button = ({ title, onPress, isValid, loader }) => {
     </TouchableOpacity>
   );
 };
-
-export default Button;
-
 const styles = StyleSheet.create({
   btnTxt: {
     fontFamily: "bold",
     color: COLORS.white,
     fontSize: 18,
   },
-  btnStyle: (backgroundColor) => ({
+  btnStyle:{
     height: 50,
     width: "100%",
     marginVertical: 20,
-    backgroundColor: backgroundColor,
+    backgroundColor: COLORS.primary,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
-  }),
+  }
 });

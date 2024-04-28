@@ -2,7 +2,13 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { COLORS, SIZES } from "../constants/theme";
 
-const RegistrationTile = ({ onPress, heading, desc }) => {
+type RegistrationTileProps = {
+  onPress: () => void;
+  heading: string;
+  desc : string;
+};
+
+export default function RegistrationTile({ onPress, heading, desc } : RegistrationTileProps) {
   return (
     <View style={styles.outer}>
       <View style={styles.inner}>
@@ -31,8 +37,6 @@ const RegistrationTile = ({ onPress, heading, desc }) => {
     </View>
   );
 };
-
-export default RegistrationTile;
 
 const styles = StyleSheet.create({
   outer: {

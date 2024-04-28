@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, StyleProp, ViewStyle } from "react-native";
 import React from "react";
 import { COLORS, SIZES } from "../constants/theme";
 
@@ -6,7 +6,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AssetImage from "./AssetImage";
 
-const ReusableHeader = ({ title, backbtn }) => {
+type ReusableHeaderProps = {
+  title: string;
+  backbtn:StyleProp<ViewStyle>;
+};
+
+
+export default function ReusableHeader ({ title, backbtn }: ReusableHeaderProps) {
   const navigation = useNavigation();
   return (
     <View style={styles.outerStyle}>
@@ -16,7 +22,7 @@ const ReusableHeader = ({ title, backbtn }) => {
       ) : (
         <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={styles.backbtn}
+        style={backbtn}
       >
          <Ionicons
             name='chevron-back-circle'
@@ -29,18 +35,16 @@ const ReusableHeader = ({ title, backbtn }) => {
 
       <Text style={styles.heading}>{title}</Text>
 
-      <AssetImage
-        data={require("../../assets/images/profile.jpg")}
-        mode={"cover"}
-        width={30}
-        height={30}
-        radius={99}
+      <Image
+        source={require("../../assets/images/profile.jpg")}
+        // mode={"cover"}
+         width={30}
+         height={30}
+        //  radius={99}
       />
     </View>
   );
 };
-
-export default ReusableHeader;
 
 const styles = StyleSheet.create({
   outerStyle: {

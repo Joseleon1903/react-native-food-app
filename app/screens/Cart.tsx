@@ -3,7 +3,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import pages from './page.style'
 
-const Cart = () => {
+export default function Cart() {
   return (
     <SafeAreaView>
       <View style={pages.viewOne}>
@@ -14,7 +14,5 @@ const Cart = () => {
     </SafeAreaView>
   )
 }
-
-export default Cart
 
 const styles = StyleSheet.create({})

@@ -8,31 +8,24 @@ import {
   Alert,
 } from "react-native";
 import React, { useState, useRef, useContext } from "react";
-import { Button, BackBtn } from "../components";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { COLORS, SIZES } from "../constants/theme";
+import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./login.style";
 import LottieView from "lottie-react-native";
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { LoginContext } from "../context/LoginContext";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import { COLORS, SIZES } from "../constants/theme";
+import { UserLocationContext } from "../context/UserLocationContext";
+import {NativeStackHeaderProps} from '@react-navigation/native-stack'
+import axios from 'axios';
+import BackBtn from "../components/BackBtn";
 
-const validationSchema = Yup.object().shape({
-  password: Yup.string()
-    .min(8, "Password must be at least 8 character")
-    .required("Required"),
-  email: Yup.string()
-    .email("Provide a valid email address")
-    .required("Required"),
-});
 
-const LoginPage = ({ navigation }) => {
+export default function SignUp ({navigation} : NativeStackHeaderProps) {
   const animation = useRef(null);
   const [loader, setLoader] = useState(false);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  // const { location, setLocation } = useContext(UserLocationContext);
   const [obsecureText, setObsecureText] = useState(false);
-  const {login, setLogin} = useContext(LoginContext)
 
   const inValidForm = () => {
     Alert.alert("Invalid Form", "Please provide all required fields", [
@@ -44,32 +37,99 @@ const LoginPage = ({ navigation }) => {
         text: "Continue",
         onPress: () => {},
       },
-      { defaultIndex: 1 },
+
     ]);
   };
 
-  // const login = async (values) => {
+  const registerUser = async (values:any) => {
+    setLoader(true);
+
+    try {
+      const endpoint = "http://localhost:6002/register";
+      const data = values;
+
+      const response = await axios.post(endpoint, data);
+      if (response.status === 201) {
+        setLoader(false);
+
+        navigation.navigate('login')
+
+      } else {
+        // setLogin(false);
+
+        Alert.alert("Error Logging in ", "Please provide valid credentials ", [
+          {
+            text: "Cancel",
+            onPress: () => {},
+          },
+          {
+            text: "Continue",
+            onPress: () => {},
+          }
+        ]);
+      }
+    } catch (error) {
+      // setLogin(false);
+      Alert.alert(
+        "Error ",
+        "Oops, Error logging in try again with correct credentials",
+        [
+          {
+            text: "Cancel",
+            onPress: () => {},
+          },
+          {
+            text: "Continue",
+            onPress: () => {},
+          }
+        ]
+      );
+    } finally {
+      setLoader(false);
+    }
+  };
+
+  // const registerUser = async (values) => {
+  //   setEmail(values.email);
+  //   setUsername(values.username);
   //   setLoader(true);
   //   try {
   //     await firebase
   //       .auth()
-  //       .signInWithEmailAndPassword(values.email, values.password).then(() => navigation.navigate('home')).catch((error) => {
-  //         Alert.alert("Error Login", error.message, [
-  //           {
-  //             text: "Back",
-  //             onPress: () => {
-  //               setLoader(false);
-  //             },
-  //           },
-  //           {
-  //             text: "Continue",
-  //             onPress: () => {},
-  //           },
-  //           { defaultIndex: 1 },
-  //         ]);
+  //       .createUserWithEmailAndPassword(values.email, values.password)
+  //       .then(() => {
+  //         const uid = firebase.auth().currentUser.uid;
+  //         firebase
+  //           .firestore()
+  //           .collection("users")
+  //           .doc(firebase.auth().currentUser.uid)
+  //           .set({
+  //             email,
+  //             username,
+  //             uid,
+  //             coordinates,
+  //           })
+  //           .catch((error) => {
+  //             Alert.alert("Error Signing Up", error.message, [
+  //               {
+  //                 text: "Back",
+  //                 onPress: () => {
+  //                   setLoader(false);
+  //                 },
+  //               },
+  //               {
+  //                 text: "Continue",
+  //                 onPress: () => {},
+  //               },
+  //               { defaultIndex: 1 },
+  //             ]);
+  //           });
+  //       })
+  //       .then(() => {
+  //         navigation.navigate("login");
   //       });
   //   } catch (error) {
-  //     Alert.alert("Error Login", error.message, [
+  //     Alert.alert("Error Signing Up", error.message, [
   //       {
   //         text: "Back",
   //         onPress: () => {
@@ -85,61 +145,6 @@ const LoginPage = ({ navigation }) => {
   //   }
   // };
 
-  const loginFunc = async (values) => {
-    setLoader(true);
-
-    try {
-      const endpoint = "http://localhost:6002/login";
-      const data = values;
-
-      console.log(data);
-
-      const response = await axios.post(endpoint, data);
-      if (response.status === 200) {
-        setLoader(false);
-        setLogin(true);
-
-        console.log(response.data);
-
-        await AsyncStorage.setItem("id", JSON.stringify(response.data._id));
-        await AsyncStorage.setItem("token", JSON.stringify(response.data.userToken));
-
-      } else {
-        setLogin(false);
-
-        Alert.alert("Error Logging in ", "Please provide valid credentials ", [
-          {
-            text: "Cancel",
-            onPress: () => {},
-          },
-          {
-            text: "Continue",
-            onPress: () => {},
-          },
-          { defaultIndex: 1 },
-        ]);
-      }
-    } catch (error) {
-      setLogin(false);
-      Alert.alert(
-        "Error ",
-        "Oops, Error logging in try again with correct credentials",
-        [
-          {
-            text: "Cancel",
-            onPress: () => {},
-          },
-          {
-            text: "Continue",
-            onPress: () => {},
-          },
-          { defaultIndex: 1 },
-        ]
-      );
-    } finally {
-      setLoader(false);
-    }
-  };
   return (
     <ScrollView style={{ backgroundColor: COLORS.white }}>
       <View style={{ marginHorizontal: 20, marginTop: 50 }}>
@@ -147,16 +152,19 @@ const LoginPage = ({ navigation }) => {
         <LottieView
           autoPlay
           ref={animation}
-          style={{ width: "100%", height: SIZES.height / 3.2 }}
+          style={{ width: "100%", height: 300 }}
           source={require("../../assets/anime/delivery.json")}
         />
 
         <Text style={styles.titleLogin}>Foodly Family</Text>
-
-        <Formik
-          initialValues={{ email: "", password: "" }}
+        {/* <Formik
+          initialValues={{
+            email: "",
+            password: "",
+            username: "",
+          }}
           validationSchema={validationSchema}
-          onSubmit={(values) => loginFunc(values)}
+          onSubmit={(values) => registerUser(values)}
         >
           {({
             handleChange,
@@ -169,6 +177,40 @@ const LoginPage = ({ navigation }) => {
             setFieldTouched,
           }) => (
             <View>
+              <View style={styles.wrapper}>
+                <Text style={styles.label}>Username</Text>
+                <View
+                  style={styles.inputWrapper(
+                    touched.username ? COLORS.secondary : COLORS.offwhite
+                  )}
+                >
+                  <MaterialCommunityIcons
+                    name="face-man-profile"
+                    size={20}
+                    color={COLORS.gray}
+                    style={styles.iconStyle}
+                  />
+
+                  <TextInput
+                    placeholder="Username"
+                    onFocus={() => {
+                      setFieldTouched("username");
+                    }}
+                    onBlur={() => {
+                      setFieldTouched("username", "");
+                    }}
+                    value={values.username}
+                    onChangeText={handleChange("username")}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    style={{ flex: 1 }}
+                  />
+                </View>
+                {touched.username && errors.username && (
+                  <Text style={styles.errorMessage}>{errors.username}</Text>
+                )}
+              </View>
+
               <View style={styles.wrapper}>
                 <Text style={styles.label}>Email</Text>
                 <View
@@ -250,27 +292,15 @@ const LoginPage = ({ navigation }) => {
               </View>
 
               <Button
-                loader={loader}
-                title={"L O G I N"}
+                title={"S I G N U P"}
                 onPress={isValid ? handleSubmit : inValidForm}
+                loader={loader}
                 isValid={isValid}
               />
-
-              <Text
-                style={styles.registration}
-                onPress={() => {
-                  navigation.navigate("signUp");
-                }}
-              >
-                {" "}
-                Register{" "}
-              </Text>
             </View>
           )}
-        </Formik>
+        </Formik> */}
       </View>
     </ScrollView>
   );
 };
-
-export default LoginPage;

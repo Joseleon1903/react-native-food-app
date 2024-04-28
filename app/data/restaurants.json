@@ -1,0 +1,85 @@
+{
+    "restaurants":
+    [
+        {
+            "_id": "6530ebbcc9e72013e5b65933",
+            "title": "Lapisara Eatery",
+            "time": "15 min",
+            "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "owner": "fdfsdfsdfs",
+            "code": "41007428",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 5,
+            "ratingCount": "6765",
+            "coords": {
+                "id": "2023",
+                "latitude": 37.78792117665919,
+                "longitude": -122.41325651079953,
+                "address": "698 Post St, San Francisco, CA 94109, United States",
+                "title": "Lapisara Eatery",
+                "latitudeDelta": 0.0122,
+                "longitudeDelta": 0.0221
+            }
+        },
+        {
+            "_id": "6530ea6bc9e72013e5b6592d",
+            "title": "Burger King",
+            "time": "30 min",
+            "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "owner": "sjgdsjgfjshhjs",
+            "code": "41007428",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 5,
+            "ratingCount": "3278",
+            "coords": {
+                "id": "2020",
+                "latitude": 37.785925590588505,
+                "longitude": -122.41007428687641,
+                "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
+                "title": "Burger King",
+                "latitudeDelta": 0.0122,
+                "longitudeDelta": 0.0221
+            }
+        },
+        {
+            "_id": "6530eb66c9e72013e5b65931",
+            "title": "La Foods",
+            "time": "25 min",
+            "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "owner": "fgdgdfgd",
+            "code": "41007428",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 5,
+            "ratingCount": "5666",
+            "coords": {
+                "id": "2022",
+                "latitude": 37.787503258917035,
+                "longitude": -122.39854938269353,
+                "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
+                "title": "La Foods",
+                "latitudeDelta": 0.0122,
+                "longitudeDelta": 0.0221
+            }
+        },
+        {
+            "_id": "6530eb23c9e72013e5b6592f",
+            "title": "Italian Restaurant",
+            "time": "35 min",
+            "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "owner": "sjgdsjgfjshhjs",
+            "code": "41007428",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 5,
+            "ratingCount": "3278",
+            "coords": {
+                "id": "2021",
+                "latitude": 37.78557922976825,
+                "longitude": -122.40722000299483,
+                "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
+                "title": "Italian Restaurant",
+                "latitudeDelta": 0.0122,
+                "longitudeDelta": 0.0221
+            }
+        }
+    ]
+}

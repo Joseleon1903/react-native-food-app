@@ -3,7 +3,15 @@ import React from "react";
 import { AntDesign, Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../constants/theme";
 
-const ProfileTile = ({ onPress, title, icon, font }) => {
+type ProfileTileProps = {
+  onPress: () => void;
+  title: number;
+  icon : any;
+  font : number;
+};
+
+
+export default function ProfileTile({ onPress, title, icon, font } : ProfileTileProps){
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.outter}>
@@ -29,8 +37,6 @@ const ProfileTile = ({ onPress, title, icon, font }) => {
     </TouchableOpacity>
   );
 };
-
-export default ProfileTile;
 
 const styles = StyleSheet.create({
   divider: {

@@ -8,11 +8,10 @@ import {
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ReusableHeader from "../components/ReusableHeader";
-import { RatingInput, Rating } from "react-native-stock-star-rating";
+// import { RatingInput } from "react-native-stock-star-rating";
 import { COLORS, SIZES } from "../constants/theme";
-import { AssetImage } from "../components";
 
-const AddRating = () => {
+export default function AddRating() {
   const [rating, setRating] = useState(0);
   return (
     <SafeAreaView style={{ height: SIZES.height }}>
@@ -28,24 +27,24 @@ const AddRating = () => {
       <View style={styles.container}>
         <View style={styles.ratingBox}>
           <View style={styles.image}>
-            <AssetImage
+            {/* <AssetImage
               data={require("../../assets/images/profile.jpg")}
               mode={"cover"}
               width={70}
               height={70}
               radius={99}
-            />
+            /> */}
           </View>
 
           <View style={{ paddingTop: 40 }}>
-            <RatingInput
+            {/* <RatingInput
               rating={rating}
               color={COLORS.primary}
               setRating={setRating}
               size={50}
               maxStars={5}
               bordered={false}
-            />
+            /> */}
 
             <Text
               style={[
@@ -78,8 +77,6 @@ const AddRating = () => {
     </SafeAreaView>
   );
 };
-
-export default AddRating;
 
 const styles = StyleSheet.create({
   container: {

@@ -10,7 +10,7 @@ import NetworkImage from "../components/NetworkImage";
 import ProfileTile from "../components/ProfileTile";
 import RegistrationTile from "../components/RegistrationTile";
 
-const Profile = () => {
+export default function Profile(){
   const [user, setUser] = useState(null)
 
   // const { user, isProfileLoading, error, refetch } = fetchProfile();
@@ -130,8 +130,6 @@ const Profile = () => {
     </View>
   );
 };
-
-export default Profile;
 
 const styles = StyleSheet.create({
   text: {

@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
       marginEnd: 5,
       textAlign: "right"
    },
-   inputWrapper: (borderColor) => ({
-      borderColor: borderColor,
+   inputWrapper:{
+      borderColor: COLORS.black,
       backgroundColor: COLORS.lightWhite,
       borderWidth: 1,
       height: 50,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
       paddingHorizontal: 15,
       alignItems: "center"
 
-   }),
+   },
    iconStyle: {
       marginRight: 10
    },
