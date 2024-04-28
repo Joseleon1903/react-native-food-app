@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, PressableProps } from "react-native";
 
-export function PressableText(props: PressableProps & { text: string }) {
+export default function PressableText(props: PressableProps & { text: string }) {
   return (
     <Pressable {...props}>
       <Text style={styles.link}>{props.text}</Text>
