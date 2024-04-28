@@ -13,7 +13,7 @@ import RegistrationTile from "../components/RegistrationTile";
 export default function Profile(){
   const [user, setUser] = useState(null)
 
-  // const { user, isProfileLoading, error, refetch } = fetchProfile();
+  //  const { user, isProfileLoading, error, refetch } = fetchProfile();
   const profile =
     "https://d326fntlu7tb1e.cloudfront.net/uploads/b5065bb8-4c6b-4eac-a0ce-86ab0f597b1e-vinci_04.jpg";
   const bkImg =
@@ -47,18 +47,20 @@ export default function Profile(){
                 flexDirection: "row",
               }}
             >
-              <NetworkImage
+              {/* <NetworkImage
                 source={user === null ? profile : user.profile}
                 width={45}
                 height={45}
                 radius={99}
-              />
+              /> */}
               <View style={{ marginLeft: 10, marginTop: 3 }}>
                 <Text style={styles.text}>
-                  {user === null ? "username" : user.username}
+                  {/* {user === null ? "username" : user.username} */}
+                  username
                 </Text>
                 <Text style={styles.email}>
-                  {user === null ? "email" : user.email}
+                  {/* {user === null ? "email" : user.email} */}
+                  email
                 </Text>
               </View>
             </View>

@@ -3,7 +3,7 @@ import React from "react";
 import { COLORS, SIZES } from "../constants/theme";
 
 type RegistrationTileProps = {
-  onPress: () => void;
+  onPress?: () => void;
   heading: string;
   desc : string;
 };

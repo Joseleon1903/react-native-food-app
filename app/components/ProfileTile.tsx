@@ -4,10 +4,10 @@ import { AntDesign, Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../constants/theme";
 
 type ProfileTileProps = {
-  onPress: () => void;
-  title: number;
+  onPress?: () => void;
+  title: string;
   icon : any;
-  font : number;
+  font? : number;
 };
 
 

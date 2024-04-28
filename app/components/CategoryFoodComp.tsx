@@ -7,19 +7,23 @@ import {
 } from "react-native";
 import React from "react";
 import { COLORS, SIZES } from "../constants/theme";
-import { NetworkImage } from "../components";
-import { RatingInput, Rating } from "react-native-stock-star-rating";
+import NetworkImage from "./NetworkImage";
 
-const CategoryFoodComp = ({ item, onPress }) => {
+type CategoryFoodCompProps = {
+  item: any;
+  onPress: () => void;
+};
+
+export default function CategoryFoodComp({ item, onPress }: CategoryFoodCompProps) {
   return (
     <TouchableOpacity style={styles.wrapper} onPress={onPress}>
       <View style={styles.innerRow}>
-        <NetworkImage
+        {/* <NetworkImage
           source={item.imageUrl[0]}
           width={100}
           height={100}
           radius={16}
-        />
+        /> */}
          <View
               style={{ position: "absolute", right: 10, bottom: 10, backgroundColor: COLORS.secondary, borderRadius: 8}}
             >
@@ -58,21 +62,19 @@ const CategoryFoodComp = ({ item, onPress }) => {
             />
 
             <Text style={styles.reviews}>{item.ratingCount} Reviews</Text>
-            <Rating
+            {/* <Rating
               rating={item.rating}
               color={COLORS.secondary}
               size={20}
               maxStars={5}
               bordered={false}
-            />
+            /> */}
           </View>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
-
-export default CategoryFoodComp;
 
 const styles = StyleSheet.create({
   wrapper: {

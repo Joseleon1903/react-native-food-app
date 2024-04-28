@@ -19,7 +19,7 @@ const tabBarStyle = {
   shadowOpacity: 0, // This will remove the shadow on iOS
 };
 
-const BottomTab = () => {
+export default function BottomTab () {
   // const {count, isCartLoading, error, refetch} =fetchCartCount();
   
   // const { cartCount, setCartCount } = useContext(CartCountContext);
@@ -128,5 +128,3 @@ const BottomTab = () => {
     </Tab.Navigator>
   );
 };
-
-export default BottomTab;
