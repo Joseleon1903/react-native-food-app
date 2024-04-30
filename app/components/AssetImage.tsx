@@ -1,35 +1,42 @@
-import { StyleSheet, Image , Text} from "react-native";
+import { StyleSheet, Image , ImageProps} from "react-native";
 import React from "react";
 
+type AssetImageProps= {
+  data: ImageProps;
+  height: number;
+  width: number;
+  mode: any;
+  radius: number;
+};
 
-export default function AssetImage() {
+
+export default function AssetImage({  
+  data,
+  height,
+  width,
+  mode,
+  radius
+}: AssetImageProps ) {
+
+
   return (
      <Image
-        style={styles.imagen}
-        source={require('./ruta_de_la_imagen.jpg')} // Reemplaza 'ruta_de_la_imagen.jpg' por la ruta de tu imagen
+        style={styles(height, width, mode, radius).imagen}
+        source={data}
       />
   
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
+const styles =( 
+  height :number,
+  width : number,
+  mode : any,
+  radius: number ) => StyleSheet.create({
   imagen: {
-    width: 200,
-    height: 200,
+    width: width,
+    height: height,
+    borderRadius: radius,
+    resizeMode: mode
   },
 });
-
-// const styles = StyleSheet.create({
-//   image: (width, height,radius, mode ) => ({
-//     width: width,
-//     height: height,
-//     borderRadius: radius,
-//     resizeMode: mode,
-//   }),
-// });
