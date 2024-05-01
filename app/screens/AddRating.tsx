@@ -22,7 +22,7 @@ export default function AddRating() {
         style={StyleSheet.absoluteFillObject}
         blurRadius={30}
       />
-      <ReusableHeader title={"Add Ratings"} backbtn={true} />
+      <ReusableHeader title={"Add Ratings"}  />
 
       <View style={styles.container}>
         <View style={styles.ratingBox}>

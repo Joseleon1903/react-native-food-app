@@ -7,6 +7,9 @@ import CategoryList from "../components/CategoryList";
 import Category from "../types/Category";
 import CategoryData from '../data/category.json'
 import ChoicesList from "../components/ChoicesList";
+import Heading from "../components/Heading";
+import NearByRestaurants from "../components/NearByRestaurants";
+import Divider from "../components/Divider";
 
 export default function Home() {
 
@@ -32,8 +35,7 @@ export default function Home() {
           <HomeHeader />
 
           <ScrollView style={styles.scrollContent}
-                      showsVerticalScrollIndicator={false}
-                      horizontal={true}>
+                      showsVerticalScrollIndicator={false}>
 
                         <CategoryList items={categoryItems} 
                                       setSelectedCategory={setSelectedCategory} 
@@ -43,6 +45,20 @@ export default function Home() {
           </ScrollView>
 
           <ChoicesList  setSelectedChoice={setSelectedChoice} setSelectedSection={setSelectedChoiceSection}/>
+
+          <View>
+
+            <Heading heading="Nearby restaurants"></Heading>
+
+            <NearByRestaurants></NearByRestaurants>
+
+            <Divider />
+
+            <Heading heading="Try something new"></Heading>
+
+
+
+          </View>
 
 
         </View>

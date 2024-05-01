@@ -1,20 +1,42 @@
-import { StyleSheet,Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Image , ImageProps} from "react-native";
+import React from "react";
 
-export default function NetworkImage (){
+type AssetImageProps= {
+  data: string;
+  height: number;
+  width: number;
+  mode: any;
+  radius: number;
+};
+
+
+export default function NetworkImage({  
+  data,
+  height,
+  width,
+  mode,
+  radius
+}: AssetImageProps ) {
+
+
   return (
-    <Image
-        source={require('https://d326fntlu7tb1e.cloudfront.net/uploads/93c4b3df-9e55-4308-a834-9fe4ad67c0b3-bar.png')} // Reemplaza 'ruta_de_la_imagen.jpg' por la ruta de tu imagen
+     <Image
+        style={styles(height, width, mode, radius).imagen}
+        source={{uri: data}}
       />
-  )
+  
+  );
 }
 
-
-// const styles = StyleSheet.create({
-//     image:{
-//         width: width,
-//         height: height,
-//         borderRadius: radius,
-//         resizeMode: "cover"
-//     }
-// });
+const styles =( 
+  height :number,
+  width : number,
+  mode : any,
+  radius: number ) => StyleSheet.create({
+  imagen: {
+    width: width,
+    height: height,
+    borderRadius: radius,
+    resizeMode: mode
+  },
+});

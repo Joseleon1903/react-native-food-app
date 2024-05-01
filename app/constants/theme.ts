@@ -1,6 +1,5 @@
 
 import { Dimensions } from 'react-native'
-const { height, width } = Dimensions.get('window');
 
 enum COLORS{
   primary ="#30b9b2",
@@ -30,6 +29,11 @@ enum SIZES{
   width
 };
 
+enum WINDOW{
+  Height = Dimensions.get('window').height,
+  Width = Dimensions.get('window').width
+};
+
 
 type SHADOWS = {
   small: {
@@ -55,4 +59,4 @@ type SHADOWS = {
 };
 
 
-export { COLORS, SIZES , SHADOWS };
+export { COLORS, SIZES , SHADOWS, WINDOW };

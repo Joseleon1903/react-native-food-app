@@ -8,7 +8,7 @@ import AssetImage from "./AssetImage";
 
 type ReusableHeaderProps = {
   title: string;
-  backbtn:StyleProp<ViewStyle>;
+  backbtn?:StyleProp<ViewStyle>;
 };
 
 

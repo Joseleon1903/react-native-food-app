@@ -2,14 +2,14 @@
     "restaurants":
     [
         {
-            "_id": "6530ebbcc9e72013e5b65933",
+            "id": "6530ebbcc9e72013e5b65933",
             "title": "Lapisara Eatery",
             "time": "15 min",
             "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
             "owner": "fdfsdfsdfs",
             "code": "41007428",
             "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
-            "rating": 5,
+            "rating": 1,
             "ratingCount": "6765",
             "coords": {
                 "id": "2023",
@@ -22,7 +22,7 @@
             }
         },
         {
-            "_id": "6530ea6bc9e72013e5b6592d",
+            "id": "6530ea6bc9e72013e5b6592d",
             "title": "Burger King",
             "time": "30 min",
             "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
@@ -42,14 +42,14 @@
             }
         },
         {
-            "_id": "6530eb66c9e72013e5b65931",
+            "id": "6530eb66c9e72013e5b65931",
             "title": "La Foods",
             "time": "25 min",
             "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
             "owner": "fgdgdfgd",
             "code": "41007428",
             "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
-            "rating": 5,
+            "rating": 3,
             "ratingCount": "5666",
             "coords": {
                 "id": "2022",
@@ -62,14 +62,14 @@
             }
         },
         {
-            "_id": "6530eb23c9e72013e5b6592f",
+            "id": "6530eb23c9e72013e5b6592f",
             "title": "Italian Restaurant",
             "time": "35 min",
             "imageUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
             "owner": "sjgdsjgfjshhjs",
             "code": "41007428",
             "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
-            "rating": 5,
+            "rating": 4,
             "ratingCount": "3278",
             "coords": {
                 "id": "2021",
