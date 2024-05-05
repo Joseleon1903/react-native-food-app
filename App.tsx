@@ -7,6 +7,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from "expo-splash-screen";
 import * as Location from 'expo-location';
 import BottomTab from './app/navigation/BottomTab';
+import FoodNavigator from './app/navigation/FoodNavigator';
 const Stack = createNativeStackNavigator();
 export default function App() {
   
@@ -40,7 +41,16 @@ export default function App() {
           component={BottomTab}
           options={{ headerShown: false }}
         />
-      </Stack.Navigator>
+
+        <Stack.Screen
+            name='FoodNav'
+            component={FoodNavigator}
+            options={{ headerShown: false }}
+          />
+        
+        </Stack.Navigator>
+
+
     </NavigationContainer>
   );
 }

@@ -1,17 +1,17 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import {Ionicons} from '@expo/vector-icons';
+import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons';
 import {COLORS, SIZES} from '../constants/theme'
 
-type BackBtnProps = {
+type ShareBtnProps = {
     onPress?: () => void;
 };
 
-export default function BackBtn({ onPress }: BackBtnProps){
+export default function ShareBtn({ onPress }: ShareBtnProps){
   return (
-    <TouchableOpacity onPress={onPress} style={styles.backbtn}>
-        <Ionicons
-            name='chevron-back-circle'
+    <TouchableOpacity onPress={onPress} style={styles.sharebtn}>
+        <MaterialCommunityIcons
+            name='share-circle'
             size={30}
             color={COLORS.primary}
         />
@@ -20,9 +20,10 @@ export default function BackBtn({ onPress }: BackBtnProps){
 }
 
 const styles = StyleSheet.create({
-    backbtn: {
+    sharebtn: {
         position: 'absolute',
-        marginLeft: 12,
+        marginRight: 12,
+        right: 0,
         alignItems: 'center',
         zIndex: 999,
         top: SIZES.xxLarge

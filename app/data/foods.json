@@ -1,7 +1,7 @@
 {
     "foods": [
         {
-            "_id": "65316968f94c6496dc84f3c1",
+            "id": "65316968f94c6496dc84f3c1",
             "title": "Tiramisu",
             "foodTags": [
                 "Italian",
@@ -50,12 +50,12 @@
             "imageUrl": [
                 "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp"
             ],
-            "__v": 0,
+            "version": 0,
             "category": "6531209dbbe4998e90af3fef",
             "time": "35 min"
         },
         {
-            "_id": "653168e9f94c6496dc84f3bf",
+            "id": "653168e9f94c6496dc84f3bf",
             "title": "Spaghetti Carbonara",
             "foodTags": [
                 "Italian",
@@ -76,42 +76,15 @@
             "ratingCount": "310",
             "description": "A traditional Italian pasta dish with creamy egg sauce, pancetta, and cheese.",
             "price": 14.99,
-            "additives": [
-                {
-                    "id": 1,
-                    "title": "Egg",
-                    "price": "1.00"
-                },
-                {
-                    "id": 2,
-                    "title": "Pancetta",
-                    "price": "3.00"
-                },
-                {
-                    "id": 3,
-                    "title": "Parmesan Cheese",
-                    "price": "2.00"
-                },
-                {
-                    "id": 4,
-                    "title": "Black Pepper",
-                    "price": "0.50"
-                },
-                {
-                    "id": 5,
-                    "title": "Pasta",
-                    "price": "3.00"
-                }
-            ],
             "imageUrl": [
                 "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp"
             ],
-            "__v": 2,
+            "version": 2,
             "category": "6531209dbbe4998e90af3fef",
             "time": "20 min"
         },
         {
-            "_id": "653169a9f94c6496dc84f3c3",
+            "id": "653169a9f94c6496dc84f3c3",
             "title": "Vegan Salad Bowl",
             "foodTags": [
                 "Vegan",
@@ -134,42 +107,15 @@
             "ratingCount": "230",
             "description": "A refreshing mix of organic vegetables, nuts, seeds, and a tangy vinaigrette.",
             "price": 11.99,
-            "additives": [
-                {
-                    "id": 1,
-                    "title": "Mixed Greens",
-                    "price": "1.50"
-                },
-                {
-                    "id": 2,
-                    "title": "Walnuts",
-                    "price": "2.00"
-                },
-                {
-                    "id": 3,
-                    "title": "Quinoa",
-                    "price": "1.50"
-                },
-                {
-                    "id": 4,
-                    "title": "Cherry Tomatoes",
-                    "price": "1.00"
-                },
-                {
-                    "id": 5,
-                    "title": "Vinaigrette",
-                    "price": "0.50"
-                }
-            ],
             "imageUrl": [
                 "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp"
             ],
-            "__v": 0,
+            "version": 0,
             "category": "6531209dbbe4998e90af3fef",
             "time": "55 min"
         },
         {
-            "_id": "65316771f94c6496dc84f3bd",
+            "id": "65316771f94c6496dc84f3bd",
             "title": "Margherita Pizza",
             "foodTags": [
                 "Italian",
@@ -186,33 +132,16 @@
             "ratingCount": "150",
             "description": "A classic Margherita pizza with fresh tomatoes, mozzarella cheese, basil, and olive oil.",
             "price": 12.99,
-            "additives": [
-                {
-                    "id": 1,
-                    "title": "Cheese",
-                    "price": "2.00"
-                },
-                {
-                    "id": 2,
-                    "title": "Pepperoni",
-                    "price": "2.50"
-                },
-                {
-                    "id": 3,
-                    "title": "Ketch up",
-                    "price": "0.50"
-                }
-            ],
             "imageUrl": [
                 "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
                 "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp"
             ],
-            "__v": 0,
+            "version": 0,
             "category": "6531209dbbe4998e90af3fef",
             "time": "30 min"
         },
         {
-            "_id": "65316a01f94c6496dc84f3c7",
+            "id": "65316a01f94c6496dc84f3c7",
             "title": "Tropical Fruit Smoothie",
             "foodTags": [
                 "Fruit",
@@ -235,42 +164,15 @@
             "ratingCount": "280",
             "description": "A delightful blend of tropical fruits, creating the perfect sweet and refreshing drink.",
             "price": 6.99,
-            "additives": [
-                {
-                    "id": 1,
-                    "title": "Mango",
-                    "price": "2.00"
-                },
-                {
-                    "id": 2,
-                    "title": "Pineapple",
-                    "price": "1.50"
-                },
-                {
-                    "id": 3,
-                    "title": "Banana",
-                    "price": "1.00"
-                },
-                {
-                    "id": 4,
-                    "title": "Coconut Milk",
-                    "price": "1.50"
-                },
-                {
-                    "id": 5,
-                    "title": "Ice",
-                    "price": "0.50"
-                }
-            ],
             "imageUrl": [
                 "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp"
             ],
-            "__v": 0,
+            "version": 0,
             "category": "6531209dbbe4998e90af3fef",
             "time": "25 min"
         },
         {
-            "_id": "653169d8f94c6496dc84f3c5",
+            "id": "653169d8f94c6496dc84f3c5",
             "title": "Mixed Grill Platter",
             "foodTags": [
                 "Barbecue",
@@ -293,37 +195,10 @@
             "ratingCount": "320",
             "description": "A succulent assortment of grilled meats, served with sides and sauces.",
             "price": 18.99,
-            "additives": [
-                {
-                    "id": 1,
-                    "title": "Chicken",
-                    "price": "3.00"
-                },
-                {
-                    "id": 2,
-                    "title": "Beef",
-                    "price": "4.00"
-                },
-                {
-                    "id": 3,
-                    "title": "Lamb",
-                    "price": "4.00"
-                },
-                {
-                    "id": 4,
-                    "title": "Pork",
-                    "price": "3.50"
-                },
-                {
-                    "id": 5,
-                    "title": "Barbecue Sauce",
-                    "price": "1.00"
-                }
-            ],
             "imageUrl": [
                 "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp"
             ],
-            "__v": 0,
+            "version": 0,
             "category": "6531209dbbe4998e90af3fef",
             "time": "45 min"
         }

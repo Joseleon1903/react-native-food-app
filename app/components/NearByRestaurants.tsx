@@ -17,7 +17,7 @@ export default function NearByRestaurants() {
 
   const renderItem = ({ item }: { item: Restaurant }) => {
     return <StoreComponent item={item}></StoreComponent>;
-};
+  };
 
 
     return (

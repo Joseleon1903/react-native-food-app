@@ -10,6 +10,8 @@ import ChoicesList from "../components/ChoicesList";
 import Heading from "../components/Heading";
 import NearByRestaurants from "../components/NearByRestaurants";
 import Divider from "../components/Divider";
+import NewFoodList from "../components/NewFoodList";
+import { WINDOW } from "../constants/theme";
 
 export default function Home() {
 
@@ -31,35 +33,44 @@ export default function Home() {
     <SafeAreaView>
       <View style={pages.viewOne}>
         <View style={pages.viewTwo}>
+
+          <ScrollView style={styles.scrollNewFoodContent}
+                      showsVerticalScrollIndicator={true}>
           
-          <HomeHeader />
+              <HomeHeader />
 
-          <ScrollView style={styles.scrollContent}
-                      showsVerticalScrollIndicator={false}>
+              <ScrollView style={styles.scrollContent}
+                          showsVerticalScrollIndicator={false}>
 
-                        <CategoryList items={categoryItems} 
-                                      setSelectedCategory={setSelectedCategory} 
-                                      setSelectedSection={setSelectedSection}
-                                      setSelectedValue={setSelectedValue}/> 
+                            <CategoryList items={categoryItems} 
+                                          setSelectedCategory={setSelectedCategory} 
+                                          setSelectedSection={setSelectedSection}
+                                          setSelectedValue={setSelectedValue}/> 
+
+              </ScrollView>
+
+              <ChoicesList  setSelectedChoice={setSelectedChoice} setSelectedSection={setSelectedChoiceSection}/>
+
+              <View>
+
+                <Heading heading="Nearby restaurants"></Heading>
+
+                <NearByRestaurants></NearByRestaurants>
+
+                <Divider />
+
+                <Heading heading="Try something new"></Heading>
+
+                
+
+                  <NewFoodList />
+                      
+                
+
+
+              </View>
 
           </ScrollView>
-
-          <ChoicesList  setSelectedChoice={setSelectedChoice} setSelectedSection={setSelectedChoiceSection}/>
-
-          <View>
-
-            <Heading heading="Nearby restaurants"></Heading>
-
-            <NearByRestaurants></NearByRestaurants>
-
-            <Divider />
-
-            <Heading heading="Try something new"></Heading>
-
-
-
-          </View>
-
 
         </View>
       </View> 
@@ -72,6 +83,9 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
     height: 60,
+  },
+  scrollNewFoodContent:{
+    height: WINDOW.Height - 60,
   }
   
 });
