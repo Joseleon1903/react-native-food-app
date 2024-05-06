@@ -1,15 +1,17 @@
 import { StyleSheet,Text, View, Image, TouchableOpacity, FlatList, TextInput } from 'react-native'
 import { COLORS, SIZES, WINDOW } from '../constants/theme';
-import { NativeStackHeaderProps, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types/RootStackParamList';
 import Food from '../types/Food';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Additives from '../types/Additives';
-import { CartCountContext } from '../context/CartCountContext';
-import NetworkImage from '../components/NetworkImage';
 import BackBtn from '../components/BackBtn';
 import ShareBtn from '../components/ShareBtn';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import Counter from '../components/Counter';
+import AntDesign from '@expo/vector-icons/build/AntDesign';
+import CartItem from '../types/CartItem';
+import slugify from "slugify"
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -29,6 +31,77 @@ export default function FoodPage({ route, navigation }: Props) {
 
     const goBack = () =>{navigation.goBack();}
 
+    console.log("additives :"+ additives.toString());
+
+
+    useEffect( () => {
+        calculatePrice();
+    }, [additives]);
+
+    const orderPageParams= {
+        OrderPage: {
+            cardItem: {
+                id: slugify( foodItem.title +" "+ Date.now(), {lower: true}),
+                userId: slugify("Anonymous" + Date.now(), {lower: true}),
+                additives: additives,
+                instructions: "",
+                totalPrice: (foodItem.price+ totalPrice) * count,
+                quantity: count,
+                version: 1
+
+            },
+            title: foodItem.title,
+            description: foodItem.description,
+            imageUrl: foodItem.imageUrl,
+            restaurant: "restaurant name",
+            instruction: preference
+         }
+     }
+
+    const handlerAdditives = (newAdditives: Additives)=>{
+        setAdditives( (prevAdditives: Additives[]) =>{
+            const existAdd = additives.some( (additive) => additive.id === newAdditives.id);
+            // valida si existe ya en la lista 
+            if(existAdd){
+                return prevAdditives.filter((additive) => additive.id !== newAdditives.id);
+            }
+            // lo agrega a la lista
+            else{
+                return [...prevAdditives, newAdditives];
+            }
+        });
+    }
+
+    const handlerPress = (item : Food) => {
+
+        const carItemNew : CartItem = {
+            id: slugify( item.title +" "+ Date.now(), {lower: true}),
+            userId: slugify("Anonymous" + Date.now(), {lower: true}),
+            additives: additives,
+            instructions: "",
+            totalPrice: (item.price+ totalPrice) * count,
+            quantity: count,
+            version: 1
+        }
+
+        console.log("carItemNew: "+carItemNew);
+        addCart(carItemNew);
+    }
+
+    const addCart = async(cart : CartItem) => {
+        console.log("entering into addCart");
+        console.log("push to the storage or context "+Date.now());
+        console.log("carItemNew: "+cart);
+        console.log(".............................: ");
+        console.log("exiting to addCart");
+    }
+
+    const calculatePrice = () => {
+        const total = additives.reduce( (sum, additive) => {
+            return sum + parseFloat( additive.price);
+        }, 0);
+        setTotalPrice(total);
+    }
 
     const renderTagItem =({ item }: { item: string }) =>{
         return <View style={styles.tags}>
@@ -46,6 +119,7 @@ export default function FoodPage({ route, navigation }: Props) {
             innerIconStyle={{borderWidth: 1}}
             textStyle={styles.small}
             text={item.title}
+            onPress={ () =>{handlerAdditives(item)}}
             />
 
             <Text style={styles.small}>{item.price} $</Text>
@@ -116,6 +190,41 @@ export default function FoodPage({ route, navigation }: Props) {
                         autoCorrect={false}
                         style={{flex: 1}}
                         />
+                </View>
+
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop:20}}>
+
+                    <Text style={[styles.title, {marginBottom: 10}]}>Quantity</Text>
+
+                    <Counter counter={count} setCounter={setCount}></Counter>
+
+                </View>
+
+
+            </View>
+
+            <View style={{flex: 1, justifyContent:'flex-end'}}>
+
+                <View style={styles.suspended}>
+
+                    <View style={styles.cart}>
+                        <View style={styles.cartRow}>
+
+                            <TouchableOpacity style={styles.cartBtn} onPress={() => {alert("add cart")} }>
+                                <AntDesign name='pluscircleo' size={24} color={COLORS.lightWhite} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.cartBtnOrder} onPress={ () => navigation.navigate("FoodNav", { screen: "OrderPage" , params : orderPageParams})  }>
+                                <Text style={[styles.title, {color: COLORS.lightWhite, marginTop: 8 , alignItems: 'center' }]} > Order</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.cartBtn} onPress={() => {alert("add cart")} }>
+                                <AntDesign name='pluscircleo' size={24} color={COLORS.lightWhite} />
+                            </TouchableOpacity>
+                        </View>
+
+
+                    </View>
 
 
                 </View>
@@ -195,6 +304,36 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12, 
         alignItems: 'center',
         flexDirection: 'row'
+    },
+    suspended:{
+        position: 'absolute',
+        zIndex: 999,
+        bottom: 50,
+        width: '100%',
+        alignItems: 'center'
+    },
+    cart:{
+        width: WINDOW.Width -24,
+        height: 60,
+        justifyContent: 'center',
+        backgroundColor: COLORS.primary,
+        borderRadius: 30
+    },
+    cartRow:{
+        flexDirection: 'row', 
+        justifyContent: 'space-between',
+        marginHorizontal:20
+    },
+    cartBtn:{
+        width: 40,
+        height: 40,
+        borderRadius: 99,
+        justifyContent: 'center'
+    },
+    cartBtnOrder:{
+        backgroundColor: COLORS.primary1,
+        paddingHorizontal: 60,
+        borderRadius: 30
     }
     
 });

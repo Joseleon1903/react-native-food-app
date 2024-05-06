@@ -6,11 +6,17 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 
 export default function OrderPage({ route, navigation }: Props) {
 
+    const orderItem = route.params.OrderPage.title as string
+
+
 
     return (
-        <View>
+        <View style={styles.container}>
 
             <Text>OrderPage</Text>
+
+            <Text>{orderItem}</Text>
+
 
 
         </View>
@@ -18,6 +24,10 @@ export default function OrderPage({ route, navigation }: Props) {
 
 }
 const styles = StyleSheet.create({
+
+    container:{
+        marginTop:40,
+    }
     
 });
   

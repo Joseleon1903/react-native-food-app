@@ -7,50 +7,19 @@ import {
   } from "react-native";
   import React, { useState } from "react";  
 import { COLORS } from "../constants/theme";
-
-interface Choice{
-  id : number,
-  name: string,
-  value: string
-}
+import { Choice } from "../types/Choise";
 
 type ChoicesListProps= {
+  choices : Choice[] 
   setSelectedChoice?: any;
   setSelectedSection?:any;
 };
 
-export default function ChoicesList({setSelectedChoice, setSelectedSection} : ChoicesListProps){
+export default function ChoicesList({choices, setSelectedChoice, setSelectedSection} : ChoicesListProps){
 
 
   const [selected, setSelected] = useState<any>(null);
 
-  const choicesList =[
-    {
-      id: 1,
-      name: "Pick up",
-      value:"pickup"
-    },
-    {
-      id: 2,
-      name: "4 Star",
-      value:"4star"
-    },
-    {
-      id: 3,
-      name: "3 Star",
-      value:"3Star"
-    },
-    {
-      id: 4,
-      name: "Under 30 Min",
-      value:"Under30Min"
-    },
-    {
-      id: 5,
-      name: "Recommended",
-      value:"recommended"
-    }
-  ];
 
   const handlePress =(item : Choice)=>{
     if(selected == item.value){
@@ -77,7 +46,7 @@ export default function ChoicesList({setSelectedChoice, setSelectedSection} : Ch
           <Text style={styles(selected).choseTxt}>Pick Restaurants</Text>
 
           <FlatList
-          data={choicesList as Choice[]}
+          data={choices as Choice[]}
           showsHorizontalScrollIndicator={false}
           horizontal={true}
           keyExtractor={item => item.id.toString()}

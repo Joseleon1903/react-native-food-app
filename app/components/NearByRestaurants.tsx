@@ -1,24 +1,20 @@
 import {TouchableOpacity, StyleSheet,Text, View, FlatList } from 'react-native'
 import Restaurant from '../types/Restaurant';
-import RestaurantsData from '../data/restaurants.json'
 import { useState } from 'react';
 import StoreComponent from './StoreComponent';
+import {NativeStackHeaderProps} from '@react-navigation/native-stack'
 
-type HeadingProps = {
-    heading :  string,
+type NearByRestaurantsProps = {
+    restaurants: Restaurant[]
     onPress?: () => void;
-
 };
 
-export default function NearByRestaurants() {
-
-  const [restaurants, setRestaurants] = useState<Restaurant[]>(RestaurantsData.restaurants as Restaurant[]);
+export default function NearByRestaurants({restaurants, onPress }: NearByRestaurantsProps) {
 
 
   const renderItem = ({ item }: { item: Restaurant }) => {
-    return <StoreComponent item={item}></StoreComponent>;
+    return <StoreComponent item={item} onPress={onPress}></StoreComponent>;
   };
-
 
     return (
       <View style={styles.container}>

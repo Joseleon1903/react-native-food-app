@@ -4,6 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import FoodPage from '../screens/FoodPage';
 import OrderPage from '../screens/OrderPage';
 import { RootStackParamList } from './types/RootStackParamList';
+import RestaurantPages from './RestaurantPages';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -19,13 +20,16 @@ export default function FoodNavigator() {
                 options={{headerShown: false}} 
             />
 
-           <RootStack.Screen
-                name="OrderPage"
-                component={OrderPage}
-                options={{headerShown: false, presentation: 'modal'}} 
+            <RootStack.Group screenOptions={{ headerShown: false, presentation: 'modal'}} >
+                <RootStack.Screen  name="OrderPage"component={OrderPage} />
+            </RootStack.Group>
+
+            <RootStack.Screen
+                name="RestaurantPages"
+                component={RestaurantPages}
+                options={{headerShown: false}} 
             />
         
-
         </RootStack.Navigator>
     )
 

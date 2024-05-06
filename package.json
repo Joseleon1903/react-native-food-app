@@ -36,6 +36,7 @@
     "react-native-screens": "~3.22.0",
     "react-native-shimmer-placeholder": "^2.0.9",
     "react-native-stock-star-rating": "^1.0.6",
+    "react-native-tab-view": "^3.5.2",
     "react-navigation": "^5.0.0",
     "typescript": "^5.1.3"
   },

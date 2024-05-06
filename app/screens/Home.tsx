@@ -12,10 +12,22 @@ import NearByRestaurants from "../components/NearByRestaurants";
 import Divider from "../components/Divider";
 import NewFoodList from "../components/NewFoodList";
 import { WINDOW } from "../constants/theme";
+import { choicesList } from "../types/Choise";
+import Restaurant from "../types/Restaurant";
+import RestaurantsData from '../data/restaurants.json'
+import FoodsData from '../data/foods.json'
+import Food from "../types/Food";
+import {NativeStackHeaderProps} from '@react-navigation/native-stack'
 
-export default function Home() {
+export default function Home({navigation} : NativeStackHeaderProps) {
 
   const [categoryItems, setCategoryItems] = useState<Category[]>(CategoryData.categories as Category[]);
+
+  const [restaurants, setRestaurants] = useState<Restaurant[]>(RestaurantsData.restaurants as Restaurant[]);
+
+  const [foods, setFoods] = useState<Food[]>(FoodsData.foods as Food[]);
+
+
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSection, setSelectedSection] = useState(null);
@@ -27,6 +39,12 @@ export default function Home() {
   
   console.log(selectedValue + " - " +selectedCategory);
   console.log(selectedChoice + " - " +selectedChoiceSection);
+
+  const choisesArray = choicesList;
+
+  const goToRestaurants =() =>{
+    navigation.navigate("FoodNav", { screen: "RestaurantPages"});
+  }
 
 
   return (
@@ -49,21 +67,20 @@ export default function Home() {
 
               </ScrollView>
 
-              <ChoicesList  setSelectedChoice={setSelectedChoice} setSelectedSection={setSelectedChoiceSection}/>
+              <ChoicesList choices={choisesArray}  setSelectedChoice={setSelectedChoice} setSelectedSection={setSelectedChoiceSection}/>
 
               <View>
 
                 <Heading heading="Nearby restaurants"></Heading>
 
-                <NearByRestaurants></NearByRestaurants>
+                <NearByRestaurants restaurants={restaurants} onPress={goToRestaurants}></NearByRestaurants>
 
                 <Divider />
 
                 <Heading heading="Try something new"></Heading>
 
-                
 
-                  <NewFoodList />
+                <NewFoodList foods={foods} />
                       
                 
 

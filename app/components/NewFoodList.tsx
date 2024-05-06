@@ -15,14 +15,19 @@ type ProfileScreenNavigationProp = NativeStackNavigationProp<
   'FoodPage',
   'FoodNav'
 >;
-export default function NewFoodList() {
 
-    const [foods, setFoods] = useState<Food[]>(RestaurantsData.foods as Food[]);
+type NewFoodListProps = {
+    foods: Food[]
+    onPress?: () => void;
+};
+
+export default function NewFoodList( {foods}:NewFoodListProps ) {
+
 
     const navigation =  useNavigation<ProfileScreenNavigationProp>();
 
     const renderItem = ({ item }: { item: Food }) => {
-        return <FoodComponent item={item} onPress={ () => navigation.navigate("FoodNav", { screen: 'FoodPage', params : {food : item}})  }></FoodComponent>
+        return <FoodComponent item={item} onPress={ () => navigation.navigate("FoodNav", { screen: "FoodPage" , params : {food : item}})  }></FoodComponent>
     };
     
     
