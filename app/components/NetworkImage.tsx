@@ -1,11 +1,11 @@
-import { StyleSheet, Image , ImageProps} from "react-native";
+import { StyleSheet, Image } from "react-native";
 import React from "react";
 
-type AssetImageProps= {
+type NetworkImageProps= {
   data: string;
   height: number;
   width: number;
-  mode: any;
+  mode?: any;
   radius: number;
 };
 
@@ -16,7 +16,7 @@ export default function NetworkImage({
   width,
   mode,
   radius
-}: AssetImageProps ) {
+}: NetworkImageProps ) {
 
 
   return (

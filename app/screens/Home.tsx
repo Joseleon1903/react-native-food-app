@@ -42,10 +42,6 @@ export default function Home({navigation} : NativeStackHeaderProps) {
 
   const choisesArray = choicesList;
 
-  const goToRestaurants =() =>{
-    navigation.navigate("FoodNav", { screen: "RestaurantPages"});
-  }
-
 
   return (
     <SafeAreaView>
@@ -73,7 +69,7 @@ export default function Home({navigation} : NativeStackHeaderProps) {
 
                 <Heading heading="Nearby restaurants"></Heading>
 
-                <NearByRestaurants restaurants={restaurants} onPress={goToRestaurants}></NearByRestaurants>
+                <NearByRestaurants restaurants={restaurants}></NearByRestaurants>
 
                 <Divider />
 

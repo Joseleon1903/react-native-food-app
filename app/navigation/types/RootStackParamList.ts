@@ -1,5 +1,6 @@
 import CartItem from "../../types/CartItem";
 import Food from "../../types/Food";
+import Restaurant from "../../types/Restaurant";
 
 export type RootStackParamList = {
 
@@ -12,6 +13,8 @@ export type RootStackParamList = {
         restaurant: string,
         instruction: string
      },
-     RestaurantPages:{}
+     RestaurantPages:{},
+     Restaurant: { restaurant : Restaurant },
+     Rating: {}
 
 };

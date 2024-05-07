@@ -35,12 +35,12 @@ export default function ReusableHeader ({ title, backbtn }: ReusableHeaderProps)
 
       <Text style={styles.heading}>{title}</Text>
 
-      <Image
-        source={require("../../assets/images/profile.jpg")}
-        // mode={"cover"}
+      <AssetImage
+        data={require("../../assets/images/profile.jpg")}
+         mode={"cover"}
          width={30}
          height={30}
-        //  radius={99}
+         radius={99}
       />
     </View>
   );

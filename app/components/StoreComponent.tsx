@@ -4,17 +4,26 @@ import {COLORS, WINDOW} from '../constants/theme'
 import Restaurant from '../types/Restaurant';
 import NetworkImage from './NetworkImage';
 import { RatingInput } from 'react-native-stock-star-rating';
+import { StackNavigationState, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../navigation/types/RootStackParamList';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type StoreComponentProps = {
     item: Restaurant
-    onPress?: () => void;
-
 };
 
-export default function StoreComponent({item,  onPress }: StoreComponentProps){
+export default function StoreComponent({item }: StoreComponentProps){
+
+    const navigation = useNavigation();
+
+    const goToRestaurants = () =>{
+        console.log("navigate to" + item.title);
+
+        navigation.navigate("FoodNav", { screen: "Restaurant" , params: { restaurant: item}});
+    }
 
   return (
-    <TouchableOpacity onPress={onPress} style={styles.wrapper}>
+    <TouchableOpacity onPress={goToRestaurants} style={styles.wrapper}>
 
         <NetworkImage
             data={item.imageUrl}
