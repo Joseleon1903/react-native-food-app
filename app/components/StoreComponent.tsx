@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import {COLORS, WINDOW} from '../constants/theme'
 import Restaurant from '../types/Restaurant';
 import NetworkImage from './NetworkImage';
@@ -7,6 +7,8 @@ import { RatingInput } from 'react-native-stock-star-rating';
 import { StackNavigationState, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types/RootStackParamList';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RestaurantContext } from '../context/RestaurantContext';
+import { RestaurantContextType } from '../context/type/RestaurantContextType';
 
 type StoreComponentProps = {
     item: Restaurant
@@ -16,10 +18,15 @@ export default function StoreComponent({item }: StoreComponentProps){
 
     const navigation = useNavigation();
 
+    const {restaurantObj , setRestaurantObj} = useContext(RestaurantContext) as RestaurantContextType;
+
+
     const goToRestaurants = () =>{
         console.log("navigate to" + item.title);
 
         navigation.navigate("FoodNav", { screen: "Restaurant" , params: { restaurant: item}});
+        
+        setRestaurantObj(item);
     }
 
   return (

@@ -7,5 +7,5 @@ export default interface Restaurant{
     code: string,
     logoUrl: string,
     rating: number,
-    ratingCount: string,
+    ratingCount: string
 }

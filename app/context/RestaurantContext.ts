@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import * as React from 'react';
+import { RestaurantContextType } from './type/RestaurantContextType';
 
+export const RestaurantContext = React.createContext<RestaurantContextType | null>(null);
 
-export const RestaurantContext = createContext(null)

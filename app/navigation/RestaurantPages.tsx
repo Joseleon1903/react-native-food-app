@@ -1,25 +1,14 @@
 import * as React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
-import { COLORS } from '../constants/theme';
-
-const MenuRoute= () => (
-  <View style={{ flex: 1, backgroundColor: '#ff4081' }} />
-);
-
-const DirectionRoute= () => (
-  <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
-);
-
-const MainRoute= () => (
-  <View style={{ flex: 1, backgroundColor: COLORS.gray }} />
-);
-
+import MenuTab from '../screens/restaurants/MenuTab';
+import DirectionTab from '../screens/restaurants/DirectionTab';
+import NewsTab from '../screens/restaurants/NewsTab';
 
 const renderScene = SceneMap({
-  first: MenuRoute,
-  second: DirectionRoute,
-  three: MainRoute
+  first: MenuTab,
+  second: DirectionTab,
+  three: NewsTab
 });
 
 export default function RestaurantPages() {
@@ -29,7 +18,7 @@ export default function RestaurantPages() {
   const [routes] = React.useState([
     { key: 'first', title: 'Menu' },
     { key: 'second', title: 'Direction'},
-    { key: 'three', title: 'New'},
+    { key: 'three', title: 'News/Sale'},
   ]);
 
   return (
