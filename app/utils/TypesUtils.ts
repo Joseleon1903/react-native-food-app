@@ -10,11 +10,16 @@ export const EmptyRestaurant : Restaurant = {
     code: "",
     logoUrl: "",
     rating: 0,
-    ratingCount: ""
+    ratingCount: "",
+    coords: undefined
 }
 
 
-export const FormatTextLength =(word: string, lenght : number) =>{
+export const FormatTextLength =(word?: string, lenght? : number) =>{
+
+    if(!word) return
+
+    if(!lenght) return
 
     if(word.length >= lenght) {
        return word = word.substring(0, lenght) + '...';

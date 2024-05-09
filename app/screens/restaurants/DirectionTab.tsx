@@ -14,13 +14,13 @@ export default function DirectionTab() {
     const {restaurantObj , setRestaurantObj} = useContext(RestaurantContext) as RestaurantContextType;
 
     console.log("restaurantObj: "+ restaurantObj);
-
+ 
     return (
         <View>
 
             <View style={styles.mapContainer}>
 
-                <Image source={{uri: restaurantObj.coords.urlLocation}} style={styles.map} />
+                <Image source={{uri: restaurantObj.coords?.urlLocation}} style={styles.map} />
             </View>
 
             <View style={styles.titleContainer}>
@@ -30,35 +30,35 @@ export default function DirectionTab() {
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-                        <MaterialIcons name="title" size={20} color="black" />
+                        <MaterialIcons name="title" size={20} color={COLORS.primary} />
                         <Text style={[styles.medium, {color: COLORS.gray}]}>Merchant</Text>
                     </View>
-                    <Text style={[styles.small, {fontFamily: 'regular'}]}>{restaurantObj.coords.title}</Text>
+                    <Text style={[styles.small, {fontFamily: 'regular'}]}>{restaurantObj.coords?.title}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-                        <Entypo name="address" size={20} color="black" />
+                        <Entypo name="address" size={20} color={COLORS.primary} />
                         <Text style={[styles.medium, {color: COLORS.gray}]}>Address</Text>
                     </View>
 
-                    <Text style={[styles.small, {fontFamily: 'regular'}]}> {FormatTextLength(restaurantObj.coords.address, 40)}</Text>
+                    <Text style={[styles.small, {fontFamily: 'regular'}]}> {FormatTextLength(restaurantObj.coords?.address, 38)}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-                        <MaterialCommunityIcons name="longitude" size={24} color="black" />
+                        <MaterialCommunityIcons name="longitude" size={20} color={COLORS.primary} />
                         <Text style={[styles.medium, {color: COLORS.gray}]}>Latitude</Text>
                     </View>
-                    <Text style={[styles.small, {fontFamily: 'regular'}]}>{restaurantObj.coords.latitude} </Text>
+                    <Text style={[styles.small, {fontFamily: 'regular'}]}>{restaurantObj.coords?.latitude} </Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
-                        <MaterialCommunityIcons name="longitude" size={24} color="black" />
+                        <MaterialCommunityIcons name="longitude" size={20} color={COLORS.primary} />
                         <Text style={[styles.medium, {color: COLORS.gray}]}>Longitude</Text>
                     </View>
-                    <Text style={[styles.small, {fontFamily: 'regular'}]}>{restaurantObj.coords.longitude}</Text>
+                    <Text style={[styles.small, {fontFamily: 'regular'}]}>{restaurantObj.coords?.longitude}</Text>
                 </View>
 
             </View>          

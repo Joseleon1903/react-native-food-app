@@ -10,5 +10,5 @@ export default interface Restaurant{
     logoUrl: string,
     rating: number,
     ratingCount: string
-    coords: Coord
+    coords?: Coord
 }
