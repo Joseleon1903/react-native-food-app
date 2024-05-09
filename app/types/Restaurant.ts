@@ -1,3 +1,5 @@
+import Coord from "./Coord"
+
 export default interface Restaurant{
     id: string,
     title: string,
@@ -8,4 +10,5 @@ export default interface Restaurant{
     logoUrl: string,
     rating: number,
     ratingCount: string
+    coords: Coord
 }

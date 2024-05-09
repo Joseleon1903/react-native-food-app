@@ -13,6 +13,7 @@
             "ratingCount": "6765",
             "coords": {
                 "id": "2023",
+                "urlLocation": "https://i.stack.imgur.com/PBMLE.jpg",
                 "latitude": 37.78792117665919,
                 "longitude": -122.41325651079953,
                 "address": "698 Post St, San Francisco, CA 94109, United States",
@@ -33,6 +34,7 @@
             "ratingCount": "3278",
             "coords": {
                 "id": "2020",
+                "urlLocation": "https://i.stack.imgur.com/PBMLE.jpg",
                 "latitude": 37.785925590588505,
                 "longitude": -122.41007428687641,
                 "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
@@ -53,6 +55,7 @@
             "ratingCount": "5666",
             "coords": {
                 "id": "2022",
+                "urlLocation": "https://i.stack.imgur.com/PBMLE.jpg",
                 "latitude": 37.787503258917035,
                 "longitude": -122.39854938269353,
                 "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
@@ -73,6 +76,7 @@
             "ratingCount": "3278",
             "coords": {
                 "id": "2021",
+                "urlLocation": "https://i.stack.imgur.com/PBMLE.jpg",
                 "latitude": 37.78557922976825,
                 "longitude": -122.40722000299483,
                 "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
