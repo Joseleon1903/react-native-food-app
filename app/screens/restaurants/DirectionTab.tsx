@@ -12,8 +12,6 @@ import { FormatTextLength } from '../../utils/TypesUtils';
 export default function DirectionTab() {
 
     const {restaurantObj , setRestaurantObj} = useContext(RestaurantContext) as RestaurantContextType;
-
-    console.log("restaurantObj: "+ restaurantObj);
  
     return (
         <View>
