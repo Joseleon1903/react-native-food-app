@@ -11,10 +11,12 @@ import ReusableHeader from "../components/ReusableHeader";
  import { RatingInput } from "react-native-stock-star-rating";
 import { COLORS, WINDOW } from "../constants/theme";
 import AssetImage from "../components/AssetImage";
-import { NativeStackHeaderProps } from "@react-navigation/native-stack";
+import { NativeStackHeaderProps, NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation/types/RootStackParamList";
+type Props = NativeStackScreenProps<RootStackParamList, "Restaurant", "FoodNav">;
 
 
-export default function AddRating({navigation} : NativeStackHeaderProps) {
+export default function AddRating({ route, navigation }: Props) {
 
 
   const [rating, setRating] = useState(0);

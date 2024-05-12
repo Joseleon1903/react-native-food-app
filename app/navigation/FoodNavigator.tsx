@@ -1,6 +1,4 @@
-import { StyleSheet,Text, View } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
-import { useRoute } from '@react-navigation/native';
 import FoodPage from '../screens/FoodPage';
 import OrderPage from '../screens/OrderPage';
 import { RootStackParamList } from './types/RootStackParamList';
@@ -39,7 +37,7 @@ export default function FoodNavigator() {
             />
 
            <RootStack.Screen
-                name="Rating"
+                name="AddRating"
                 component={AddRating}
                 options={{headerShown: false}} 
             />

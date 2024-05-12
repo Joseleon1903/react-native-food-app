@@ -22,7 +22,7 @@ export default function Restaurant({ route, navigation }: Props) {
 
     const handlerRating =() =>{
         console.log("Rate the store");
-        navigation.navigate("FoodNav", { screen: "Rating"});
+        navigation.navigate("FoodNav", { screen: "AddRating"});
     }
     
     return (

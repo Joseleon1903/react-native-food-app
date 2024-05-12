@@ -12,10 +12,8 @@ import {
 import React, { useState, useRef, useContext } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS, SIZES, WINDOW } from "../constants/theme";
-import LottieView from "lottie-react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { LoginContext } from "../context/LoginContext";
-import {NativeStackHeaderProps, NativeStackScreenProps} from '@react-navigation/native-stack'
+import {NativeStackHeaderProps} from '@react-navigation/native-stack'
 import axios from 'axios';
 import { LoginContextType } from "../context/type/LoginContextType";
 import { AppUser } from "../types/AppUser";
