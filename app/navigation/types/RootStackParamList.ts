@@ -16,6 +16,5 @@ export type RootStackParamList = {
      RestaurantPages:{},
      Restaurant: { restaurant : Restaurant },
      AddRating: {}
-     HomePage: {}
 
 };

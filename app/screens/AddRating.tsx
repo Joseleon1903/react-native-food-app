@@ -13,7 +13,7 @@ import { COLORS, WINDOW } from "../constants/theme";
 import AssetImage from "../components/AssetImage";
 import { NativeStackHeaderProps, NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types/RootStackParamList";
-type Props = NativeStackScreenProps<RootStackParamList, "Restaurant", "FoodNav">;
+type Props = NativeStackScreenProps<RootStackParamList, "AddRating", "FoodNav">;
 
 
 export default function AddRating({ route, navigation }: Props) {
