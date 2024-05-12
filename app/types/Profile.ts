@@ -5,8 +5,8 @@ export default interface Profile{
     username: string,
     email: string,
     uid: string,
-    address: Address[],
+    address?: Address[],
     userType: string,
     profile: string,
-    updatedAt: Date
+    updatedAt?: Date
 }

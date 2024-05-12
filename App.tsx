@@ -6,9 +6,11 @@ import * as SplashScreen from "expo-splash-screen";
 import BottomTab from './app/navigation/BottomTab';
 import FoodNavigator from './app/navigation/FoodNavigator';
 import Restaurant from './app/types/Restaurant';
-import {EmptyRestaurant} from './app/utils/TypesUtils';
-
+import {EmptyProfile, EmptyRestaurant} from './app/utils/TypesUtils';
 import { RestaurantContext } from './app/context/RestaurantContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LoginContext } from './app/context/LoginContext';
+import Profile from './app/types/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +29,11 @@ export default function App() {
 
   const [restaurantObj, setRestaurantObj] = useState<Restaurant>(EmptyRestaurant);
 
+  const [profileObj, setProfileObj] = useState<Profile>(EmptyProfile);
+
+  const [login, setLogin] = useState<boolean>(false);
+
+
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -38,27 +45,41 @@ export default function App() {
     return;
   }
 
+  const loginStatus = async () => {
+    const userToken = await AsyncStorage.getItem('token');
+
+    if(userToken !== null){
+      setLogin(true);
+    }else{
+      setLogin(false);
+    }
+
+
+  };
+
   return (
 
-    <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name='bottom-navigation'
-            component={BottomTab}
-            options={{ headerShown: false }}
-          />
-
-          <Stack.Screen
-              name='FoodNav'
-              component={FoodNavigator}
+    <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
+      <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name='bottom-navigation'
+              component={BottomTab}
               options={{ headerShown: false }}
             />
-          
-          </Stack.Navigator>
+
+            <Stack.Screen
+                name='FoodNav'
+                component={FoodNavigator}
+                options={{ headerShown: false }}
+              />
+            
+            </Stack.Navigator>
 
 
-      </NavigationContainer>
-    </RestaurantContext.Provider>
+        </NavigationContainer>
+      </RestaurantContext.Provider>
+    </LoginContext.Provider>
   );
 }

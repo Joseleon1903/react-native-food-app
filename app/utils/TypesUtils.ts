@@ -1,3 +1,4 @@
+import Profile from "../types/Profile";
 import Restaurant from "../types/Restaurant";
 
 
@@ -13,6 +14,18 @@ export const EmptyRestaurant : Restaurant = {
     ratingCount: "",
     coords: undefined
 }
+
+export const EmptyProfile : Profile = {
+    id: "",
+    username: "",
+    email: "string",
+    uid: "string",
+    address: undefined,
+    userType: "string",
+    profile: "string",
+    updatedAt: undefined
+}
+
 
 
 export const FormatTextLength =(word?: string, lenght? : number) =>{

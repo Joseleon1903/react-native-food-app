@@ -17,16 +17,20 @@ import Restaurant from "../types/Restaurant";
 import RestaurantsData from '../data/restaurants.json'
 import FoodsData from '../data/foods.json'
 import Food from "../types/Food";
-import {NativeStackHeaderProps} from '@react-navigation/native-stack'
+import {NativeStackHeaderProps, NativeStackScreenProps} from '@react-navigation/native-stack'
+import { RootStackParamList } from "../navigation/types/RootStackParamList";
 
-export default function Home({navigation} : NativeStackHeaderProps) {
+type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
+
+
+export default function Home({ route, navigation }: Props) {
+  
 
   const [categoryItems, setCategoryItems] = useState<Category[]>(CategoryData.categories as Category[]);
 
   const [restaurants, setRestaurants] = useState<Restaurant[]>(RestaurantsData.restaurants as Restaurant[]);
 
   const [foods, setFoods] = useState<Food[]>(FoodsData.foods as Food[]);
-
 
 
   const [selectedCategory, setSelectedCategory] = useState(null);

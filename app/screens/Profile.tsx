@@ -9,8 +9,13 @@ import { AntDesign } from "@expo/vector-icons";
 import NetworkImage from "../components/NetworkImage";
 import ProfileTile from "../components/ProfileTile";
 import RegistrationTile from "../components/RegistrationTile";
+import { LoginContextType } from "../context/type/LoginContextType";
 
 export default function Profile(){
+
+
+  const {  profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+
   const [user, setUser] = useState(null)
 
   //  const { user, isProfileLoading, error, refetch } = fetchProfile();

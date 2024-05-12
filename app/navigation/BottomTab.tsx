@@ -9,6 +9,8 @@ import Profile from "../screens/Profile";
 import Cart from "../screens/Cart";
 import { CartCountContext } from "../context/CartCountContext";
 import { LoginContext } from "../context/LoginContext";
+import { LoginContextType } from "../context/type/LoginContextType";
+import LoginPage from "../screens/LoginPage";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,10 +22,16 @@ const tabBarStyle = {
 };
 
 export default function BottomTab () {
+
+  const {  profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+
+  console.log("profileObj: "+ profileObj);
+  console.log("login : "+ login);
+
+
   // const {count, isCartLoading, error, refetch} =fetchCartCount();
   
   // const { cartCount, setCartCount } = useContext(CartCountContext);
-  // const {login, setLogin} = useContext(LoginContext)
 
   // if(isCartLoading){
   //   setCartCount(count)
@@ -111,7 +119,7 @@ export default function BottomTab () {
 
       <Tab.Screen
         name="Profile"
-        component={Profile }
+        component={login ? Profile: LoginPage}
         options={{
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: false,
