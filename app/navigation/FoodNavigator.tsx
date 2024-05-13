@@ -5,6 +5,7 @@ import { RootStackParamList } from './types/RootStackParamList';
 import RestaurantPages from './RestaurantPages';
 import Restaurant from '../screens/restaurants/Restaurant';
 import AddRating from '../screens/AddRating';
+import LoginPage from '../screens/LoginPage';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -39,6 +40,12 @@ export default function FoodNavigator() {
            <RootStack.Screen
                 name="AddRating"
                 component={AddRating}
+                options={{headerShown: false}} 
+            />
+
+           <RootStack.Screen
+                name="LoginPage"
+                component={LoginPage}
                 options={{headerShown: false}} 
             />
         

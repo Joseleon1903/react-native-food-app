@@ -13,18 +13,19 @@ import React, { useState, useRef, useContext } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS, SIZES, WINDOW } from "../constants/theme";
 import { LoginContext } from "../context/LoginContext";
-import {NativeStackHeaderProps} from '@react-navigation/native-stack'
+import {NativeStackHeaderProps, NativeStackScreenProps} from '@react-navigation/native-stack'
 import axios from 'axios';
 import { LoginContextType } from "../context/type/LoginContextType";
 import { AppUser } from "../types/AppUser";
 import { Formik } from "formik";
 import * as yup from 'yup'
 import Profile from "../types/Profile";
+import { RootStackParamList } from "../navigation/types/RootStackParamList";
+
+type Props = NativeStackScreenProps<RootStackParamList, "LoginPage", "FoodNav">;
 
 
-export default function  LoginPage ({navigation} : NativeStackHeaderProps) {
-
-  const animation = useRef(null);
+export default function  LoginPage ({ route, navigation }: Props) {
 
   const [loader, setLoader] = useState(false);
 
@@ -61,9 +62,9 @@ export default function  LoginPage ({navigation} : NativeStackHeaderProps) {
       username: "Admin",
       email: data.email,
       uid: "128928437834string",
-      address: undefined,
+      address:[ {city: "Santo Domingo", street: "Km 12 Las Americas N.89", postalCode: 11606, country: 'Republica Dominicana' } ],
       userType: "ADMIN",
-      profile: require('../../assets/images/profile.jpg'),
+      profileUrl: 'https://www.newyorker.com/wp-content/uploads/2010/09/100920_r20016_hr-1200.jpg',
       updatedAt: new Date()
     }
 

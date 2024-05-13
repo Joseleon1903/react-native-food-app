@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useContext, useState } from "react";
 import { COLORS, SIZES } from "../constants/theme";
-// import fetchProfile from "../hooks/fetchProfile";
 import { LoginContext } from "../context/LoginContext";
 
 import { AntDesign } from "@expo/vector-icons";
@@ -16,6 +15,9 @@ export default function Profile(){
 
   const {  profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
 
+  console.log("profileId : "+ profileObj.id);
+  console.log("is loggin L "+ login);
+
   const [user, setUser] = useState(null)
 
   //  const { user, isProfileLoading, error, refetch } = fetchProfile();
@@ -26,6 +28,13 @@ export default function Profile(){
   // if (isProfileLoading) {
   //   return <LoadingScreen />;
   // }
+
+  const logout  =() =>{
+    console.log("entering in logout");
+    setLogin(false);
+    
+  }
+
   return (
     <View>
       <View style={{ backgroundColor: COLORS.primary, height: SIZES.height }}>
@@ -52,25 +61,23 @@ export default function Profile(){
                 flexDirection: "row",
               }}
             >
-              {/* <NetworkImage
-                source={user === null ? profile : user.profile}
+             <NetworkImage
+                data={profileObj.profileUrl}
                 width={45}
                 height={45}
                 radius={99}
-              /> */}
+              />
               <View style={{ marginLeft: 10, marginTop: 3 }}>
                 <Text style={styles.text}>
-                  {/* {user === null ? "username" : user.username} */}
-                  username
+                   {profileObj.username} 
                 </Text>
                 <Text style={styles.email}>
-                  {/* {user === null ? "email" : user.email} */}
-                  email
+                {profileObj.email} 
                 </Text>
               </View>
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={logout}>
               <AntDesign name="logout" size={24} color="red" />
             </TouchableOpacity>
             
@@ -98,15 +105,13 @@ export default function Profile(){
 
           <View
             style={{
-              height: 140,
+              height: 45,
               backgroundColor: COLORS.lightWhite,
               margin: 10,
               borderRadius: 12,
             }}
           >
             <ProfileTile title={"Coupons"} icon={"tago"} />
-            <ProfileTile title={"My Store"} icon={"bag"} font={2} />
-            <ProfileTile title={"History"} icon={"globe-outline"} font={1} />
           </View>
 
           <RegistrationTile

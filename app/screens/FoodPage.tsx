@@ -1,4 +1,4 @@
-import { StyleSheet,Text, View, Image, TouchableOpacity, FlatList, TextInput } from 'react-native'
+import { StyleSheet,Text, View, Image, TouchableOpacity, FlatList, TextInput, ScrollView } from 'react-native'
 import { COLORS, SIZES, WINDOW } from '../constants/theme';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types/RootStackParamList';
@@ -12,6 +12,8 @@ import Counter from '../components/Counter';
 import AntDesign from '@expo/vector-icons/build/AntDesign';
 import CartItem from '../types/CartItem';
 import slugify from "slugify"
+import { CartCountContext } from '../context/CartCountContext';
+import { CartCountContextType } from '../context/type/CartCountContextType';
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -27,8 +29,9 @@ export default function FoodPage({ route, navigation }: Props) {
     const [count, setCount] = useState(1);
     const [preference, setPreference] = useState('');
 
-    //const [cartCount, setCartCount] = useContext(CartCountContext);
+    const { cartCount, setCartCount, cartItem } = useContext(CartCountContext) as CartCountContextType;
 
+    
     const goBack = () =>{navigation.goBack();}
 
     console.log("additives :"+ additives.toString());
@@ -86,12 +89,18 @@ export default function FoodPage({ route, navigation }: Props) {
 
         console.log("carItemNew: "+carItemNew);
         addCart(carItemNew);
+
+        navigation.navigate("FoodNav", { screen: "OrderPage" , params : orderPageParams});
     }
 
     const addCart = async(cart : CartItem) => {
         console.log("entering into addCart");
         console.log("push to the storage or context "+Date.now());
         console.log("carItemNew: "+cart);
+
+        setCartCount(cartCount +1);
+        cartItem.push(cart);
+
         console.log(".............................: ");
         console.log("exiting to addCart");
     }
@@ -148,7 +157,10 @@ export default function FoodPage({ route, navigation }: Props) {
 
             </View>
 
-            <View style={styles.containerPage}>
+            <ScrollView style={styles.scrollNewFoodContent}
+                      showsVerticalScrollIndicator={true}>
+
+                <View style={styles.containerPage}>
 
                 <View style= {styles.containerPageRow}>
                     <Text style= {styles.title}>{foodItem.title}</Text>
@@ -158,24 +170,24 @@ export default function FoodPage({ route, navigation }: Props) {
                 <Text style={styles.small} >{foodItem.description}</Text>
 
                 <FlatList 
-                   data={foodItem.foodTags}
-                   showsVerticalScrollIndicator={false}
-                   style={{marginTop: 10}}
-                   horizontal={true}
-                   scrollEnabled={true}
-                   keyExtractor={(item) => item}
-                   renderItem={renderTagItem}
+                data={foodItem.foodTags}
+                showsVerticalScrollIndicator={false}
+                style={{marginTop: 10}}
+                horizontal={true}
+                scrollEnabled={true}
+                keyExtractor={(item) => item}
+                renderItem={renderTagItem}
                 />
 
                 <Text style={[styles.title, {marginBottom: 10, marginTop: 20}]}>Additives and Topping</Text>
 
                 <FlatList 
-                   data={foodItem.additives}
-                   showsHorizontalScrollIndicator={false}
-                   style={{marginTop: 10}}
-                   scrollEnabled={false}
-                   keyExtractor={(item) => item.title}
-                   renderItem={renderAdditiveItem}
+                data={foodItem.additives}
+                showsHorizontalScrollIndicator={false}
+                style={{marginTop: 10}}
+                scrollEnabled={false}
+                keyExtractor={(item) => item.title}
+                renderItem={renderAdditiveItem}
                 />
 
                 <Text style={[styles.title, {marginBottom: 10, marginTop: 20}]}>Preferences</Text>
@@ -201,36 +213,40 @@ export default function FoodPage({ route, navigation }: Props) {
                 </View>
 
 
-            </View>
+                <View style={{flex: 1, justifyContent:'flex-end'}}>
 
-            <View style={{flex: 1, justifyContent:'flex-end'}}>
+                    <View style={styles.suspended}>
 
-                <View style={styles.suspended}>
+                        <View style={styles.cart}>
+                            <View style={styles.cartRow}>
 
-                    <View style={styles.cart}>
-                        <View style={styles.cartRow}>
+                                <TouchableOpacity style={styles.cartBtn} disabled={true}>
+                                    <AntDesign name='pluscircleo' size={24} color={COLORS.lightWhite} />
+                                </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.cartBtn} onPress={() => {alert("add cart")} }>
-                                <AntDesign name='pluscircleo' size={24} color={COLORS.lightWhite} />
-                            </TouchableOpacity>
+                                <TouchableOpacity style={styles.cartBtnOrder} onPress={ () => handlerPress(foodItem) }>
+                                    <Text style={[styles.title, {color: COLORS.lightWhite, marginTop: 8 , alignItems: 'center' }]} > Order</Text>
+                                </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.cartBtnOrder} onPress={ () => navigation.navigate("FoodNav", { screen: "OrderPage" , params : orderPageParams})  }>
-                                <Text style={[styles.title, {color: COLORS.lightWhite, marginTop: 8 , alignItems: 'center' }]} > Order</Text>
-                            </TouchableOpacity>
+                                <TouchableOpacity style={styles.cartBtn} disabled={true}>
+                                    <AntDesign name='pluscircleo' size={24} color={COLORS.lightWhite} />
+                                </TouchableOpacity>
+                            </View>
 
-                            <TouchableOpacity style={styles.cartBtn} onPress={() => {alert("add cart")} }>
-                                <AntDesign name='pluscircleo' size={24} color={COLORS.lightWhite} />
-                            </TouchableOpacity>
+
                         </View>
 
 
                     </View>
+                </View>
 
 
                 </View>
 
+            </ScrollView>
 
-            </View>
+
+            
 
 
         </View>
@@ -306,9 +322,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     suspended:{
-        position: 'absolute',
-        zIndex: 999,
-        bottom: 50,
+        marginBottom: 20,
         width: '100%',
         alignItems: 'center'
     },
@@ -334,6 +348,9 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.primary1,
         paddingHorizontal: 60,
         borderRadius: 30
+    },
+    scrollNewFoodContent:{
+        height: WINDOW.Height - 60,
     }
     
 });

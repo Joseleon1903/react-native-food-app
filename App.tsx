@@ -11,13 +11,12 @@ import { RestaurantContext } from './app/context/RestaurantContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginContext } from './app/context/LoginContext';
 import Profile from './app/types/Profile';
+import { CartCountContext } from './app/context/CartCountContext';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  
-  const defaultAddresss = { "city": "Shanghai", "country": "China", "district": "Pudong", "isoCountryCode": "CN", "name": "33 East Nanjing Rd", "postalCode": "94108", "region": "SH", "street": "Stockton St", "streetNumber": "1", "subregion": "San Francisco County", "timezone": "America/Los_Angeles" }
-  
+    
   const [fontsLoaded] = useFonts({
     regular: require('./assets/fonts/Poppins-Regular.ttf'),
     light: require('./assets/fonts/Poppins-Light.ttf'),
@@ -28,10 +27,9 @@ export default function App() {
   });
 
   const [restaurantObj, setRestaurantObj] = useState<Restaurant>(EmptyRestaurant);
-
   const [profileObj, setProfileObj] = useState<Profile>(EmptyProfile);
-
   const [login, setLogin] = useState<boolean>(false);
+  const [cartCount, setCartCount] = useState(0);
 
 
   const onLayoutRootView = useCallback(async () => {
@@ -60,26 +58,28 @@ export default function App() {
   return (
 
     <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
-      <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name='bottom-navigation'
-              component={BottomTab}
-              options={{ headerShown: false }}
-            />
-
-            <Stack.Screen
-                name='FoodNav'
-                component={FoodNavigator}
+      <CartCountContext.Provider value={{ cartCount , setCartCount}}>
+        <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name='bottom-navigation'
+                component={BottomTab}
                 options={{ headerShown: false }}
               />
-            
-            </Stack.Navigator>
+
+              <Stack.Screen
+                  name='FoodNav'
+                  component={FoodNavigator}
+                  options={{ headerShown: false }}
+                />
+              
+              </Stack.Navigator>
 
 
-        </NavigationContainer>
-      </RestaurantContext.Provider>
+          </NavigationContainer>
+        </RestaurantContext.Provider>
+      </CartCountContext.Provider>
     </LoginContext.Provider>
   );
 }

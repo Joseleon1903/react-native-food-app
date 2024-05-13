@@ -1,18 +1,20 @@
 import { StyleSheet,Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import AssetImage from './AssetImage';
+import React, { useContext, useEffect, useState } from 'react'
 import Address from '../types/Address';
 import { COLORS, SIZES } from '../constants/theme';
+import { LoginContext } from '../context/LoginContext';
+import { LoginContextType } from '../context/type/LoginContextType';
+import NetworkImage from './NetworkImage';
 
 export default function  HomeHeader(){
 
-    const [address, setAddress] = useState<Address>( {city: "Mardrid", street: "Carrera Camino Real N. 3", postalCode: 45200, country: 'Spain' });
+
+    const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+
 
     const [time, setTime] = useState<string>('');
 
-
     useEffect(() =>{
-        console.log("address: "+ JSON.stringify(address));
         if(time.length ===0){
             const greeting:string = getTimeOfDay();
             setTime(greeting);
@@ -38,8 +40,8 @@ export default function  HomeHeader(){
         <View style={styles.header_row}>
 
             <View style={styles.outerStyle}>
-                <AssetImage 
-                    data={require('../../assets/images/profile.jpg')}
+                <NetworkImage 
+                    data={profileObj.profileUrl}
                     width={55}
                     height={55}
                     radius={99}
@@ -49,8 +51,8 @@ export default function  HomeHeader(){
 
             <View style={styles.header}>
                 <Text style={styles.headerTextOne}>Delivery to</Text>
-                <Text style={styles.headerTextTwo}>{address.city} - {address.street} </Text>
-                <Text style={styles.headerTextTwo}>{address.country} - {address.postalCode}</Text>
+                <Text style={styles.headerTextTwo}>{profileObj.address[0].city} - {profileObj.address[0].street} </Text>
+                <Text style={styles.headerTextTwo}>{profileObj.address[0].country} - {profileObj.address[0].postalCode}</Text>
             </View>
 
             <Text style={styles.timeEmoji}>{time}</Text>

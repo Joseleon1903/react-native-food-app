@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import Home from "../screens/Home";
-import Search from "../screens/Search";
 import { COLORS } from "../constants/theme";
 import Profile from "../screens/Profile";
 import Cart from "../screens/Cart";
@@ -11,6 +10,7 @@ import { CartCountContext } from "../context/CartCountContext";
 import { LoginContext } from "../context/LoginContext";
 import { LoginContextType } from "../context/type/LoginContextType";
 import LoginPage from "../screens/LoginPage";
+import { CartCountContextType } from "../context/type/CartCountContextType";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,9 +25,12 @@ export default function BottomTab () {
 
   const {  profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
 
+  const {  cartCount, setCartCount} = useContext(CartCountContext) as CartCountContextType;
+
+
   console.log("profileObj: "+ profileObj);
   console.log("login : "+ login);
-
+  console.log("cartCount : "+ cartCount);
 
   // const {count, isCartLoading, error, refetch} =fetchCartCount();
   
@@ -49,6 +52,7 @@ export default function BottomTab () {
         name="Home"
         component={Home}
         options={{
+          unmountOnBlur : true,
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: false,
           headerShown: false,
@@ -62,22 +66,6 @@ export default function BottomTab () {
         }}
       />
 
-      <Tab.Screen
-        name="Search"
-        component={Search}
-        options={{
-          tabBarStyle: tabBarStyle,
-          tabBarShowLabel: false,
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={focused ? "search" : "search"}
-              color={focused ? COLORS.secondary : COLORS.secondary1}
-              size={26}
-            />
-          ),
-        }}
-      />
 
       <Tab.Screen
         name="Cart"
@@ -109,7 +97,7 @@ export default function BottomTab () {
                         alignItems: 'center'
                     }}
                 >
-                    <Text style={{ color: 'white', fontSize: 10 }}>{0}</Text>
+                    <Text style={{ color: 'white', fontSize: 10 }}>{cartCount}</Text>
                 </View>
             
         </View>
@@ -119,7 +107,7 @@ export default function BottomTab () {
 
       <Tab.Screen
         name="Profile"
-        component={login ? Profile: LoginPage}
+        component={ login? Profile : LoginPage}
         options={{
           tabBarStyle: tabBarStyle,
           tabBarShowLabel: false,

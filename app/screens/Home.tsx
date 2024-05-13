@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View, ScrollView } from "react-native";
-import React, { useState } from "react";
+import {StyleSheet, View, ScrollView } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import pages from './page.style'
 import HomeHeader from "../components/HomeHeader";
@@ -17,20 +17,22 @@ import Restaurant from "../types/Restaurant";
 import RestaurantsData from '../data/restaurants.json'
 import FoodsData from '../data/foods.json'
 import Food from "../types/Food";
-import {NativeStackHeaderProps, NativeStackScreenProps} from '@react-navigation/native-stack'
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import { RootStackParamList } from "../navigation/types/RootStackParamList";
+import HomeCategories from "../components/HomeCategories";
+import { LoginContextType } from "../context/type/LoginContextType";
+import { LoginContext } from "../context/LoginContext";
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
 
 export default function Home({ route, navigation }: Props) {
   
-
   const [categoryItems, setCategoryItems] = useState<Category[]>(CategoryData.categories as Category[]);
-
   const [restaurants, setRestaurants] = useState<Restaurant[]>(RestaurantsData.restaurants as Restaurant[]);
-
   const [foods, setFoods] = useState<Food[]>(FoodsData.foods as Food[]);
+
+  const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
 
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -46,6 +48,16 @@ export default function Home({ route, navigation }: Props) {
 
   const choisesArray = choicesList;
 
+
+  useEffect( () => {
+
+    console.log("entering validation user login");
+
+    // if(!login){
+    //   navigation.navigate("FoodNav", { screen: "LoginPage"});
+    // }
+
+  }, [])
 
   return (
     <SafeAreaView>
@@ -71,16 +83,45 @@ export default function Home({ route, navigation }: Props) {
 
               <View>
 
-                <Heading heading="Nearby restaurants"></Heading>
+                { selectedCategory !== null && selectedChoiceSection !=null ?
+                  (
+                    <View>
 
-                <NearByRestaurants restaurants={restaurants}></NearByRestaurants>
+                          <Heading heading={`Browser by ${selectedValue} `}></Heading>
 
-                <Divider />
-
-                <Heading heading="Try something new"></Heading>
+                          <HomeCategories ></HomeCategories>
 
 
-                <NewFoodList foods={foods} />
+
+                    </View>
+                  ) : 
+
+                  (
+
+                    <View>
+
+                            <Heading heading="Nearby restaurants"></Heading>
+
+                            <NearByRestaurants restaurants={restaurants}></NearByRestaurants>
+
+                            <Divider />
+
+                            <Heading heading="Try something new"></Heading>
+
+
+                            <NewFoodList foods={foods} />
+
+                    </View>
+
+
+
+                  )
+
+
+
+                }
+
+                
                       
                 
 

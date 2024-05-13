@@ -20,9 +20,9 @@ export const EmptyProfile : Profile = {
     username: "",
     email: "string",
     uid: "string",
-    address: undefined,
+    address: [ {city: "", street: "", postalCode: 0, country: '' } ],
     userType: "string",
-    profile: "string",
+    profileUrl: "string",
     updatedAt: undefined
 }
 

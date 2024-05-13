@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React, { useState, useRef, useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import styles from "./login.style";
 import LottieView from "lottie-react-native";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../constants/theme";

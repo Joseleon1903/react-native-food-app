@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { COLORS, SIZES } from "../constants/theme";
+import { COLORS, WINDOW } from "../constants/theme";
 
 type RegistrationTileProps = {
   onPress?: () => void;
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
     fontSize: 10,
     marginTop: 3,
-    width: SIZES.width * 0.56,
+    width: WINDOW.Width * 0.56,
     textAlign: "justify",
   },
 });
