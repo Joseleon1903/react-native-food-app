@@ -6,12 +6,13 @@ import * as SplashScreen from "expo-splash-screen";
 import BottomTab from './app/navigation/BottomTab';
 import FoodNavigator from './app/navigation/FoodNavigator';
 import Restaurant from './app/types/Restaurant';
-import {EmptyProfile, EmptyRestaurant} from './app/utils/TypesUtils';
+import {EmptyCartItem, EmptyProfile, EmptyRestaurant} from './app/utils/TypesUtils';
 import { RestaurantContext } from './app/context/RestaurantContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginContext } from './app/context/LoginContext';
 import Profile from './app/types/Profile';
 import { CartCountContext } from './app/context/CartCountContext';
+import CartItem from './app/types/CartItem';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function App() {
   const [profileObj, setProfileObj] = useState<Profile>(EmptyProfile);
   const [login, setLogin] = useState<boolean>(false);
   const [cartCount, setCartCount] = useState(0);
+  const [cartItem, setCartItem] = useState<CartItem[]>(EmptyCartItem);
 
 
   const onLayoutRootView = useCallback(async () => {
@@ -58,7 +60,7 @@ export default function App() {
   return (
 
     <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
-      <CartCountContext.Provider value={{ cartCount , setCartCount}}>
+      <CartCountContext.Provider value={{cartCount , setCartCount,cartItem, setCartItem}}>
         <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
           <NavigationContainer>
             <Stack.Navigator>

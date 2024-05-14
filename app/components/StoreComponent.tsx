@@ -4,9 +4,7 @@ import {COLORS, WINDOW} from '../constants/theme'
 import Restaurant from '../types/Restaurant';
 import NetworkImage from './NetworkImage';
 import { RatingInput } from 'react-native-stock-star-rating';
-import { StackNavigationState, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../navigation/types/RootStackParamList';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import { RestaurantContext } from '../context/RestaurantContext';
 import { RestaurantContextType } from '../context/type/RestaurantContextType';
 

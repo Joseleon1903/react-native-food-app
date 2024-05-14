@@ -34,7 +34,7 @@ export default function FoodPage({ route, navigation }: Props) {
     
     const goBack = () =>{navigation.goBack();}
 
-    console.log("additives :"+ additives.toString());
+    console.log("additives :"+ JSON.stringify(additives));
 
 
     useEffect( () => {
@@ -42,23 +42,20 @@ export default function FoodPage({ route, navigation }: Props) {
     }, [additives]);
 
     const orderPageParams= {
-        OrderPage: {
             cardItem: {
                 id: slugify( foodItem.title +" "+ Date.now(), {lower: true}),
                 userId: slugify("Anonymous" + Date.now(), {lower: true}),
-                additives: additives,
+                additives: [...additives],
                 instructions: "",
                 totalPrice: (foodItem.price+ totalPrice) * count,
                 quantity: count,
                 version: 1
-
             },
             title: foodItem.title,
             description: foodItem.description,
             imageUrl: foodItem.imageUrl,
             restaurant: "restaurant name",
             instruction: preference
-         }
      }
 
     const handlerAdditives = (newAdditives: Additives)=>{

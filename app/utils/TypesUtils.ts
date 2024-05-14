@@ -1,3 +1,4 @@
+import CartItem from "../types/CartItem";
 import Profile from "../types/Profile";
 import Restaurant from "../types/Restaurant";
 
@@ -26,7 +27,16 @@ export const EmptyProfile : Profile = {
     updatedAt: undefined
 }
 
-
+export const EmptyCartItem : CartItem[] = [{
+    id: "",
+    userId: "string",
+    productId: {id: "",title: "",restaurant: "",rating: 0,ratingCount: 0,imageUrl: ["", ""]},
+    additives: [{ id: 0,title: "string",price: "string"}],
+    instructions: "string",
+    totalPrice: 0,
+    quantity: 0,
+    version: 0
+}]
 
 export const FormatTextLength =(word?: string, lenght? : number) =>{
 
