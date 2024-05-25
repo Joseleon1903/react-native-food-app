@@ -6,13 +6,15 @@ import * as SplashScreen from "expo-splash-screen";
 import BottomTab from './app/navigation/BottomTab';
 import FoodNavigator from './app/navigation/FoodNavigator';
 import Restaurant from './app/types/Restaurant';
-import {EmptyCartItem, EmptyProfile, EmptyRestaurant} from './app/utils/TypesUtils';
+import {EmptyCartItem, EmptyOnlineService, EmptyProfile, EmptyRestaurant} from './app/utils/TypesUtils';
 import { RestaurantContext } from './app/context/RestaurantContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginContext } from './app/context/LoginContext';
 import Profile from './app/types/Profile';
 import { CartCountContext } from './app/context/CartCountContext';
 import CartItem from './app/types/CartItem';
+import OnlineService from './app/types/OnlineService';
+import { OnlineServiceContext } from './app/context/OnlineServiceContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,9 @@ export default function App() {
   const [login, setLogin] = useState<boolean>(false);
   const [cartCount, setCartCount] = useState(0);
   const [cartItem, setCartItem] = useState<CartItem[]>(EmptyCartItem);
+
+  const [onlineService, setOnlineService] = useState<OnlineService>(EmptyOnlineService);
+
 
 
   const onLayoutRootView = useCallback(async () => {
@@ -59,29 +64,31 @@ export default function App() {
 
   return (
 
-    <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
-      <CartCountContext.Provider value={{cartCount , setCartCount,cartItem, setCartItem}}>
-        <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name='bottom-navigation'
-                component={BottomTab}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                  name='FoodNav'
-                  component={FoodNavigator}
+    <OnlineServiceContext.Provider value={{ onlineService , setOnlineService}}> 
+      <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
+        <CartCountContext.Provider value={{cartCount , setCartCount,cartItem, setCartItem}}>
+          <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
+            <NavigationContainer>
+              <Stack.Navigator>
+                <Stack.Screen
+                  name='bottom-navigation'
+                  component={BottomTab}
                   options={{ headerShown: false }}
                 />
-              
-              </Stack.Navigator>
+
+                <Stack.Screen
+                    name='FoodNav'
+                    component={FoodNavigator}
+                    options={{ headerShown: false }}
+                  />
+                
+                </Stack.Navigator>
 
 
-          </NavigationContainer>
-        </RestaurantContext.Provider>
-      </CartCountContext.Provider>
-    </LoginContext.Provider>
+            </NavigationContainer>
+          </RestaurantContext.Provider>
+        </CartCountContext.Provider>
+      </LoginContext.Provider>
+    </OnlineServiceContext.Provider>
   );
 }

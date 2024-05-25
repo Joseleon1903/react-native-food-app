@@ -95,7 +95,6 @@ export default function FoodPage({ route, navigation }: Props) {
         console.log("push to the storage or context "+Date.now());
         console.log("carItemNew: "+cart);
 
-        setCartCount(cartCount +1);
         cartItem.push(cart);
 
         console.log(".............................: ");

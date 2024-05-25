@@ -22,6 +22,10 @@ import { RootStackParamList } from "../navigation/types/RootStackParamList";
 import HomeCategories from "../components/HomeCategories";
 import { LoginContextType } from "../context/type/LoginContextType";
 import { LoginContext } from "../context/LoginContext";
+import {fetchRestaurant} from "../hook/useRestaurantHook"
+import axios from 'axios';
+import { OnlineServiceContext } from "../context/OnlineServiceContext";
+import { OnlineServiceContextType } from "../context/type/OnlineServiceContextType";
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -33,6 +37,9 @@ export default function Home({ route, navigation }: Props) {
   const [foods, setFoods] = useState<Food[]>(FoodsData.foods as Food[]);
 
   const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+
+  const {  onlineService, setOnlineService} = useContext(OnlineServiceContext) as OnlineServiceContextType;
+
 
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -52,6 +59,22 @@ export default function Home({ route, navigation }: Props) {
   useEffect( () => {
 
     console.log("entering validation user login");
+
+    console.log("entering validation onlineService");
+
+    if(onlineService.isInternetConnected && onlineService.isOnlineApi){
+       console.log(" online service connected");
+        fetchRestaurant().then((response) => {
+          console.log(response);
+          setRestaurants(response as Restaurant[]);
+        }).catch((error) =>{
+          console.log(error)
+        }
+      );
+    }
+
+   
+
 
     // if(!login){
     //   navigation.navigate("FoodNav", { screen: "LoginPage"});

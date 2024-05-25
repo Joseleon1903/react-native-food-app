@@ -1,4 +1,5 @@
 import CartItem from "../types/CartItem";
+import OnlineService from "../types/OnlineService";
 import Profile from "../types/Profile";
 import Restaurant from "../types/Restaurant";
 
@@ -37,6 +38,13 @@ export const EmptyCartItem : CartItem[] = [{
     quantity: 0,
     version: 0
 }]
+
+export const EmptyOnlineService : OnlineService = {
+    sessionId: "session-id-00000100011001",
+    isOnlineApi: false,
+    isInternetConnected: false
+    
+};
 
 export const FormatTextLength =(word?: string, lenght? : number) =>{
 

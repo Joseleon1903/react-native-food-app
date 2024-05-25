@@ -8,7 +8,6 @@ import { COLORS, WINDOW } from '../constants/theme';
 import BackBtn from '../components/BackBtn';
 import ShareBtn from '../components/ShareBtn';
 import NetworkImage from '../components/NetworkImage';
-import Counter from '../components/Counter';
 import Quantity from '../components/Quantity';
 import CartItem from '../types/CartItem';
 import AdditiveListView from '../components/AdditiveListView';
@@ -23,9 +22,26 @@ export default function OrderPage({ route, navigation }: Props) {
 
     const cart =  route.params.cardItem as CartItem;
 
-    const { cartCount, setCartCount, cartItem } = useContext(CartCountContext) as CartCountContextType;
+    const { cartCount, setCartCount, cartItem, setCartItem } = useContext(CartCountContext) as CartCountContextType;
 
     const goBack = () =>{navigation.goBack();}
+
+    const doOrder = () => {
+
+        console.log("Entering in doOrder");
+
+        console.log("cart info : "+ cart);
+        console.log("cartCount : "+ cartCount);
+        console.log("cartItem length: "+ cartItem.length);
+
+        setCartCount(cartCount +1);
+
+        setCartItem([...cartItem , cart]);
+
+        console.log("redirigiendo al carrito");
+
+        navigation.navigate("Cart");
+    }
 
     return (
         <View style={styles.container}>
@@ -62,10 +78,12 @@ export default function OrderPage({ route, navigation }: Props) {
 
 
                         <View style={{flex: 1}}>
-                          <Text style={[styles.subtitle, {fontFamily: 'bold'}] }>Additives</Text>
-                          <AdditiveListView additives={cart.additives}></AdditiveListView>
+                            <Text style={[styles.subtitle, {fontFamily: 'bold'}] }>Additives</Text>
+                            <AdditiveListView additives={cart.additives}></AdditiveListView>
 
                         </View>
+
+
 
                     </View>
                 </View>
@@ -75,14 +93,11 @@ export default function OrderPage({ route, navigation }: Props) {
 
             <View style={{flex: 1}}>
 
-                <TouchableOpacity style={styles.loginBtn}>
+                <TouchableOpacity style={styles.loginBtn} onPress={doOrder}>
                     <Text style={styles.loginTxt}> Add Cart </Text>
-
                 </TouchableOpacity>
 
             </View>
-
-
 
 
         </View>
