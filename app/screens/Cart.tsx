@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View , Image, TouchableOpacity, FlatList} from 'react-native'
-import React, { useContext } from 'react'
+import { StyleSheet, Text, View , Image, TouchableOpacity, FlatList, ScrollView} from 'react-native'
+import React, { useContext, useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import pages from './page.style'
 import { COLORS, WINDOW } from '../constants/theme'
@@ -8,6 +8,8 @@ import { CartCountContext } from '../context/CartCountContext'
 import { CartCountContextType } from '../context/type/CartCountContextType'
 import { RootStackParamList } from '../navigation/types/RootStackParamList'
 import CartItem from '../types/CartItem'
+import CartItemComponent from '../components/CartItemComponent'
+import Divider from '../components/Divider'
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -16,9 +18,10 @@ export default function Cart({ route, navigation }: Props) {
 
   const { cartCount, setCartCount, cartItem, setCartItem } = useContext(CartCountContext) as CartCountContextType;
 
+  const [totalShoppingCart, setTotalShoppingCart] = useState<number>(0);
 
   const renderCartItem = ({ item }: { item: CartItem }) => {
-    return <Text> {item.productId?.title}</Text> 
+    return <CartItemComponent cartItem={item} onDelete={() =>handlerRemoveItem(item)} />
   };
 
   const handlerClear = () =>{
@@ -27,6 +30,28 @@ export default function Cart({ route, navigation }: Props) {
     setCartCount(0);
   }
 
+  useEffect(() =>{
+
+    console.log("cart items change");
+
+    let total = 0;
+
+    cartItem.forEach( item =>{
+      total = total + item.totalPrice;
+    });
+    console.log("cart total: "+total);
+
+    setTotalShoppingCart(total);
+
+  }, [cartCount])
+
+  const handlerRemoveItem = (item :CartItem ):void =>{
+    console.log("on clean press");
+    const newItemList =  cartItem.filter((cartitem) => cartitem.id !== item.id);
+    setCartItem(newItemList);
+    setCartCount(cartCount -1);
+  }
+ 
   return (
     <SafeAreaView>
       <View style={pages.viewOne}>
@@ -43,33 +68,49 @@ export default function Cart({ route, navigation }: Props) {
 
             </View>
 
-            {/* lista cart item */}
+            
+            <ScrollView style={styles.scrollNewFoodContent}
+                      showsVerticalScrollIndicator={true}>
 
-            <View style={styles.cartContainer}>
+              {/* lista cart item */}
 
-                <FlatList
-                    data={cartItem}
-                    showsVerticalScrollIndicator={false}
-                    style={styles.menuList}
-                    keyExtractor={(item) => item.id}
-                    scrollEnabled={true}
-                    renderItem={renderCartItem}
-                    />
+              <View style={styles.cartContainer}>
 
-            </View>
+                  <FlatList
+                      data={cartItem}
+                      showsVerticalScrollIndicator={false}
+                      style={styles.menuList}
+                      keyExtractor={(item) => item.id}
+                      scrollEnabled={true}
+                      renderItem={renderCartItem}
+                      />
+
+              </View>
+              </ScrollView>
 
 
-            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Divider />
 
-              <TouchableOpacity style={styles.purchaseBtn} >
-                  <Text style={styles.purchaseTxt}> Purchase </Text>
-              </TouchableOpacity>
+              <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal: 30}}>
 
-              <TouchableOpacity style={styles.purchaseBtn} onPress={handlerClear}>
-                  <Text style={styles.purchaseTxt}> Clear </Text>
-              </TouchableOpacity>
+                <Text style={styles.title}>Total: </Text>
+                <Text style={styles.title}>$ {totalShoppingCart}</Text>
 
-            </View>
+              </View>
+
+
+              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+
+                <TouchableOpacity style={styles.purchaseBtn} disabled={(totalShoppingCart!= 0)? false : true}>
+                    <Text style={styles.purchaseTxt}> Purchase </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.purchaseBtn} onPress={handlerClear} disabled={(totalShoppingCart!= 0)? false : true}>
+                    <Text style={styles.purchaseTxt}> Clear </Text>
+                </TouchableOpacity>
+
+              </View>
+
 
         </View>
       </View>
@@ -81,6 +122,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.lightWhite,
     height: WINDOW.Height
+  },
+  scrollNewFoodContent:{
+    maxHeight: WINDOW.Height - 320,
   },
   imageContainer: {
     flex: 0,
