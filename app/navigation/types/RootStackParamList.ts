@@ -7,6 +7,7 @@ export type RootStackParamList = {
     FoodPage: {food: Food };
     OrderPage: {
         cardItem: CartItem,
+        productId : Food,
         title: string,
         description: string,
         imageUrl: string[],

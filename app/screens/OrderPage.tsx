@@ -1,4 +1,4 @@
-import { StyleSheet,Text, TouchableOpacity, View, Image } from 'react-native'
+import { StyleSheet,Text, TouchableOpacity, View, Image, SafeAreaView } from 'react-native'
 import { RootStackParamList } from '../navigation/types/RootStackParamList';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useContext } from 'react';
@@ -26,6 +26,21 @@ export default function OrderPage({ route, navigation }: Props) {
 
     const goBack = () =>{navigation.goBack();}
 
+
+    const addCart = async(cart : CartItem) => {
+        console.log("entering into addCart");
+        console.log("push to the storage or context "+Date.now());
+        console.log("carItemNew: "+cart);
+
+        setCartCount(cartCount +1);
+
+        setCartItem([...cartItem , cart]);
+
+        console.log(".............................: ");
+        console.log("exiting to addCart");
+    }
+
+
     const doOrder = () => {
 
         console.log("Entering in doOrder");
@@ -34,9 +49,7 @@ export default function OrderPage({ route, navigation }: Props) {
         console.log("cartCount : "+ cartCount);
         console.log("cartItem length: "+ cartItem.length);
 
-        setCartCount(cartCount +1);
-
-        setCartItem([...cartItem , cart]);
+        addCart(cart);
 
         console.log("redirigiendo al carrito");
 
@@ -44,63 +57,66 @@ export default function OrderPage({ route, navigation }: Props) {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView>
+            <View style={styles.container}>
 
-            <View>
+                <View>
 
-                <BackBtn onPress={goBack} /> 
+                    <BackBtn onPress={goBack} /> 
 
-                <ShareBtn />
+                    <ShareBtn />
 
-                <View style={styles.imageContainer}>
+                    <View style={styles.imageContainer}>
 
-                    <Image style={styles.image} source={ require("../../assets/images/order_image.png")} ></Image>
+                        <Image style={styles.image} source={ require("../../assets/images/order_image.png")} ></Image>
 
-                    <Text style={styles.titleLogin}>Foodly Order</Text>
-                </View>              
+                        <Text style={styles.titleLogin}>Foodly Order</Text>
+                    </View>              
 
-            </View>
+                </View>
 
-            <View style={{flex: 1}}>
+                <View style={{flex: 1}}>
 
-                <View style={{flexDirection: 'row', marginTop: 10}}>
+                    <View style={{flexDirection: 'row', marginTop: 10}}>
 
-                    <View style={[styles.wrapper , styles.shadowStyle]}>
-                        <NetworkImage data={imageUrl} height={300} width={150} radius={15} />
-                    </View>
-
-                    <View style={{flex: 1}}>
-
-                        <Text style={styles.title}>{orderTitle}</Text>
-                        <Text style={styles.subtitle}>{orderDesc}</Text>
-
-                        <Quantity counter={cart.quantity} ></Quantity>
-
-
-                        <View style={{flex: 1}}>
-                            <Text style={[styles.subtitle, {fontFamily: 'bold'}] }>Additives</Text>
-                            <AdditiveListView additives={cart.additives}></AdditiveListView>
-
+                        <View style={[styles.wrapper , styles.shadowStyle]}>
+                            <NetworkImage data={imageUrl} height={300} width={150} radius={15} />
                         </View>
 
+                        <View style={{flex: 1}}>
+
+                            <Text style={styles.title}>{orderTitle}</Text>
+                            <Text style={styles.subtitle}>{orderDesc}</Text>
+
+                            <Quantity counter={cart.quantity} ></Quantity>
 
 
+                            <View style={{flex: 1}}>
+                                <Text style={[styles.subtitle, {fontFamily: 'bold'}] }>Additives</Text>
+                                <AdditiveListView additives={cart.additives}></AdditiveListView>
+
+                            </View>
+
+
+
+                        </View>
                     </View>
+
+
+                </View>
+
+                <View style={{flex: 1}}>
+
+                    <TouchableOpacity style={styles.loginBtn} onPress={doOrder}>
+                        <Text style={styles.loginTxt}> Add Cart </Text>
+                    </TouchableOpacity>
+                    
+
                 </View>
 
 
             </View>
-
-            <View style={{flex: 1}}>
-
-                <TouchableOpacity style={styles.loginBtn} onPress={doOrder}>
-                    <Text style={styles.loginTxt}> Add Cart </Text>
-                </TouchableOpacity>
-
-            </View>
-
-
-        </View>
+        </SafeAreaView>
     )
 
 }

@@ -10,7 +10,6 @@ import ShareBtn from '../components/ShareBtn';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Counter from '../components/Counter';
 import AntDesign from '@expo/vector-icons/build/AntDesign';
-import CartItem from '../types/CartItem';
 import slugify from "slugify"
 import { CartCountContext } from '../context/CartCountContext';
 import { CartCountContextType } from '../context/type/CartCountContextType';
@@ -45,6 +44,7 @@ export default function FoodPage({ route, navigation }: Props) {
             cardItem: {
                 id: slugify( foodItem.title +" "+ Date.now(), {lower: true}),
                 userId: slugify("Anonymous" + Date.now(), {lower: true}),
+                productId: foodItem,
                 additives: [...additives],
                 instructions: "",
                 totalPrice: (foodItem.price+ totalPrice) * count,
@@ -74,31 +74,7 @@ export default function FoodPage({ route, navigation }: Props) {
 
     const handlerPress = (item : Food) => {
 
-        const carItemNew : CartItem = {
-            id: slugify( item.title +" "+ Date.now(), {lower: true}),
-            userId: slugify("Anonymous" + Date.now(), {lower: true}),
-            additives: additives,
-            instructions: "",
-            totalPrice: (item.price+ totalPrice) * count,
-            quantity: count,
-            version: 1
-        }
-
-        console.log("carItemNew: "+carItemNew);
-        addCart(carItemNew);
-
         navigation.navigate("FoodNav", { screen: "OrderPage" , params : orderPageParams});
-    }
-
-    const addCart = async(cart : CartItem) => {
-        console.log("entering into addCart");
-        console.log("push to the storage or context "+Date.now());
-        console.log("carItemNew: "+cart);
-
-        cartItem.push(cart);
-
-        console.log(".............................: ");
-        console.log("exiting to addCart");
     }
 
     const calculatePrice = () => {

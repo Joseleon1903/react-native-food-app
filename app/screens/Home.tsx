@@ -58,7 +58,6 @@ export default function Home({ route, navigation }: Props) {
 
   useEffect( () => {
 
-    console.log("entering validation user login");
 
     console.log("entering validation onlineService");
 
@@ -72,13 +71,11 @@ export default function Home({ route, navigation }: Props) {
         }
       );
     }
-
-   
-
-
-    // if(!login){
-    //   navigation.navigate("FoodNav", { screen: "LoginPage"});
-    // }
+    
+    console.log("entering validation user login");
+    if(!login && onlineService.isInternetConnected && onlineService.isOnlineApi ){
+      navigation.navigate("FoodNav", { screen: "LoginPage"});
+    }
 
   }, [])
 
