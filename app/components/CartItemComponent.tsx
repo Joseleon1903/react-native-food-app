@@ -1,5 +1,5 @@
 import { StyleSheet,Text, TouchableOpacity, View } from 'react-native'
-import { COLORS, WINDOW } from '../constants/theme';
+import { COLORS} from '../constants/theme';
 import CartItem from '../types/CartItem';
 import NetworkImage from './NetworkImage';
 import { useEffect, useState } from 'react';
@@ -34,42 +34,39 @@ export default function CartItemComponent({ cartItem, onDelete }: CartItemCompon
 
             <Text style={styles.title}>{cartItem.productId?.title}</Text>
 
-            <View style={{flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row'}}>
 
-                <View style={{flexDirection: 'column' }}>
-                    <View style={{flex: 1, justifyContent:'center', alignItems: 'center' }}>
-                        <Text style={styles.titleColumn}>Quantity</Text>
-                        <Text style={styles.contentColumn}>{cartItem.quantity}</Text>
+                    <View style={{flexDirection: 'column' }}>
+                        <View style={{flex: 1, justifyContent:'center', alignItems: 'center' }}>
+                            <Text style={styles.titleColumn}>Quantity</Text>
+                            <Text style={styles.contentColumn}>{cartItem.quantity}</Text>
+                        </View>
+                        
                     </View>
-                    
-                </View>
 
-                <View style={{flexDirection: 'column'}}>
-                    <View style={{flex: 1, justifyContent:'center', alignItems: 'center' }}>
-                        <Text style={styles.titleColumn}>Additives</Text>
-                        <Text style={styles.contentColumn}>{cartItem.additives?.length}</Text>                            
+                    <View style={{flexDirection: 'column'}}>
+                        <View style={{flex: 1, justifyContent:'center', alignItems: 'center' }}>
+                            <Text style={styles.titleColumn}>Additives</Text>
+                            <Text style={styles.contentColumn}>{cartItem.additives?.length}</Text>                            
+                        </View>
                     </View>
-                </View>
 
-                <View style={{flexDirection: 'column'}}>
-                    <View style={{flex: 1, justifyContent:'center', alignItems: 'center' }}>
-                        <Text style={styles.titleColumn} >Total Price</Text>
-                        <Text style={styles.contentColumn}>$ {cartItem.totalPrice}</Text>
+                    <View style={{flexDirection: 'column'}}>
+                        <View style={{flex: 1, justifyContent:'center', alignItems: 'center' }}>
+                            <Text style={styles.titleColumn} >Total Price</Text>
+                            <Text style={styles.contentColumn}>$ {cartItem.totalPrice}</Text>
+                        </View>
                     </View>
-                </View>
 
-                <View style={{ justifyContent:'center', alignItems: 'center', padding: 10 }}>
-                    <TouchableOpacity  onPress={onDelete} style={styles.deleteBtn}>
-                    <MaterialIcons name="delete-outline" size={35} color={COLORS.lightWhite} />
-                    </TouchableOpacity>
+                    <View style={{ justifyContent:'center', alignItems: 'center', padding: 10 }}>
+                        <TouchableOpacity  onPress={onDelete} style={styles.deleteBtn}>
+                        <MaterialIcons name="delete-outline" size={35} color={COLORS.lightWhite} />
+                        </TouchableOpacity>
+                    </View>
+
                 </View>
 
             </View>
-
-            </View>
-
-            
-
 
            </View>
 

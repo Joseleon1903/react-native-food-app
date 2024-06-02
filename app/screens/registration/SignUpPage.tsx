@@ -1,42 +1,47 @@
 import {
   ScrollView,
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
   Image,
   TextInput,
   Alert,
-  Button,
+  StyleSheet
 } from "react-native";
-import React, { useState, useRef, useContext } from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { COLORS, SIZES, WINDOW } from "../constants/theme";
-import { LoginContext } from "../context/LoginContext";
-import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import React, { useState, useRef, useContext, useEffect } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import LottieView from "lottie-react-native";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import {NativeStackHeaderProps, NativeStackScreenProps} from '@react-navigation/native-stack'
 import axios from 'axios';
-import { LoginContextType } from "../context/type/LoginContextType";
-import { AppUser } from "../types/AppUser";
+import { RootStackParamList } from "../../navigation/types/RootStackParamList";
+import { COLORS, SIZES, WINDOW } from "../../constants/theme";
+import Profile from "../../types/Profile";
 import { Formik } from "formik";
-import * as yup from 'yup'
-import Profile from "../types/Profile";
-import { RootStackParamList } from "../navigation/types/RootStackParamList";
-import { useNavigation } from "@react-navigation/native";
+import { DefaultAddress, DefaultUserType, EmptyProfile } from "../../utils/TypesUtils";
+import * as yup from 'yup';
+import { Picker } from '@react-native-picker/picker'
+import BackBtn from "../../components/BackBtn";
+
+
 
 type Props = NativeStackScreenProps<RootStackParamList, "SignUpPage", "SignUpNav">;
 
 
-export default function  LoginPage ({ route, navigation }: Props) {
+export default function SignUpPage ({navigation} : Props) {
 
-  const navigationBotton = useNavigation();
-
-  const [loader, setLoader] = useState(false);
+  const [profile, setProfile] = useState<Profile>(EmptyProfile);
 
   const [obsecureText, setObsecureText] = useState(true);
 
-  const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+  const goBack = () =>{navigation.goBack();}
 
-  const [appUser, setAppUser] = useState<AppUser>({id: 0, email:"", password:""});
+  const onChangeCountry = () => {
+    console.log("change address");
+
+
+  };
+
 
   const inValidForm = () => {
     Alert.alert("Invalid Form", "Please provide all required fields", [
@@ -51,51 +56,30 @@ export default function  LoginPage ({ route, navigation }: Props) {
     ]);
   };
 
-  const loginFunc = async (values:AppUser) => {
-    setLoader(true);
-    const data = values;
-
-    console.log("data : "+ data.email);
-    console.log("data : "+ data.password);
-
-    setLogin(true);
-
-    const profile : Profile ={
-      id: "128928437834",
-      username: "Admin",
-      email: data.email,
-      uid: "128928437834string",
-      address:[ {city: "Santo Domingo", street: "Km 12 Las Americas N.89", postalCode: 11606, country: 'Republica Dominicana' } ],
-      userType: "ADMIN",
-      profileUrl: 'https://www.newyorker.com/wp-content/uploads/2010/09/100920_r20016_hr-1200.jpg',
-      updatedAt: new Date()
-    }
-
-    setProfileObj(profile);
-
-    navigationBotton.navigate("Home");
-    console.log("navigate To Home ");
-
-  };
-  
   return (
+
     <ScrollView style={{ backgroundColor: COLORS.white }}>
 
-     <View>
+    <View>
+       <View>
 
-          <View style={styles.cover}>
-            <Image style={styles.image} source={ require("../../assets/images/initial_image_app.png")} ></Image>
-          </View>
+        <View style={styles.cover}>
+          <Image style={styles.image} source={ require("../../../assets/images/initial_image_app.png")} ></Image>
+        </View>
 
-          <Text style={styles.titleLogin}>Foodly Family</Text>
-      </View>
+        <BackBtn onPress={goBack} /> 
 
-      <View style={styles.registrationForm}>
 
-      <Formik
-          initialValues={appUser}
-          validationSchema={loginValidationSchema }
-          onSubmit={(values) => loginFunc(values)}
+        <Text style={styles.titleLogin}>Registration</Text>
+       </View>
+    </View>
+
+    <View style={styles.registrationForm}>
+
+    <Formik
+          initialValues={profile}
+          validationSchema={registrationValidationSchema }
+          onSubmit={(values) => {console.log("send registration");}}
         >
           {({
             handleChange,
@@ -108,17 +92,12 @@ export default function  LoginPage ({ route, navigation }: Props) {
             setFieldTouched,
           }) => (
             <View>
+
+              {/* email input  */}
               <View style={styles.wrapper}>
                 <Text style={styles.label}>Email</Text>
-                <View
-                  style={styles.inputWrapper}
-                >
-                  <MaterialCommunityIcons
-                    name="email-outline"
-                    size={20}
-                    color={COLORS.gray}
-                    style={styles.iconStyle}
-                  />
+                <View>
+                  <MaterialCommunityIcons name="email-outline" size={20} color={COLORS.gray} style={styles.iconStyle}/>
 
                   <TextInput
                     placeholder="Enter email"
@@ -138,6 +117,46 @@ export default function  LoginPage ({ route, navigation }: Props) {
                 {touched.email && errors.email && (
                   <Text style={styles.errorMessage}>{errors.email}</Text>
                 )}
+              </View>
+
+              <View>
+                <Picker
+                      enabled={true}
+                      mode="dropdown"
+                      placeholder="Select City"
+                      onValueChange={handleChange('address.country')}
+                      selectedValue={values.address.country}
+                >
+                    {DefaultAddress.map((item) => {
+                      return (
+                          <Picker.Item
+                          label={item.country}
+                          value={item.country}
+                          key={item.country} />
+                      );
+                    })}
+                  </Picker>
+
+              </View>
+
+              <View>
+                <Picker
+                      enabled={true}
+                      mode="dropdown"
+                      placeholder="Select City"
+                      onValueChange={handleChange('userType')}
+                      selectedValue={values.userType}
+                >
+                    {DefaultUserType.map((item) => {
+                      return (
+                          <Picker.Item
+                          label={item}
+                          value={item}
+                          key={item} />
+                      );
+                    })}
+                  </Picker>
+
               </View>
 
               <View style={styles.wrapper}>
@@ -184,66 +203,55 @@ export default function  LoginPage ({ route, navigation }: Props) {
                 )}
               </View>
 
+              
+             
 
               <TouchableOpacity style={styles.loginBtn}
                 onPress={isValid ? handleSubmit : inValidForm}
                 isValid={isValid}
                 >
-                  <Text style={styles.loginTxt}> LOGIN </Text>
+                  <Text style={styles.loginTxt}> SUBMIT </Text>
 
               </TouchableOpacity>
 
-              <Text
-                style={styles.registration}
-                onPress={() => {
-                  navigation.navigate("SignUpNav", { screen: "SignUpPage"});
-                }}
-              >
-                {" "}
-                Register{" "}
-              </Text>
             </View>
           )}
         </Formik>
 
 
+    </View>
 
-      </View>
-    
     </ScrollView>
+    
   );
 };
 
+
 const styles = StyleSheet.create({
-  container: {
-      backgroundColor: COLORS.lightWhite,
-      height: WINDOW.Height
-  },
-  registrationForm:{
-    marginBottom: 20,
-    marginHorizontal:20
-  },
   image: {
-      width: WINDOW.Width/2, 
-      height: WINDOW.Height/4,
-      borderRadius: 30
+    width: WINDOW.Width/2, 
+    height: WINDOW.Height/4,
+    borderRadius: 30
   },
   cover: {
     flexDirection:"row",
     justifyContent: "center",
     marginTop: 45
-   
- },
- 
- titleLogin: {
+  
+  },
+  titleLogin: {
+    textAlign: "center",
     marginVertical: 20,
     marginHorizontal: 60,
     fontFamily: "bold",
     fontSize: 35,
     color: COLORS.primary
- },
-
- wrapper: {
+  },
+  registrationForm:{
+    marginBottom: 20,
+    marginHorizontal:20
+  },
+  wrapper: {
     marginBottom: 20,
  },
  label: {
@@ -295,10 +303,10 @@ const styles = StyleSheet.create({
   textAlign:"center",
   color: COLORS.white,
  }
-  
+
 });
 
-const loginValidationSchema = yup.object().shape({
+const registrationValidationSchema = yup.object().shape({
   email: yup
     .string()
     .email("Please enter valid email")
@@ -307,4 +315,8 @@ const loginValidationSchema = yup.object().shape({
     .string()
     .min(8, ({ min }) => `Password must be at least ${min} characters`)
     .required('Password is required'),
+  country: yup
+    .string()
+    .min(8, ({ min }) => `Select valid country`)
+    .required('Country is required'),
 })

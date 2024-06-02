@@ -15,6 +15,7 @@ import { CartCountContext } from './app/context/CartCountContext';
 import CartItem from './app/types/CartItem';
 import OnlineService from './app/types/OnlineService';
 import { OnlineServiceContext } from './app/context/OnlineServiceContext';
+import SignUpNavigator from './app/navigation/SignUpNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +80,12 @@ export default function App() {
                 <Stack.Screen
                     name='FoodNav'
                     component={FoodNavigator}
+                    options={{ headerShown: false }}
+                  />
+
+                <Stack.Screen
+                    name='SignUpNav'
+                    component={SignUpNavigator}
                     options={{ headerShown: false }}
                   />
                 

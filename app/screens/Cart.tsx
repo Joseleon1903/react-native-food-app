@@ -10,6 +10,7 @@ import { RootStackParamList } from '../navigation/types/RootStackParamList'
 import CartItem from '../types/CartItem'
 import CartItemComponent from '../components/CartItemComponent'
 import Divider from '../components/Divider'
+import EmptyCartAdvice from '../components/EmptyCartAdvice'
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -68,49 +69,62 @@ export default function Cart({ route, navigation }: Props) {
 
             </View>
 
+            {
             
-            <ScrollView style={styles.scrollNewFoodContent}
-                      showsVerticalScrollIndicator={true}>
+            cartItem ? (
 
-              {/* lista cart item */}
+              <EmptyCartAdvice></EmptyCartAdvice>
 
-              <View style={styles.cartContainer}>
+            ) : 
 
-                  <FlatList
-                      data={cartItem}
-                      showsVerticalScrollIndicator={false}
-                      style={styles.menuList}
-                      keyExtractor={(item) => item.id}
-                      scrollEnabled={true}
-                      renderItem={renderCartItem}
-                      />
+            (
+              <View>
+
+                <ScrollView style={styles.scrollNewFoodContent} showsVerticalScrollIndicator={true}>
+
+                  {/* lista cart item */}
+
+                  <View style={styles.cartContainer}>
+
+                      <FlatList
+                          data={cartItem}
+                          showsVerticalScrollIndicator={false}
+                          style={styles.menuList}
+                          keyExtractor={(item) => item.id}
+                          scrollEnabled={true}
+                          renderItem={renderCartItem}
+                          />
+
+                  </View>
+                </ScrollView>
+
+                <Divider />
+
+                <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal: 30}}>
+
+                  <Text style={styles.title}>Total: </Text>
+                  <Text style={styles.title}>$ {totalShoppingCart}</Text>
+
+                </View>
+
+
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+
+                  <TouchableOpacity style={styles.purchaseBtn} disabled={(totalShoppingCart!= 0)? false : true}>
+                      <Text style={styles.purchaseTxt}> Purchase </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={styles.purchaseBtn} onPress={handlerClear} disabled={(totalShoppingCart!= 0)? false : true}>
+                      <Text style={styles.purchaseTxt}> Clear </Text>
+                  </TouchableOpacity>
+
+                </View>
 
               </View>
-              </ScrollView>
-
-
-              <Divider />
-
-              <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal: 30}}>
-
-                <Text style={styles.title}>Total: </Text>
-                <Text style={styles.title}>$ {totalShoppingCart}</Text>
-
-              </View>
-
-
-              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-
-                <TouchableOpacity style={styles.purchaseBtn} disabled={(totalShoppingCart!= 0)? false : true}>
-                    <Text style={styles.purchaseTxt}> Purchase </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.purchaseBtn} onPress={handlerClear} disabled={(totalShoppingCart!= 0)? false : true}>
-                    <Text style={styles.purchaseTxt}> Clear </Text>
-                </TouchableOpacity>
-
-              </View>
-
+              
+            )
+          
+          }
 
         </View>
       </View>
