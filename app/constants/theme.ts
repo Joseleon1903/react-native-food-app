@@ -35,7 +35,6 @@ enum WINDOW{
   Width = Dimensions.get('window').width
 };
 
-
 type SHADOWS = {
   small: {
     shadowColor: "#000",
@@ -60,4 +59,4 @@ type SHADOWS = {
 };
 
 
-export { COLORS, SIZES , SHADOWS, WINDOW };
+export { COLORS, SIZES , SHADOWS, WINDOW};

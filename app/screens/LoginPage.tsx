@@ -9,19 +9,20 @@ import {
   Alert,
   Button,
 } from "react-native";
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS, SIZES, WINDOW } from "../constants/theme";
 import { LoginContext } from "../context/LoginContext";
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import axios from 'axios';
 import { LoginContextType } from "../context/type/LoginContextType";
 import { AppUser } from "../types/AppUser";
 import { Formik } from "formik";
 import * as yup from 'yup'
-import Profile from "../types/Profile";
 import { RootStackParamList } from "../navigation/types/RootStackParamList";
 import { useNavigation } from "@react-navigation/native";
+import { OnlineServiceContext } from "../context/OnlineServiceContext";
+import { useLoginHook } from "../hook/useLoginHook";
+import { OnlineServiceContextType } from "../context/type/OnlineServiceContextType";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SignUpPage", "SignUpNav">;
 
@@ -31,10 +32,10 @@ export default function  LoginPage ({ route, navigation }: Props) {
   const navigationBotton = useNavigation();
 
   const [loader, setLoader] = useState(false);
-
   const [obsecureText, setObsecureText] = useState(true);
-
   const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+
+  const {  onlineService, setOnlineService} = useContext(OnlineServiceContext) as OnlineServiceContextType;
 
   const [appUser, setAppUser] = useState<AppUser>({id: 0, email:"", password:""});
 
@@ -58,23 +59,31 @@ export default function  LoginPage ({ route, navigation }: Props) {
     console.log("data : "+ data.email);
     console.log("data : "+ data.password);
 
-    setLogin(true);
+    useLoginHook(onlineService.baseApi, data.email, data.password ).then((response) => {
+      console.log(response);
+      setProfileObj(response);
+      setLogin(true);
+      navigationBotton.navigate("Home");
+    }).catch((error) =>{
+      console.log(error);
+      alert("Error: "+ error);
+    })
 
-    const profile : Profile ={
-      id: "128928437834",
-      username: "Admin",
-      email: data.email,
-      uid: "128928437834string",
-      address:[ {city: "Santo Domingo", street: "Km 12 Las Americas N.89", postalCode: 11606, country: 'Republica Dominicana' } ],
-      userType: "ADMIN",
-      profileUrl: 'https://www.newyorker.com/wp-content/uploads/2010/09/100920_r20016_hr-1200.jpg',
-      updatedAt: new Date()
-    }
-
-    setProfileObj(profile);
-
-    navigationBotton.navigate("Home");
-    console.log("navigate To Home ");
+    // setLogin(true);
+    // const profile : Profile ={
+    //   id: "128928437834",
+    //   username: "Admin",
+    //   email: data.email,
+    //   password: "",
+    //   uid: "128928437834string",
+    //   address: {city: "Santo Domingo", street: "Km 12 Las Americas N.89", postalCode: 11606, country: 'Republica Dominicana' } ,
+    //   userType: "ADMIN",
+    //   profileUrl: 'https://www.newyorker.com/wp-content/uploads/2010/09/100920_r20016_hr-1200.jpg',
+    //   updatedAt: new Date()
+    // }
+    // setProfileObj(profile);
+    // navigationBotton.navigate("Home");
+    // console.log("navigate To Home ");
 
   };
   
@@ -185,8 +194,7 @@ export default function  LoginPage ({ route, navigation }: Props) {
               </View>
 
 
-              <TouchableOpacity style={styles.loginBtn}
-                onPress={isValid ? handleSubmit : inValidForm}
+              <TouchableOpacity style={styles.loginBtn} onPress={isValid ? handleSubmit : inValidForm}
                 isValid={isValid}
                 >
                   <Text style={styles.loginTxt}> LOGIN </Text>

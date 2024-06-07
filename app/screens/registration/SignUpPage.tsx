@@ -8,27 +8,36 @@ import {
   Alert,
   StyleSheet
 } from "react-native";
-import React, { useState, useRef, useContext, useEffect } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import LottieView from "lottie-react-native";
+import React, { useState, useContext} from "react";
+import { LoginContext } from "../../context/LoginContext";
+import { LoginContextType } from "../../context/type/LoginContextType";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
-import {NativeStackHeaderProps, NativeStackScreenProps} from '@react-navigation/native-stack'
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import axios from 'axios';
 import { RootStackParamList } from "../../navigation/types/RootStackParamList";
 import { COLORS, SIZES, WINDOW } from "../../constants/theme";
 import Profile from "../../types/Profile";
 import { Formik } from "formik";
-import { DefaultAddress, DefaultUserType, EmptyProfile } from "../../utils/TypesUtils";
+import { DefaultAddress, DefaultUserType, EmptyProfile, FindAddressByCountry, GenerateRandomNumbers, ParseUserName } from "../../utils/TypesUtils";
 import * as yup from 'yup';
-import { Picker } from '@react-native-picker/picker'
+import { Picker } from '@react-native-picker/picker';
 import BackBtn from "../../components/BackBtn";
-
-
+import { PostRegisterProfile } from "../../hook/useRegisterProfileHook";
+import { useNavigation } from "@react-navigation/native";
+import { OnlineServiceContext } from "../../context/OnlineServiceContext";
+import { OnlineServiceContextType } from "../../context/type/OnlineServiceContextType";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SignUpPage", "SignUpNav">;
 
-
 export default function SignUpPage ({navigation} : Props) {
+
+  const navigationBotton = useNavigation();
+
+
+  const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+
+  const {onlineService, setOnlineService} = useContext(OnlineServiceContext) as OnlineServiceContextType;
+
 
   const [profile, setProfile] = useState<Profile>(EmptyProfile);
 
@@ -36,11 +45,49 @@ export default function SignUpPage ({navigation} : Props) {
 
   const goBack = () =>{navigation.goBack();}
 
-  const onChangeCountry = () => {
-    console.log("change address");
+  const registerFunc = async (values:Profile) => {
+
+    const data = values;
+
+    console.log("data : "+ data.email);
+    console.log("data : "+ data.password);
+    console.log("data : "+ data.address.country);
+
+    const username = ParseUserName( data.email, '@');
+
+    const profileInput : Profile ={
+      id: GenerateRandomNumbers(username),
+      username: username,
+      email: data.email,
+      password: data.password,
+      uid: "128928437834string",
+      address: FindAddressByCountry(data.address.country),
+      userType: data.userType,
+      profileUrl: 'https://www.newyorker.com/wp-content/uploads/2010/09/100920_r20016_hr-1200.jpg',
+      updatedAt: new Date()
+    }
+
+    console.log("profile : "+ JSON.stringify(profileInput) );
+
+    if(onlineService.isOnlineApi){
+
+      PostRegisterProfile(onlineService.baseApi,  profileInput).then((response) => {
+        console.log(response);
+        setProfileObj(response);
+        setLogin(true);
+        navigationBotton.navigate("Home");
+      }).catch((error) =>{
+        console.log(error);
+        alert("Error: "+ error);
+      });
 
 
-  };
+    }else{
+      alert("Internet connection error");
+    }
+
+  }
+
 
 
   const inValidForm = () => {
@@ -79,7 +126,7 @@ export default function SignUpPage ({navigation} : Props) {
     <Formik
           initialValues={profile}
           validationSchema={registrationValidationSchema }
-          onSubmit={(values) => {console.log("send registration");}}
+          onSubmit={(values) => registerFunc(values)}
         >
           {({
             handleChange,
@@ -314,9 +361,5 @@ const registrationValidationSchema = yup.object().shape({
   password: yup
     .string()
     .min(8, ({ min }) => `Password must be at least ${min} characters`)
-    .required('Password is required'),
-  country: yup
-    .string()
-    .min(8, ({ min }) => `Select valid country`)
-    .required('Country is required'),
+    .required('Password is required')
 })

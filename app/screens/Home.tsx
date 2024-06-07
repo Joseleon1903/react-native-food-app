@@ -22,7 +22,9 @@ import { RootStackParamList } from "../navigation/types/RootStackParamList";
 import HomeCategories from "../components/HomeCategories";
 import { LoginContextType } from "../context/type/LoginContextType";
 import { LoginContext } from "../context/LoginContext";
-import {fetchRestaurant} from "../hook/useRestaurantHook"
+import {fetchRestaurant} from "../hook/useRestaurantHook";
+import {fetchFoods} from "../hook/useFoodHook";
+
 import axios from 'axios';
 import { OnlineServiceContext } from "../context/OnlineServiceContext";
 import { OnlineServiceContextType } from "../context/type/OnlineServiceContextType";
@@ -40,12 +42,9 @@ export default function Home({ route, navigation }: Props) {
 
   const {  onlineService, setOnlineService} = useContext(OnlineServiceContext) as OnlineServiceContextType;
 
-
-
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSection, setSelectedSection] = useState(null);
   const [selectedValue, setSelectedValue] = useState(null);
-
 
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [selectedChoiceSection, setSelectedChoiceSection] = useState(null);
@@ -57,19 +56,27 @@ export default function Home({ route, navigation }: Props) {
 
 
   useEffect( () => {
-
-
     console.log("entering validation onlineService");
 
     if(onlineService.isInternetConnected && onlineService.isOnlineApi){
+
        console.log(" online service connected");
-        fetchRestaurant().then((response) => {
-          console.log(response);
+        fetchRestaurant(onlineService.baseApi).then((response) => {
+          console.log(response?.length);
           setRestaurants(response as Restaurant[]);
         }).catch((error) =>{
           console.log(error)
         }
       );
+
+      fetchFoods(onlineService.baseApi).then((response) => {
+          console.log(response?.length);
+          setFoods(response as Food[]);
+        }).catch((error) =>{
+          console.log(error)
+        }
+      );
+
     }
     
     console.log("entering validation user login");

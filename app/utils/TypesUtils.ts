@@ -4,6 +4,14 @@ import OnlineService from "../types/OnlineService";
 import Profile from "../types/Profile";
 import Restaurant from "../types/Restaurant";
 
+export default interface NetworkApi{
+    baseUrl: string,
+}
+
+export const ApiNetwork : NetworkApi = {
+    baseUrl: ""
+}
+
 
 export const EmptyRestaurant : Restaurant = {
     id: "",
@@ -22,6 +30,7 @@ export const EmptyProfile : Profile = {
     id: "",
     username: "",
     email: "",
+    password: "",
     uid: "",
     address: {city: "", street: "", postalCode: 0, country: '' },
     userType: "",
@@ -70,16 +79,13 @@ export const DefaultAddress : Address[] = [
         postalCode: 60500,
         country: "Italy"
     }
-
-
 ]
-
 
 export const EmptyOnlineService : OnlineService = {
     sessionId: "session-id-00000100011001",
     isOnlineApi: false,
-    isInternetConnected: false
-    
+    isInternetConnected: false,
+    baseApi: "https://86b5-2001-1308-28f1-e000-e505-6986-e60b-5481.ngrok-free.app"
 };
 
 export const FormatTextLength =(word?: string, lenght? : number) =>{
@@ -92,5 +98,27 @@ export const FormatTextLength =(word?: string, lenght? : number) =>{
        return word = word.substring(0, lenght) + '...';
     }
     return word;
+}
 
+export const GenerateRandomNumbers = (name:string): string => {
+    
+    let randomId: string = "";
+    for (let i = 0; i < 4; i++) {
+        randomId = name + Math.floor(Math.random() * 101).toString();
+    }
+    return randomId;
+}
+
+export const ParseUserName = (email:string, char: string): string => {
+    
+    const index = email.indexOf(char); // Encuentra la posición del carácter en la cadena
+  if (index !== -1) {
+    return email.substring(0, index); // Devuelve la subcadena hasta el carácter especificado
+  }
+  return email;
+}
+
+export const FindAddressByCountry = (country:string): Address => {
+    const item = DefaultAddress.find((address) => address.country === country);
+  return item as Address;
 }

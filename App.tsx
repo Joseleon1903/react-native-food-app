@@ -16,6 +16,7 @@ import CartItem from './app/types/CartItem';
 import OnlineService from './app/types/OnlineService';
 import { OnlineServiceContext } from './app/context/OnlineServiceContext';
 import SignUpNavigator from './app/navigation/SignUpNavigator';
+import {fetchCheckOnlineApi} from "./app/hook/useCheckOnlineApi";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,8 +39,6 @@ export default function App() {
 
   const [onlineService, setOnlineService] = useState<OnlineService>(EmptyOnlineService);
 
-
-
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -59,7 +58,27 @@ export default function App() {
     }else{
       setLogin(false);
     }
+  };
 
+  const checkApiStatus = async () => {
+    
+    console.log("entering checkApiStatus");
+
+    fetchCheckOnlineApi(onlineService.baseApi).then((response) => {
+      console.log(response);
+
+      const onlineService : OnlineService = {
+          sessionId: "session-id-00000100011001",
+          isOnlineApi: true,
+          isInternetConnected: true,
+          baseApi: "https://86b5-2001-1308-28f1-e000-e505-6986-e60b-5481.ngrok-free.app"
+      };
+      setOnlineService(onlineService);
+      
+    }).catch((error) =>{
+      console.log(error)
+    }
+  );
 
   };
 
@@ -69,7 +88,7 @@ export default function App() {
       <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
         <CartCountContext.Provider value={{cartCount , setCartCount,cartItem, setCartItem}}>
           <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
-            <NavigationContainer>
+            <NavigationContainer onReady={checkApiStatus}>
               <Stack.Navigator>
                 <Stack.Screen
                   name='bottom-navigation'

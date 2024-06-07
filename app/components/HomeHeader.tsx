@@ -1,6 +1,5 @@
 import { StyleSheet,Text, View } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import Address from '../types/Address';
 import { COLORS, SIZES } from '../constants/theme';
 import { LoginContext } from '../context/LoginContext';
 import { LoginContextType } from '../context/type/LoginContextType';
@@ -51,8 +50,8 @@ export default function  HomeHeader(){
 
             <View style={styles.header}>
                 <Text style={styles.headerTextOne}>Delivery to</Text>
-                <Text style={styles.headerTextTwo}>{profileObj.address[0].city} - {profileObj.address[0].street} </Text>
-                <Text style={styles.headerTextTwo}>{profileObj.address[0].country} - {profileObj.address[0].postalCode}</Text>
+                <Text style={styles.headerTextTwo}>{profileObj.address.city} - {profileObj.address.street} </Text>
+                <Text style={styles.headerTextTwo}>{profileObj.address.country} - {profileObj.address.postalCode}</Text>
             </View>
 
             <Text style={styles.timeEmoji}>{time}</Text>
