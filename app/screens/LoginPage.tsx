@@ -23,6 +23,7 @@ import { useNavigation } from "@react-navigation/native";
 import { OnlineServiceContext } from "../context/OnlineServiceContext";
 import { useLoginHook } from "../hook/useLoginHook";
 import { OnlineServiceContextType } from "../context/type/OnlineServiceContextType";
+import { MockProfile } from "../utils/TypesUtils";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SignUpPage", "SignUpNav">;
 
@@ -59,31 +60,26 @@ export default function  LoginPage ({ route, navigation }: Props) {
     console.log("data : "+ data.email);
     console.log("data : "+ data.password);
 
-    useLoginHook(onlineService.baseApi, data.email, data.password ).then((response) => {
-      console.log(response);
-      setProfileObj(response);
+    if(onlineService.isOnlineApi){
+
+      useLoginHook(onlineService.baseApi, data.email, data.password ).then((response) => {
+        console.log(response);
+        setProfileObj(response);
+        setLogin(true);
+        navigationBotton.navigate("Home");
+      }).catch((error) =>{
+        console.log(error);
+        alert("Error: "+ error);
+      });
+    }else{
+      console.log("api no esta arriba seteand usuario mock ");
+      setProfileObj(MockProfile);
       setLogin(true);
       navigationBotton.navigate("Home");
-    }).catch((error) =>{
-      console.log(error);
-      alert("Error: "+ error);
-    })
+    }
 
-    // setLogin(true);
-    // const profile : Profile ={
-    //   id: "128928437834",
-    //   username: "Admin",
-    //   email: data.email,
-    //   password: "",
-    //   uid: "128928437834string",
-    //   address: {city: "Santo Domingo", street: "Km 12 Las Americas N.89", postalCode: 11606, country: 'Republica Dominicana' } ,
-    //   userType: "ADMIN",
-    //   profileUrl: 'https://www.newyorker.com/wp-content/uploads/2010/09/100920_r20016_hr-1200.jpg',
-    //   updatedAt: new Date()
-    // }
-    // setProfileObj(profile);
-    // navigationBotton.navigate("Home");
-    // console.log("navigate To Home ");
+   
+
 
   };
   

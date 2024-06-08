@@ -11,6 +11,7 @@ import CartItem from '../types/CartItem'
 import CartItemComponent from '../components/CartItemComponent'
 import Divider from '../components/Divider'
 import EmptyCartAdvice from '../components/EmptyCartAdvice'
+import CustomModal, { ConfirmationType, ModalType } from '../components/CustomModal'
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -18,6 +19,9 @@ type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 export default function Cart({ route, navigation }: Props) {
 
   const { cartCount, setCartCount, cartItem, setCartItem } = useContext(CartCountContext) as CartCountContextType;
+
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
 
   const [totalShoppingCart, setTotalShoppingCart] = useState<number>(0);
 
@@ -52,9 +56,24 @@ export default function Cart({ route, navigation }: Props) {
     setCartItem(newItemList);
     setCartCount(cartCount -1);
   }
+
+  const handlerConfirmationModal =()=>{
+    console.log("entering in handlerConfirmationModal");
+    setIsModalVisible(true);
+  }
+
+  const onConfirmPurchase=()=>{
+    console.log("purchase confirm");
+
+    handlerClear();
+  }
  
   return (
     <SafeAreaView>
+
+      <CustomModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} handlerConfirm={onConfirmPurchase} modalType={ModalType.warning}
+                    title='Comfirm your purchase' content={"Total : "+totalShoppingCart + " $"} confirmationType={ConfirmationType.confirmCancel} />
+
       <View style={pages.viewOne}>
         <View style={pages.viewTwo}>
 
@@ -71,7 +90,7 @@ export default function Cart({ route, navigation }: Props) {
 
             {
             
-            cartItem ? (
+            cartCount === 0 ? (
 
               <EmptyCartAdvice></EmptyCartAdvice>
 
@@ -110,7 +129,7 @@ export default function Cart({ route, navigation }: Props) {
 
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
 
-                  <TouchableOpacity style={styles.purchaseBtn} disabled={(totalShoppingCart!= 0)? false : true}>
+                  <TouchableOpacity style={styles.purchaseBtn} disabled={(totalShoppingCart!= 0)? false : true} onPress={handlerConfirmationModal}>
                       <Text style={styles.purchaseTxt}> Purchase </Text>
                   </TouchableOpacity>
 

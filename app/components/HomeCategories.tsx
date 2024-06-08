@@ -9,6 +9,7 @@ import { RootStackParamList } from '../navigation/types/RootStackParamList';
 import { OnlineServiceContext } from '../context/OnlineServiceContext';
 import { OnlineServiceContextType } from '../context/type/OnlineServiceContextType';
 import { fetchFilterFoods } from '../hook/useFilterFoodHook';
+import EmptyCartAdvice from './EmptyCartAdvice';
 
 type ProfileScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -57,14 +58,18 @@ export default function HomeCategories( {category , choise }: HomeCategoriesProp
     return (
         <View style={styles.wrapper}>
 
-          <FlatList
-                data={foods}
-                showsVerticalScrollIndicator={false}
-                style={styles.menuList}
-                keyExtractor={(item) => item.id}
-                scrollEnabled={true}
-                renderItem={renderFoodItem}
-                />
+            {  foods.length > 0 ? 
+
+                    <FlatList
+                    data={foods}
+                    showsVerticalScrollIndicator={false}
+                    style={styles.menuList}
+                    keyExtractor={(item) => item.id}
+                    scrollEnabled={true}
+                    renderItem={renderFoodItem}
+                    /> : <EmptyCartAdvice></EmptyCartAdvice>
+
+            }
 
         </View>
     )

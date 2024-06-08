@@ -3,6 +3,7 @@ import CartItem from "../types/CartItem";
 import OnlineService from "../types/OnlineService";
 import Profile from "../types/Profile";
 import Restaurant from "../types/Restaurant";
+import Wallet from "../types/Wallet";
 
 export default interface NetworkApi{
     baseUrl: string,
@@ -38,7 +39,29 @@ export const EmptyProfile : Profile = {
     updatedAt: undefined
 }
 
+export const MockProfile : Profile = {
+    id: "asskdjfjg",
+    username: "Prueba",
+    email: "Prueba123@gmail.com",
+    password: "prueba123",
+    uid: "uuisjd12234",
+    address: {city: "Barcelona", street: "Calle principal n.1", postalCode: 31100, country: 'Spain' },
+    userType: "Admin",
+    profileUrl: "https://cdn.dribbble.com/users/5534/screenshots/14230133/profile_4x.jpg",
+    updatedAt: new Date()
+}
+
 export const EmptyCartItem : CartItem[] = []
+
+export const EmptyWallet: Wallet = {
+    id: 0,
+    uuid: "sample",
+    currency: "USD",
+    accountName: "asdd-000",
+    accountNumber: "ASDT-00",
+    balance: 100
+}
+
 
 export const DefaultUserType : string[] = [
     "Admin",
@@ -85,7 +108,7 @@ export const EmptyOnlineService : OnlineService = {
     sessionId: "session-id-00000100011001",
     isOnlineApi: true,
     isInternetConnected: true,
-    baseApi: "https://42d3-2001-1308-281b-3200-3cbe-14a0-8625-1f1c.ngrok-free.app"
+    baseApi: "https://b1ab-2001-1308-293d-6000-49f0-12ee-b6ba-1d99.ngrok-free.app"
 };
 
 export const FormatTextLength =(word?: string, lenght? : number) =>{

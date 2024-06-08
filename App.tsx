@@ -6,7 +6,7 @@ import * as SplashScreen from "expo-splash-screen";
 import BottomTab from './app/navigation/BottomTab';
 import FoodNavigator from './app/navigation/FoodNavigator';
 import Restaurant from './app/types/Restaurant';
-import {EmptyCartItem, EmptyOnlineService, EmptyProfile, EmptyRestaurant} from './app/utils/TypesUtils';
+import {EmptyCartItem, EmptyOnlineService, EmptyProfile, EmptyRestaurant, EmptyWallet} from './app/utils/TypesUtils';
 import { RestaurantContext } from './app/context/RestaurantContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginContext } from './app/context/LoginContext';
@@ -18,6 +18,8 @@ import { OnlineServiceContext } from './app/context/OnlineServiceContext';
 import SignUpNavigator from './app/navigation/SignUpNavigator';
 import {fetchCheckOnlineApi} from "./app/hook/useCheckOnlineApi";
 import NetInfo from '@react-native-community/netinfo';
+import Wallet from './app/types/Wallet';
+import { WalletContext } from './app/context/WalletContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +39,7 @@ export default function App() {
   const [login, setLogin] = useState<boolean>(false);
   const [cartCount, setCartCount] = useState(0);
   const [cartItem, setCartItem] = useState<CartItem[]>(EmptyCartItem);
+  const [wallet, setWallet] = useState<Wallet>(EmptyWallet);
 
   const [onlineService, setOnlineService] = useState<OnlineService>(EmptyOnlineService);
 
@@ -96,30 +99,31 @@ export default function App() {
       <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
         <CartCountContext.Provider value={{cartCount , setCartCount,cartItem, setCartItem}}>
           <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
-            <NavigationContainer>
-              <Stack.Navigator>
-                <Stack.Screen
-                  name='bottom-navigation'
-                  component={BottomTab}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                    name='FoodNav'
-                    component={FoodNavigator}
+            <WalletContext.Provider value={{ wallet , setWallet}}> 
+              <NavigationContainer>
+                <Stack.Navigator>
+                  <Stack.Screen
+                    name='bottom-navigation'
+                    component={BottomTab}
                     options={{ headerShown: false }}
                   />
 
-                <Stack.Screen
-                    name='SignUpNav'
-                    component={SignUpNavigator}
-                    options={{ headerShown: false }}
-                  />
-                
-                </Stack.Navigator>
+                  <Stack.Screen
+                      name='FoodNav'
+                      component={FoodNavigator}
+                      options={{ headerShown: false }}
+                    />
 
+                  <Stack.Screen
+                      name='SignUpNav'
+                      component={SignUpNavigator}
+                      options={{ headerShown: false }}
+                    />
+                  
+                  </Stack.Navigator>
 
-            </NavigationContainer>
+              </NavigationContainer>
+            </WalletContext.Provider> 
           </RestaurantContext.Provider>
         </CartCountContext.Provider>
       </LoginContext.Provider>

@@ -93,7 +93,7 @@ export default function Home({ route, navigation }: Props) {
           <ScrollView style={styles.scrollNewFoodContent}
                       showsVerticalScrollIndicator={true}>
                {
-                onlineService.isInternetConnected ?  <HomeHeader /> : <HomeHeaderLogout/>
+                login ?  <HomeHeader /> : <HomeHeaderLogout/>
                }
              
 
