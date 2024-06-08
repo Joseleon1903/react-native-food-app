@@ -83,9 +83,9 @@ export const DefaultAddress : Address[] = [
 
 export const EmptyOnlineService : OnlineService = {
     sessionId: "session-id-00000100011001",
-    isOnlineApi: false,
-    isInternetConnected: false,
-    baseApi: "https://86b5-2001-1308-28f1-e000-e505-6986-e60b-5481.ngrok-free.app"
+    isOnlineApi: true,
+    isInternetConnected: true,
+    baseApi: "https://42d3-2001-1308-281b-3200-3cbe-14a0-8625-1f1c.ngrok-free.app"
 };
 
 export const FormatTextLength =(word?: string, lenght? : number) =>{

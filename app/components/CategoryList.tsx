@@ -28,8 +28,8 @@ export default function CategoryList({ items, setSelectedCategory, setSelectedSe
       }else{
         setSelectedCategory(item.id);
         SetSelected(item.value);
-        setSelectedSection('category');
-        setSelectedValue(item.title);
+        setSelectedSection(item.title);
+        setSelectedValue(item.value);
       }
     }
 

@@ -24,10 +24,9 @@ import { LoginContextType } from "../context/type/LoginContextType";
 import { LoginContext } from "../context/LoginContext";
 import {fetchRestaurant} from "../hook/useRestaurantHook";
 import {fetchFoods} from "../hook/useFoodHook";
-
-import axios from 'axios';
 import { OnlineServiceContext } from "../context/OnlineServiceContext";
 import { OnlineServiceContextType } from "../context/type/OnlineServiceContextType";
+import HomeHeaderLogout from "../components/HomeHeaderLogout";
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -44,9 +43,9 @@ export default function Home({ route, navigation }: Props) {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSection, setSelectedSection] = useState(null);
-  const [selectedValue, setSelectedValue] = useState(null);
+  const [selectedValue, setSelectedValue] = useState<string>("");
 
-  const [selectedChoice, setSelectedChoice] = useState(null);
+  const [selectedChoice, setSelectedChoice] = useState<string>("");
   const [selectedChoiceSection, setSelectedChoiceSection] = useState(null);
   
   console.log(selectedValue + " - " +selectedCategory);
@@ -93,8 +92,10 @@ export default function Home({ route, navigation }: Props) {
 
           <ScrollView style={styles.scrollNewFoodContent}
                       showsVerticalScrollIndicator={true}>
-          
-              <HomeHeader />
+               {
+                onlineService.isInternetConnected ?  <HomeHeader /> : <HomeHeaderLogout/>
+               }
+             
 
               <ScrollView style={styles.scrollContent}
                           showsVerticalScrollIndicator={false}>
@@ -114,9 +115,9 @@ export default function Home({ route, navigation }: Props) {
                   (
                     <View>
 
-                          <Heading heading={`Browser by ${selectedValue} `}></Heading>
+                          <Heading heading={`Browser by ${selectedSection} `}></Heading>
 
-                          <HomeCategories ></HomeCategories>
+                          <HomeCategories category={selectedValue} choise={selectedChoice}></HomeCategories>
 
 
 

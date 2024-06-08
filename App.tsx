@@ -17,6 +17,7 @@ import OnlineService from './app/types/OnlineService';
 import { OnlineServiceContext } from './app/context/OnlineServiceContext';
 import SignUpNavigator from './app/navigation/SignUpNavigator';
 import {fetchCheckOnlineApi} from "./app/hook/useCheckOnlineApi";
+import NetInfo from '@react-native-community/netinfo';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +51,7 @@ export default function App() {
     return;
   }
 
+
   const loginStatus = async () => {
     const userToken = await AsyncStorage.getItem('token');
 
@@ -73,13 +75,19 @@ export default function App() {
           isInternetConnected: true,
           baseApi: "https://86b5-2001-1308-28f1-e000-e505-6986-e60b-5481.ngrok-free.app"
       };
+
       setOnlineService(onlineService);
       
-    }).catch((error) =>{
-      console.log(error)
-    }
-  );
-
+      }).catch((error) =>{
+        const onlineService : OnlineService = {
+          sessionId: "session-id-00000100011001",
+          isOnlineApi: false,
+          isInternetConnected: false,
+          baseApi: "https://86b5-2001-1308-28f1-e000-e505-6986-e60b-5481.ngrok-free.app"
+      };
+      setOnlineService(onlineService);
+      }
+    );
   };
 
   return (
@@ -88,7 +96,7 @@ export default function App() {
       <LoginContext.Provider value={{ profileObj , setProfileObj, login, setLogin}}>
         <CartCountContext.Provider value={{cartCount , setCartCount,cartItem, setCartItem}}>
           <RestaurantContext.Provider value={{ restaurantObj , setRestaurantObj}}>
-            <NavigationContainer onReady={checkApiStatus}>
+            <NavigationContainer>
               <Stack.Navigator>
                 <Stack.Screen
                   name='bottom-navigation'

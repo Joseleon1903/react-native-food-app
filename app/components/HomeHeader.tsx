@@ -7,9 +7,7 @@ import NetworkImage from './NetworkImage';
 
 export default function  HomeHeader(){
 
-
     const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
-
 
     const [time, setTime] = useState<string>('');
 
