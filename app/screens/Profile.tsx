@@ -12,11 +12,7 @@ import { LoginContextType } from "../context/type/LoginContextType";
 
 export default function Profile(){
 
-
   const {  profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
-
-  console.log("profileId : "+ profileObj.id);
-  console.log("is loggin L "+ login);
 
   const [user, setUser] = useState(null)
 

@@ -16,7 +16,7 @@ export default function HomeHeaderLogout() {
 }
 const styles = StyleSheet.create({
     header_row:{
-        height: 30,
+        height: 35,
         marginBottom: 5,
         backgroundColor: COLORS.primary
        

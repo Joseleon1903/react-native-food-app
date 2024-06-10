@@ -17,7 +17,6 @@ import OnlineService from './app/types/OnlineService';
 import { OnlineServiceContext } from './app/context/OnlineServiceContext';
 import SignUpNavigator from './app/navigation/SignUpNavigator';
 import {fetchCheckOnlineApi} from "./app/hook/useCheckOnlineApi";
-import NetInfo from '@react-native-community/netinfo';
 import Wallet from './app/types/Wallet';
 import { WalletContext } from './app/context/WalletContext';
 

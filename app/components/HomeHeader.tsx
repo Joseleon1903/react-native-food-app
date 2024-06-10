@@ -35,12 +35,9 @@ export default function  HomeHeader(){
               }
             );
         }
-
-
     }, [])
 
     const getTimeOfDay = () =>{
-        console.log("entering getTimeOfDay");
         const now = new Date();
         const hours = now.getHours();
         if(hours > 0  && hours <12){
@@ -60,26 +57,27 @@ export default function  HomeHeader(){
                 <NetworkImage 
                     data={profileObj.profileUrl}
                     width={55}
-                    height={55}
-                    radius={99}
+                    height={80}
+                    radius={10}
                     mode={'cover'}
                 />
                 
                 <View style={styles.header}>
                     <Text style={styles.headerTextOne}>Delivery to</Text>
-                    <Text style={styles.headerTextTwo}>{profileObj.address.city} - {profileObj.address.street} </Text>
+                    <Text style={styles.headerTextTwo}>{profileObj.address.city}</Text>
+                    <Text style={styles.headerTextTwo}>{profileObj.address.street} </Text>
                     <Text style={styles.headerTextTwo}>{profileObj.address.country} - {profileObj.address.postalCode}</Text>
                 </View>
             </View>
 
-            <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
+            <View style={{flexDirection: 'row' , marginHorizontal:20 }}>
 
 
                 <View style={{justifyContent: 'center'}}>
                     <NetworkImage data='https://cdn-icons-png.flaticon.com/512/2108/2108625.png'  width={55} height={55} radius={2} mode={'cover'} />
                 </View>
 
-                <View style={{justifyContent: 'center'}}>
+                <View style={{justifyContent: 'center', }}>
                     <Text style={styles.headerTextTwo}>{wallet.accountName}</Text>
                     <Text style={styles.headerTextTwo}>{wallet.currency}</Text>
                     <Text style={styles.headerTextOne}>{wallet.balance} $</Text>

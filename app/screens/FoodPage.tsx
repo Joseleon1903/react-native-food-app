@@ -1,4 +1,4 @@
-import { StyleSheet,Text, View, Image, TouchableOpacity, FlatList, TextInput, ScrollView } from 'react-native'
+import { StyleSheet,Text, View, Image, TouchableOpacity, FlatList, TextInput, ScrollView } from 'react-native';
 import { COLORS, SIZES, WINDOW } from '../constants/theme';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types/RootStackParamList';
@@ -10,9 +10,8 @@ import ShareBtn from '../components/ShareBtn';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Counter from '../components/Counter';
 import AntDesign from '@expo/vector-icons/build/AntDesign';
-import slugify from "slugify"
-import { CartCountContext } from '../context/CartCountContext';
-import { CartCountContextType } from '../context/type/CartCountContextType';
+import slugify from "slugify";
+import CustomModal, { ConfirmationType, ModalType } from '../components/CustomModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -21,20 +20,17 @@ export default function FoodPage({ route, navigation }: Props) {
 
     const foodItem = route.params.food as Food
 
-    const [isChecked, setChecked] = useState(false);
     const [additives, setAdditives] = useState<Additives[]>([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [restaurant, setRestaurant] = useState(1);
     const [count, setCount] = useState(1);
     const [preference, setPreference] = useState('');
 
-    const { cartCount, setCartCount, cartItem } = useContext(CartCountContext) as CartCountContextType;
+
+    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
     
     const goBack = () =>{navigation.goBack();}
-
-    console.log("additives :"+ JSON.stringify(additives));
-
 
     useEffect( () => {
         calculatePrice();
@@ -111,13 +107,16 @@ export default function FoodPage({ route, navigation }: Props) {
     return (
         <View style= {styles.container}>
 
+           <CustomModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} modalType={ModalType.warning}
+                    title='functionality not available' content="This functionality is not available in this version" confirmationType={ConfirmationType.close} />
+
             <View>
 
                 <Image style={styles.image} source={ {uri:foodItem.imageUrl[0]}} ></Image>
 
                 <BackBtn onPress={goBack} /> 
 
-                <ShareBtn />
+                <ShareBtn onPress={ () => setIsModalVisible(true)}/>
 
                 <TouchableOpacity style={styles.detailBtn}>
 

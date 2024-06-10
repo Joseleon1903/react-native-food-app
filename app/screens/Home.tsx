@@ -1,11 +1,11 @@
 import {StyleSheet, View, ScrollView } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import pages from './page.style'
+import pages from './page.style';
 import HomeHeader from "../components/HomeHeader";
 import CategoryList from "../components/CategoryList";
 import Category from "../types/Category";
-import CategoryData from '../data/category.json'
+import CategoryData from '../data/category.json';
 import ChoicesList from "../components/ChoicesList";
 import Heading from "../components/Heading";
 import NearByRestaurants from "../components/NearByRestaurants";
@@ -14,10 +14,10 @@ import NewFoodList from "../components/NewFoodList";
 import { WINDOW } from "../constants/theme";
 import { choicesList } from "../types/Choise";
 import Restaurant from "../types/Restaurant";
-import RestaurantsData from '../data/restaurants.json'
-import FoodsData from '../data/foods.json'
+import RestaurantsData from '../data/restaurants.json';
+import FoodsData from '../data/foods.json';
 import Food from "../types/Food";
-import {NativeStackScreenProps} from '@react-navigation/native-stack'
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import { RootStackParamList } from "../navigation/types/RootStackParamList";
 import HomeCategories from "../components/HomeCategories";
 import { LoginContextType } from "../context/type/LoginContextType";
@@ -47,9 +47,6 @@ export default function Home({ route, navigation }: Props) {
 
   const [selectedChoice, setSelectedChoice] = useState<string>("");
   const [selectedChoiceSection, setSelectedChoiceSection] = useState(null);
-  
-  console.log(selectedValue + " - " +selectedCategory);
-  console.log(selectedChoice + " - " +selectedChoiceSection);
 
   const choisesArray = choicesList;
 
@@ -140,19 +137,8 @@ export default function Home({ route, navigation }: Props) {
                             <NewFoodList foods={foods} />
 
                     </View>
-
-
-
                   )
-
-
-
                 }
-
-                
-                      
-                
-
 
               </View>
 

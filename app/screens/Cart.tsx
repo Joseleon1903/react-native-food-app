@@ -1,17 +1,17 @@
 import { StyleSheet, Text, View , Image, TouchableOpacity, FlatList, ScrollView} from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import pages from './page.style'
-import { COLORS, WINDOW } from '../constants/theme'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { CartCountContext } from '../context/CartCountContext'
-import { CartCountContextType } from '../context/type/CartCountContextType'
-import { RootStackParamList } from '../navigation/types/RootStackParamList'
-import CartItem from '../types/CartItem'
-import CartItemComponent from '../components/CartItemComponent'
-import Divider from '../components/Divider'
-import EmptyCartAdvice from '../components/EmptyCartAdvice'
-import CustomModal, { ConfirmationType, ModalType } from '../components/CustomModal'
+import React, { useContext, useEffect, useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import pages from './page.style';
+import { COLORS, WINDOW } from '../constants/theme';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { CartCountContext } from '../context/CartCountContext';
+import { CartCountContextType } from '../context/type/CartCountContextType';
+import { RootStackParamList } from '../navigation/types/RootStackParamList';
+import CartItem from '../types/CartItem';
+import CartItemComponent from '../components/CartItemComponent';
+import Divider from '../components/Divider';
+import EmptyCartAdvice from '../components/EmptyCartAdvice';
+import CustomModal, { ConfirmationType, ModalType } from '../components/CustomModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -37,15 +37,10 @@ export default function Cart({ route, navigation }: Props) {
 
   useEffect(() =>{
 
-    console.log("cart items change");
-
     let total = 0;
-
     cartItem.forEach( item =>{
       total = total + item.totalPrice;
     });
-    console.log("cart total: "+total);
-
     setTotalShoppingCart(total);
 
   }, [cartCount])
@@ -58,13 +53,11 @@ export default function Cart({ route, navigation }: Props) {
   }
 
   const handlerConfirmationModal =()=>{
-    console.log("entering in handlerConfirmationModal");
     setIsModalVisible(true);
   }
 
   const onConfirmPurchase=()=>{
     console.log("purchase confirm");
-
     handlerClear();
   }
  

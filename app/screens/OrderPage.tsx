@@ -1,7 +1,7 @@
-import { StyleSheet,Text, TouchableOpacity, View, Image, SafeAreaView } from 'react-native'
+import { StyleSheet,Text, TouchableOpacity, View, Image, SafeAreaView } from 'react-native';
 import { RootStackParamList } from '../navigation/types/RootStackParamList';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartCountContext } from '../context/CartCountContext';
 import { CartCountContextType } from '../context/type/CartCountContextType';
 import { COLORS, WINDOW } from '../constants/theme';
@@ -11,6 +11,7 @@ import NetworkImage from '../components/NetworkImage';
 import Quantity from '../components/Quantity';
 import CartItem from '../types/CartItem';
 import AdditiveListView from '../components/AdditiveListView';
+import CustomModal, { ConfirmationType, ModalType } from '../components/CustomModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, "OrderPage", "FoodNav">;
 
@@ -24,26 +25,21 @@ export default function OrderPage({ route, navigation }: Props) {
 
     const { cartCount, setCartCount, cartItem, setCartItem } = useContext(CartCountContext) as CartCountContextType;
 
+    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
+
     const goBack = () =>{navigation.goBack();}
 
 
     const addCart = async(cart : CartItem) => {
         console.log("entering into addCart");
-        console.log("push to the storage or context "+Date.now());
-        console.log("carItemNew: "+cart);
-
         setCartCount(cartCount +1);
-
         setCartItem([...cartItem , cart]);
-
-        console.log(".............................: ");
-        console.log("exiting to addCart");
     }
 
 
     const doOrder = () => {
 
-        console.log("Entering in doOrder");
 
         console.log("cart info : "+ cart);
         console.log("cartCount : "+ cartCount);
@@ -58,13 +54,17 @@ export default function OrderPage({ route, navigation }: Props) {
 
     return (
         <SafeAreaView>
+
+            <CustomModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} modalType={ModalType.warning}
+                    title='functionality not available' content="This functionality is not available in this version" confirmationType={ConfirmationType.close} />
+
             <View style={styles.container}>
 
                 <View>
 
                     <BackBtn onPress={goBack} /> 
 
-                    <ShareBtn />
+                    <ShareBtn onPress={ () => setIsModalVisible(true)} />
 
                     <View style={styles.imageContainer}>
 

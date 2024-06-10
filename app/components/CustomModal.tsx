@@ -18,16 +18,16 @@ type CustomModalProps= {
     isModalVisible: boolean,
     setIsModalVisible: any,
     handlerConfirm?: any,
-    modalType: ModalType,
+    modalType?: ModalType,
     title : string
     content?: string;
-    confirmationType: ConfirmationType;
+    confirmationType?: ConfirmationType;
   };
 
 export default function CustomModal({isModalVisible, setIsModalVisible, handlerConfirm,modalType, title, content, confirmationType}: CustomModalProps) {
 
 
-    const getImage = (param : ModalType) =>{
+    const getImage = (param? : ModalType) =>{
 
         switch(param){
             case ModalType.error: return "https://www.freeiconspng.com/uploads/sign-red-error-icon-1.png";

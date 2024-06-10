@@ -9,30 +9,35 @@ import BackBtn from '../../components/BackBtn';
 import ShareBtn from '../../components/ShareBtn';
 import { RatingInput } from 'react-native-stock-star-rating';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useState } from 'react';
+import CustomModal, { ModalType, ConfirmationType } from '../../components/CustomModal';
 
 
 type Props = NativeStackScreenProps<RootStackParamList, "Restaurant", "FoodNav">;
 
 export default function Restaurant({ route, navigation }: Props) {
 
+    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
     const data = route.params.restaurant as RestaurantType
-    console.log("imageUrl: "+data.imageUrl);
 
     const goBack = () =>{navigation.goBack();}
 
     const handlerRating =() =>{
-        console.log("Rate the store");
         navigation.navigate("FoodNav", { screen: "AddRating"});
     }
     
     return (
         <View>
 
+            <CustomModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} modalType={ModalType.warning}
+                    title='functionality not available' content="This functionality is not available in this version" confirmationType={ConfirmationType.close} />
+
             <View>
 
                 <BackBtn onPress={goBack} /> 
 
-                <ShareBtn />
+                <ShareBtn onPress={ () => setIsModalVisible(true)} />
 
 
                 <NetworkImage data={data.imageUrl} height={WINDOW.Height/3.4} width={WINDOW.Width} radius={0}></NetworkImage>

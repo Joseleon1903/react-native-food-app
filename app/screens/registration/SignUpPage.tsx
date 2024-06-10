@@ -67,7 +67,7 @@ export default function SignUpPage ({navigation} : Props) {
       updatedAt: new Date()
     }
 
-    console.log("profile : "+ JSON.stringify(profileInput) );
+    console.table(profileInput);
 
     if(onlineService.isOnlineApi){
 

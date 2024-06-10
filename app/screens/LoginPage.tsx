@@ -57,8 +57,8 @@ export default function  LoginPage ({ route, navigation }: Props) {
     setLoader(true);
     const data = values;
 
-    console.log("data : "+ data.email);
-    console.log("data : "+ data.password);
+    console.log("data email: "+ data.email);
+    console.log("data password: "+ data.password);
 
     if(onlineService.isOnlineApi){
 

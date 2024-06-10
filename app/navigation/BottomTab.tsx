@@ -28,9 +28,7 @@ export default function BottomTab () {
   const {  cartCount, setCartCount} = useContext(CartCountContext) as CartCountContextType;
 
 
-  console.log("profileObj: "+ profileObj);
-  console.log("login : "+ login);
-  console.log("cartCount : "+ cartCount);
+  console.table("profileObj: "+ profileObj);
 
   // const {count, isCartLoading, error, refetch} =fetchCartCount();
   

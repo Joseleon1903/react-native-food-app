@@ -106,8 +106,8 @@ export const DefaultAddress : Address[] = [
 
 export const EmptyOnlineService : OnlineService = {
     sessionId: "session-id-00000100011001",
-    isOnlineApi: true,
-    isInternetConnected: true,
+    isOnlineApi: false,
+    isInternetConnected: false,
     baseApi: "https://b1ab-2001-1308-293d-6000-49f0-12ee-b6ba-1d99.ngrok-free.app"
 };
 
