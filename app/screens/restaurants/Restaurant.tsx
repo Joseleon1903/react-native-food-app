@@ -24,7 +24,7 @@ export default function Restaurant({ route, navigation }: Props) {
     const goBack = () =>{navigation.goBack();}
 
     const handlerRating =() =>{
-        navigation.navigate("FoodNav", { screen: "AddRating"});
+        navigation.navigate("FoodNav", { screen: "AddRating", params: { restaurant: data}});
     }
     
     return (

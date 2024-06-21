@@ -23,7 +23,7 @@ export const EmptyRestaurant : Restaurant = {
     code: "",
     logoUrl: "",
     rating: 0,
-    ratingCount: "",
+    ratingCount: 0,
     coords: undefined
 }
 
@@ -108,7 +108,7 @@ export const EmptyOnlineService : OnlineService = {
     sessionId: "session-id-00000100011001",
     isOnlineApi: false,
     isInternetConnected: false,
-    baseApi: "https://b1ab-2001-1308-293d-6000-49f0-12ee-b6ba-1d99.ngrok-free.app"
+    baseApi: "https://ccdc-2001-1308-2970-d00-98c1-4494-91c8-cac4.ngrok-free.app"
 };
 
 export const FormatTextLength =(word?: string, lenght? : number) =>{

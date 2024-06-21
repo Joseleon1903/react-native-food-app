@@ -15,7 +15,8 @@ enum COLORS{
   red= "#e81e4d",
   green= " #00C135",
   lightWhite= "#FAFAFC",
-  yellow= '#f2ff60'
+  yellow= '#f2ff60',
+  gold= '#e0af1f'
 }
 
 

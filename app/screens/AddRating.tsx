@@ -5,23 +5,47 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ReusableHeader from "../components/ReusableHeader";
  import { RatingInput } from "react-native-stock-star-rating";
 import { COLORS, WINDOW } from "../constants/theme";
 import AssetImage from "../components/AssetImage";
-import { NativeStackHeaderProps, NativeStackScreenProps } from "@react-navigation/native-stack";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types/RootStackParamList";
+import { OnlineServiceContext } from "../context/OnlineServiceContext";
+import { OnlineServiceContextType } from "../context/type/OnlineServiceContextType";
+import Restaurant from "../types/Restaurant";
+import { putRatingHook } from "../hook/useRatingHook";
 type Props = NativeStackScreenProps<RootStackParamList, "AddRating", "FoodNav">;
 
 
 export default function AddRating({ route, navigation }: Props) {
 
+  const {  onlineService, setOnlineService} = useContext(OnlineServiceContext) as OnlineServiceContextType;
 
   const [rating, setRating] = useState(0);
 
-  const goBack = () =>{navigation.goBack();}
+  const restaurantInput = route.params.restaurant as Restaurant
+
+  const handlerSubmitRating = () =>{
+
+    if(onlineService.isInternetConnected && onlineService.isOnlineApi){
+
+      console.log(" online service connected");
+      putRatingHook(onlineService.baseApi, restaurantInput.id, rating).then((response) => {
+        if(response){
+          restaurantInput.rating = response?.rating;
+        }
+       }).catch((error) =>{
+         console.log(error)
+       }
+     );
+    }
+
+    navigation.goBack();
+
+  }
 
   return (
     <SafeAreaView style={{ height: WINDOW.Height }}>
@@ -69,7 +93,7 @@ export default function AddRating({ route, navigation }: Props) {
 
         <View style={{ height: 50 }} />
 
-        <TouchableOpacity onPress={goBack}
+        <TouchableOpacity onPress={handlerSubmitRating}
           style={{
             width: "100%",
             height: 50,

@@ -16,7 +16,7 @@ export default function FoodComponent({item,  onPress }: FoodComponentProps) {
         <TouchableOpacity style={styles.wrapper} onPress={onPress}>
             <NetworkImage
                 data={item.imageUrl[0]}
-                width={WINDOW.Width - 60}
+                width={WINDOW.Width - 30}
                 height={WINDOW.Height / 5.8}
                 radius={16}
                 mode={'cover'}
@@ -31,10 +31,13 @@ export default function FoodComponent({item,  onPress }: FoodComponentProps) {
 const styles = StyleSheet.create({
 
     wrapper: {
-        marginRight: 15,
+        marginHorizontal: 5,
         backgroundColor: COLORS.lightWhite,
         padding: 8,
-        borderRadius: 16
+        borderRadius: 16,
+        marginBottom:5,
+        borderWidth: 2,
+        borderColor: COLORS.primary
     },
     heading:{
         fontSize: 14,
