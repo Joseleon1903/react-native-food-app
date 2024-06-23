@@ -10,13 +10,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ReusableHeader from "../components/ReusableHeader";
  import { RatingInput } from "react-native-stock-star-rating";
 import { COLORS, WINDOW } from "../constants/theme";
-import AssetImage from "../components/AssetImage";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types/RootStackParamList";
 import { OnlineServiceContext } from "../context/OnlineServiceContext";
 import { OnlineServiceContextType } from "../context/type/OnlineServiceContextType";
 import Restaurant from "../types/Restaurant";
 import { putRatingHook } from "../hook/useRatingHook";
+import NetworkImage from "../components/NetworkImage";
 type Props = NativeStackScreenProps<RootStackParamList, "AddRating", "FoodNav">;
 
 
@@ -51,23 +51,25 @@ export default function AddRating({ route, navigation }: Props) {
     <SafeAreaView style={{ height: WINDOW.Height }}>
       <Image
         source={{
-          uri: "https://d326fntlu7tb1e.cloudfront.net/uploads/2d5faf00-e235-4a78-9688-ad4d3280ec03-rating_bk.jpg",
+          uri: restaurantInput.imageUrl,
         }}
         style={StyleSheet.absoluteFillObject}
         blurRadius={30}
       />
-      <ReusableHeader title={"Add Ratings"}  />
+      <ReusableHeader title={"Add Ratings"} urlImage={restaurantInput.imageUrl}  />
 
       <View style={styles.container}>
         <View style={styles.ratingBox}>
           <View style={styles.image}>
-           <AssetImage
-              data={require("../../assets/images/profile.jpg")}
-              mode={"cover"}
-              width={70}
-              height={70}
-              radius={99}
-            /> 
+
+          <NetworkImage
+            data={restaurantInput.imageUrl}
+            mode={"cover"}
+            width={70}
+            height={70}
+            radius={99}
+          />
+          
           </View>
 
           <View style={{ paddingTop: 40 }}>

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { StyleSheet,Text, View , Image} from 'react-native'
 import { RestaurantContext } from '../../context/RestaurantContext';
 import { RestaurantContextType } from '../../context/type/RestaurantContextType';
-import { COLORS, WINDOW } from '../../constants/theme';
+import { COLORS} from '../../constants/theme';
 import Divider from '../../components/Divider';
 import { MaterialIcons } from '@expo/vector-icons';
 import Entypo from '@expo/vector-icons/Entypo';

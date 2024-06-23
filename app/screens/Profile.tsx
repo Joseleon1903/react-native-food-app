@@ -2,9 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useContext, useState } from "react";
 import { COLORS, SIZES } from "../constants/theme";
 import { LoginContext } from "../context/LoginContext";
-
 import { AntDesign } from "@expo/vector-icons";
-
 import NetworkImage from "../components/NetworkImage";
 import ProfileTile from "../components/ProfileTile";
 import RegistrationTile from "../components/RegistrationTile";
@@ -13,8 +11,6 @@ import { LoginContextType } from "../context/type/LoginContextType";
 export default function Profile(){
 
   const {  profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
-
-  const [user, setUser] = useState(null)
 
   //  const { user, isProfileLoading, error, refetch } = fetchProfile();
   const profile =

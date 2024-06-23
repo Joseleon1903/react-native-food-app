@@ -13,7 +13,6 @@ import { LoginContext } from "../../context/LoginContext";
 import { LoginContextType } from "../../context/type/LoginContextType";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import axios from 'axios';
 import { RootStackParamList } from "../../navigation/types/RootStackParamList";
 import { COLORS, SIZES, WINDOW } from "../../constants/theme";
 import Profile from "../../types/Profile";

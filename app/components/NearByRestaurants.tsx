@@ -2,13 +2,11 @@ import {StyleSheet,Text, View, FlatList } from 'react-native'
 import Restaurant from '../types/Restaurant';
 import StoreComponent from './StoreComponent';
 
-
 type NearByRestaurantsProps = {
     restaurants: Restaurant[]
 };
 
 export default function NearByRestaurants({restaurants}: NearByRestaurantsProps) {
-
 
   const renderItem = ({ item }: { item: Restaurant }) => {
     return <StoreComponent item={item} ></StoreComponent>;
@@ -42,4 +40,3 @@ export default function NearByRestaurants({restaurants}: NearByRestaurantsProps)
         rowGap: 10
     }
   });
-  

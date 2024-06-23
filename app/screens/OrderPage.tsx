@@ -90,12 +90,17 @@ export default function OrderPage({ route, navigation }: Props) {
 
                             <Quantity counter={cart.quantity} ></Quantity>
 
+                            {
 
-                            <View style={{flex: 1}}>
-                                <Text style={[styles.subtitle, {fontFamily: 'bold'}] }>Additives</Text>
-                                <AdditiveListView additives={cart.additives}></AdditiveListView>
-
-                            </View>
+                                (cart.additives && cart.additives?.length > 0 ) ? 
+                                (
+                                    <View style={{flex: 1}}>
+                                      <Text style={[styles.subtitle, {fontFamily: 'bold'}] }>Additives</Text>
+                                      <AdditiveListView additives={cart.additives}></AdditiveListView>
+                                    </View>
+                                 ) :(<View></View>)
+                            }
+                            
 
 
 

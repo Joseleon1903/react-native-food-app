@@ -6,8 +6,6 @@ const pages = StyleSheet.create({
     viewTwo: {
         backgroundColor: COLORS.offwhite,
         height: SIZES.height - 140,
-        // borderBottomEndRadius: 30,
-        // borderBottomStartRadius: 30,
     },
     viewThree: {
         backgroundColor: COLORS.offwhite,

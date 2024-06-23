@@ -12,6 +12,8 @@ import CartItemComponent from '../components/CartItemComponent';
 import Divider from '../components/Divider';
 import EmptyCartAdvice from '../components/EmptyCartAdvice';
 import CustomModal, { ConfirmationType, ModalType } from '../components/CustomModal';
+import { OnlineServiceContext } from '../context/OnlineServiceContext';
+import { OnlineServiceContextType } from '../context/type/OnlineServiceContextType';
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -22,6 +24,7 @@ export default function Cart({ route, navigation }: Props) {
 
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
+  const {  onlineService, setOnlineService} = useContext(OnlineServiceContext) as OnlineServiceContextType;
 
   const [totalShoppingCart, setTotalShoppingCart] = useState<number>(0);
 
@@ -53,7 +56,15 @@ export default function Cart({ route, navigation }: Props) {
   }
 
   const handlerConfirmationModal =()=>{
-    setIsModalVisible(true);
+
+    if(onlineService.isOnlineApi && onlineService.isInternetConnected){
+
+      setIsModalVisible(true);
+
+      return;
+    }
+    alert("You need to be logged in to access this functionality");
+
   }
 
   const onConfirmPurchase=()=>{

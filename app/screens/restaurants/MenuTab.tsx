@@ -1,7 +1,5 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet,Text, View } from 'react-native'
-import { RestaurantContext } from '../../context/RestaurantContext';
-import { RestaurantContextType } from '../../context/type/RestaurantContextType';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native-gesture-handler';
 import FoodsData from '../../data/foods.json'

@@ -5,14 +5,16 @@ import { COLORS, SIZES } from "../constants/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AssetImage from "./AssetImage";
+import NetworkImage from "./NetworkImage";
 
 type ReusableHeaderProps = {
   title: string;
   backbtn?:StyleProp<ViewStyle>;
+  urlImage?: string
 };
 
 
-export default function ReusableHeader ({ title, backbtn }: ReusableHeaderProps) {
+export default function ReusableHeader ({ title, backbtn, urlImage }: ReusableHeaderProps) {
   const navigation = useNavigation();
   return (
     <View style={styles.outerStyle}>
@@ -35,13 +37,14 @@ export default function ReusableHeader ({ title, backbtn }: ReusableHeaderProps)
 
       <Text style={styles.heading}>{title}</Text>
 
-      <AssetImage
-        data={require("../../assets/images/profile.jpg")}
-         mode={"cover"}
-         width={30}
-         height={30}
-         radius={99}
-      />
+      <NetworkImage
+            data={ urlImage ? urlImage: ""}
+            mode={"cover"}
+            width={30}
+            height={30}
+            radius={99}
+          />
+
     </View>
   );
 };
