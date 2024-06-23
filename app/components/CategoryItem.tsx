@@ -47,7 +47,7 @@ const styles =  (item : Category,selected : string ) => StyleSheet.create({
         height: 30
     },
     categoryText:{
-        fontSize: 13, 
+        fontSize: 9, 
         fontFamily: 'regular'
     }
 });

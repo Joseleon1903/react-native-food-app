@@ -1,4 +1,5 @@
-import {StyleSheet, View, ScrollView } from "react-native";
+import {StyleSheet, View } from "react-native";
+import { ScrollView } from 'react-native-virtualized-view';
 import React, { useContext, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import pages from './page.style';
