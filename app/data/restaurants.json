@@ -1,0 +1,181 @@
+{
+    "restaurants":
+    [
+        {
+            "id": "6530eb23c9e72013e5b6592f",
+            "title": "Italian Restaurant",
+            "time": "35 min",
+            "distance": 35,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/Italian_Restaurant.jpg",
+            "owner": "Chef. Daniel Boulud",
+            "code": "Italian Restaurant",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 4,
+            "ratingCount": 3278,
+            "coords": {
+                "id": "2021",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 37,
+                "longitude": -122,
+                "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
+                "title": "Italian Restaurant",
+                "latitudeDelta": 0,
+                "longitudeDelta": 0
+            }
+        },
+        {
+            "id": "6530ea6bc9e72013e5b6592d",
+            "title": "Burger King",
+            "time": "30 min",
+            "distance": 30,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/Burger_King.jpg",
+            "owner": "Chef. Jamie Oliver",
+            "code": "Burger King",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 5,
+            "ratingCount": 3278,
+            "coords": {
+                "id": "2020",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 37,
+                "longitude": -122,
+                "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
+                "title": "Burger King",
+                "latitudeDelta": 0,
+                "longitudeDelta": 0
+            }
+        },
+        {
+            "id": "6530eb66c9e72013e5b65931",
+            "title": "La Foods",
+            "time": "25 min",
+            "distance": 25,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/La_Foods.jpg",
+            "owner": "Nobu Matsuhisa",
+            "code": "La Foods",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 3,
+            "ratingCount": 5666,
+            "coords": {
+                "id": "2022",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 37,
+                "longitude": -122,
+                "address": "333 O'Farrell St, San Francisco, CA 94102, United States",
+                "title": "La Foods",
+                "latitudeDelta": 0,
+                "longitudeDelta": 0
+            }
+        },
+        {
+            "id": "6530ebbcc9e72013e5b65933",
+            "title": "Lapisara Eatery",
+            "time": "15 min",
+            "distance": 15,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/Lapisara_Eatery.JPG",
+            "owner": "Gordon Ramsay",
+            "code": "Lapisara Eatery",
+            "logoUrl": "https://d326fntlu7tb1e.cloudfront.net/uploads/5c2a9ca8-eb07-400b-b8a6-2acfab2a9ee2-image001.webp",
+            "rating": 1,
+            "ratingCount": 6765,
+            "coords": {
+                "id": "2023",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 37,
+                "longitude": -122,
+                "address": "698 Post St, San Francisco, CA 94109, United States",
+                "title": "Lapisara Eatery",
+                "latitudeDelta": 0,
+                "longitudeDelta": 0
+            }
+        },
+        {
+            "id": "423bc7bd-32c9",
+            "title": "Wendys",
+            "time": "8 Min",
+            "distance": 8,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/Wendys.jpg",
+            "owner": "Doc. Santo Los Minas",
+            "code": "Wendys",
+            "logoUrl": "https://pbs.twimg.com/media/C2-H4MeVQAEkW0o.jpg",
+            "rating": 5,
+            "ratingCount": 5,
+            "coords": {
+                "id": "1",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 8566322,
+                "longitude": 8566322,
+                "address": "Av La Catolica N.90",
+                "title": "Helados Bon",
+                "latitudeDelta": 896632,
+                "longitudeDelta": 8566322
+            }
+        },
+        {
+            "id": "423bc7bd10",
+            "title": "El Conuco",
+            "time": "25 Min",
+            "distance": 25,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/El_Conuco.jpg",
+            "owner": "Doc. Casius Clay",
+            "code": "El Conuco",
+            "logoUrl": "https://pbs.twimg.com/media/C2-H4MeVQAEkW0o.jpg",
+            "rating": 1,
+            "ratingCount": 3,
+            "coords": {
+                "id": "c423bc7bd10",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 8566322,
+                "longitude": 8566322,
+                "address": "Casimiro N. de Moya",
+                "title": "El Conuco",
+                "latitudeDelta": 896632,
+                "longitudeDelta": 8566322
+            }
+        },
+        {
+            "id": "423bc7bd-32c9-4471-af60-ee99cbaa9c44",
+            "title": "Helados Bon",
+            "time": "30 Min",
+            "distance": 30,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/helados-boon.jpg",
+            "owner": "Doc. Juan Daniel Valdez",
+            "code": "Helados Bon",
+            "logoUrl": "https://pbs.twimg.com/media/C2-H4MeVQAEkW0o.jpg",
+            "rating": 5,
+            "ratingCount": 5,
+            "coords": {
+                "id": "51f2b24a-9857-403a-b04a-d4a83d6fa08f",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 8566322,
+                "longitude": 8566322,
+                "address": "Av La Catolica N.90",
+                "title": "Helados Bon",
+                "latitudeDelta": 896632,
+                "longitudeDelta": 8566322
+            }
+        },
+        {
+            "id": "423bc7bd",
+            "title": "Restaurant Vizcaya",
+            "time": "18 Min",
+            "distance": 18,
+            "imageUrl": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/restaurants/restaurant_vizcaya.jpg",
+            "owner": "Doc. Juan Daniel Valdez",
+            "code": "Restaurant Vizcaya",
+            "logoUrl": "https://pbs.twimg.com/media/C2-H4MeVQAEkW0o.jpg",
+            "rating": 4,
+            "ratingCount": 4,
+            "coords": {
+                "id": "c423bc7bd",
+                "urlLocation": "https://foodly-app.s3.us-east-2.amazonaws.com/Public/location/urlLocation.jpg",
+                "latitude": 8566322,
+                "longitude": 8566322,
+                "address": "Avenida San Martin 42 esq. Dr. Delgado",
+                "title": "Restaurant Vizcaya",
+                "latitudeDelta": 896632,
+                "longitudeDelta": 8566322
+            }
+        }
+    ]
+}

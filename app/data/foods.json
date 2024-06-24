@@ -1,0 +1,681 @@
+{
+    "foods": [
+        {
+            "id": "653168",
+            "title": "pizza peperoni",
+            "foodTags": [
+                "Peperoni",
+                "Pizza",
+                "Italian"
+            ],
+            "foodType": [
+                "Pizza"
+            ],
+            "code": "41007429",
+            "restaurant": "6530eb23c9e72013e5b6592f",
+            "rating": 5,
+            "ratingCount": "260",
+            "description": "Prepare the sauce by heating olive oil in a pan and adding crushed tomatoes, salt, pepper, and oregano. Simmer until thickened.",
+            "price": 14.99,
+            "additives": [
+                {
+                    "id": 52,
+                    "title": "Extra Peperoni",
+                    "price": "2.50"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/pizza_peperoni.jpg"
+            ],
+            "version": 2,
+            "category": "83831d44-c2a5-4b77-a736-584c99759957",
+            "time": "15 min",
+            "available": true
+        },
+        {
+            "id": "653168987",
+            "title": "Smoked beef",
+            "foodTags": [
+                "Meat",
+                "Bacon",
+                "Spicy"
+            ],
+            "foodType": [
+                "Lunch"
+            ],
+            "code": "410074201",
+            "restaurant": "6530eb66c9e72013e5b65931",
+            "rating": 5,
+            "ratingCount": "220",
+            "description": "smoke brisket, chuck roast, rib, tri-tip, top round, flank steak, and rump for tender and flavorful barbecue beef",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 111,
+                    "title": "Water",
+                    "price": "1.00"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Smoked_beef.jpg"
+            ],
+            "version": 2,
+            "category": "b38e0a5d-5ad9-4a57-9619-efc97f0d843e",
+            "time": "10 min",
+            "available": true
+        },
+        {
+            "id": "65316898",
+            "title": "Churrasco",
+            "foodTags": [
+                "Meat"
+            ],
+            "foodType": [
+                "Lunch",
+                "Barbecue",
+                "Grill"
+            ],
+            "code": "410074200",
+            "restaurant": "423bc7bd10",
+            "rating": 3,
+            "ratingCount": "500",
+            "description": "Churrasco — garlicky wood-fire-grilled steak served with chimichurri — starts by tenderizing a tougher cut of meat (skirt steak) with a flavorful",
+            "price": 12.80,
+            "additives": [
+                {
+                    "id": 104,
+                    "title": "Extra Sauce",
+                    "price": "3.60"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Churrasco.jfif"
+            ],
+            "version": 2,
+            "category": "1ae58644-85db-4b7b-b529-1e2c1ea0a822",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "65316968f94c6496dc84f3c1",
+            "title": "Tiramisu",
+            "foodTags": [
+                "Cocoa",
+                "Italian",
+                "Coffee",
+                "Mascarpone",
+                "Dessert"
+            ],
+            "foodType": [
+                "Dessert"
+            ],
+            "code": "41007428",
+            "restaurant": "6530eb23c9e72013e5b6592f",
+            "rating": 4,
+            "ratingCount": "420",
+            "description": "A classic Italian dessert made of layers of coffee-soaked ladyfingers and creamy mascarpone, topped with cocoa.",
+            "price": 7.99,
+            "additives": [
+                {
+                    "id": 2,
+                    "title": "Coffee",
+                    "price": "1.50"
+                },
+                {
+                    "id": 3,
+                    "title": "Mascarpone Cheese",
+                    "price": "2.50"
+                },
+                {
+                    "id": 1,
+                    "title": "Ladyfingers",
+                    "price": "1.00"
+                },
+                {
+                    "id": 5,
+                    "title": "Sugar",
+                    "price": "0.50"
+                },
+                {
+                    "id": 4,
+                    "title": "Cocoa",
+                    "price": "0.50"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Tiramisu.jpg"
+            ],
+            "version": 0,
+            "category": "3e550189-c9d4-43f6-9d93-8781ea952cbb",
+            "time": "35 min",
+            "available": false
+        },
+        {
+            "id": "653169d8f94c6496dc84f3c5",
+            "title": "Mixed Grill Platter",
+            "foodTags": [
+                "Barbecue",
+                "Savory",
+                "Grilled",
+                "Meat",
+                "Spicy"
+            ],
+            "foodType": [
+                "Main Course",
+                "Barbecue",
+                "Non-Vegetarian",
+                "Grill",
+                "Dinner"
+            ],
+            "code": "41007428",
+            "restaurant": "6530ebbcc9e72013e5b65933",
+            "rating": 4,
+            "ratingCount": "320",
+            "description": "A succulent assortment of grilled meats, served with sides and sauces.",
+            "price": 18.99,
+            "additives": [
+                {
+                    "id": 2,
+                    "title": "Coffee",
+                    "price": "1.50"
+                },
+                {
+                    "id": 3,
+                    "title": "Mascarpone Cheese",
+                    "price": "2.50"
+                },
+                {
+                    "id": 1,
+                    "title": "Ladyfingers",
+                    "price": "1.00"
+                },
+                {
+                    "id": 5,
+                    "title": "Sugar",
+                    "price": "0.50"
+                },
+                {
+                    "id": 4,
+                    "title": "Cocoa",
+                    "price": "0.50"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Mixed_Grill_Platter.jfif"
+            ],
+            "version": 0,
+            "category": "71681f7b-eef9-4337-a9c3-83246ac5af30",
+            "time": "45 min",
+            "available": false
+        },
+        {
+            "id": "653169a9f94c6496dc84f3c3",
+            "title": "Vegan Salad Bowl",
+            "foodTags": [
+                "Organic",
+                "Fresh",
+                "Vegan",
+                "Healthy",
+                "Salad"
+            ],
+            "foodType": [
+                "Dinner",
+                "Vegan",
+                "Health",
+                "Lunch",
+                "Starter"
+            ],
+            "code": "41007428",
+            "restaurant": "6530ea6bc9e72013e5b6592d",
+            "rating": 4,
+            "ratingCount": "230",
+            "description": "A refreshing mix of organic vegetables, nuts, seeds, and a tangy vinaigrette.",
+            "price": 11.99,
+            "additives": [
+                {
+                    "id": 2,
+                    "title": "Coffee",
+                    "price": "1.50"
+                },
+                {
+                    "id": 3,
+                    "title": "Mascarpone Cheese",
+                    "price": "2.50"
+                },
+                {
+                    "id": 1,
+                    "title": "Ladyfingers",
+                    "price": "1.00"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Vegan_Salad_Bowl.jpeg"
+            ],
+            "version": 0,
+            "category": "71681f7b-eef9-4337-a9c3-83246ac5af30",
+            "time": "55 min",
+            "available": false
+        },
+        {
+            "id": "653168981",
+            "title": "Costilla de res",
+            "foodTags": [
+                "Meat"
+            ],
+            "foodType": [
+                "Lunch",
+                "Barbecue",
+                "Grill"
+            ],
+            "code": "410074200",
+            "restaurant": "423bc7bd10",
+            "rating": 3,
+            "ratingCount": "500",
+            "description": "Churrasco — garlicky wood-fire-grilled steak served with chimichurri — starts by tenderizing a tougher cut of meat (skirt steak) with a flavorful",
+            "price": 12.80,
+            "additives": [
+                {
+                    "id": 105,
+                    "title": "Extra Bacon",
+                    "price": "5.60"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Costilla_de_res.jfif"
+            ],
+            "version": 2,
+            "category": "1ae58644-85db-4b7b-b529-1e2c1ea0a822",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "65316771f94c6496dc84f3bd",
+            "title": "Margherita Pizza",
+            "foodTags": [
+                "Vegetarian",
+                "Cheesy",
+                "Italian"
+            ],
+            "foodType": [
+                "Main Course"
+            ],
+            "code": "41007428",
+            "restaurant": "6530eb66c9e72013e5b65931",
+            "rating": 4,
+            "ratingCount": "150",
+            "description": "A classic Margherita pizza with fresh tomatoes, mozzarella cheese, basil, and olive oil.",
+            "price": 12.99,
+            "additives": [
+                {
+                    "id": 2,
+                    "title": "Coffee",
+                    "price": "1.50"
+                },
+                {
+                    "id": 3,
+                    "title": "Mascarpone Cheese",
+                    "price": "2.50"
+                },
+                {
+                    "id": 1,
+                    "title": "Ladyfingers",
+                    "price": "1.00"
+                },
+                {
+                    "id": 5,
+                    "title": "Sugar",
+                    "price": "0.50"
+                },
+                {
+                    "id": 4,
+                    "title": "Cocoa",
+                    "price": "0.50"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Margherita_Pizza.jpg"
+            ],
+            "version": 0,
+            "category": "71681f7b-eef9-4337-a9c3-83246ac5af30",
+            "time": "30 min",
+            "available": false
+        },
+        {
+            "id": "6531689",
+            "title": "Chimi de pierna",
+            "foodTags": [
+                "Meat"
+            ],
+            "foodType": [
+                "Lunch",
+                "Barbecue",
+                "Grill"
+            ],
+            "code": "410074200",
+            "restaurant": "423bc7bd10",
+            "rating": 2,
+            "ratingCount": "620",
+            "description": " Sandwich de pierna, the flavorful Dominican pulled pork sandwich, great to reuse Christmas pork roast leftovers.",
+            "price": 12.80,
+            "additives": [
+                {
+                    "id": 103,
+                    "title": "Salad",
+                    "price": "4.60"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Chimi_de_pierna.jpg"
+            ],
+            "version": 2,
+            "category": "1ae58644-85db-4b7b-b529-1e2c1ea0a822",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "653168982",
+            "title": "Costilla de cerdo",
+            "foodTags": [
+                "Meat"
+            ],
+            "foodType": [
+                "Lunch",
+                "Barbecue",
+                "Grill"
+            ],
+            "code": "410074200",
+            "restaurant": "423bc7bd10",
+            "rating": 4,
+            "ratingCount": "250",
+            "description": "Smithfield Extra Tender Fresh Pork Spareribs and grill them with adobo, paprika, oregano.",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 106,
+                    "title": "Pepsi Light",
+                    "price": "4.50"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Costilla_de_cerdo.jpg"
+            ],
+            "version": 2,
+            "category": "1ae58644-85db-4b7b-b529-1e2c1ea0a822",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "653168983",
+            "title": "Pollo al carbon",
+            "foodTags": [
+                "Meat"
+            ],
+            "foodType": [
+                "Grill"
+            ],
+            "code": "410074200",
+            "restaurant": "423bc7bd10",
+            "rating": 4,
+            "ratingCount": "250",
+            "description": "Smithfield Extra Tender Fresh Pork Spareribs and grill them with adobo, paprika, oregano.",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 107,
+                    "title": "Chesse Stick",
+                    "price": "9.99"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Pollo_al_carbon.png"
+            ],
+            "version": 2,
+            "category": "3e550189-c9d4-43f6-9d93-8781ea952cbb",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "653168984",
+            "title": "Pastel de fresas",
+            "foodTags": [
+                "Strawberry"
+            ],
+            "foodType": [
+                "Dessert"
+            ],
+            "code": "410074201",
+            "restaurant": "6530ebbcc9e72013e5b65933",
+            "rating": 5,
+            "ratingCount": "220",
+            "description": "pudding like cake milk flavored dessert. Between bread pudding and arroz con leche. Sweet but not overly sweet.",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 108,
+                    "title": "Chesse Stick",
+                    "price": "9.99"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Pastel_de_fresas.jpg"
+            ],
+            "version": 2,
+            "category": "e825cdc8-7ac0-4aad-8603-c09fb98ccbbb",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "653168985",
+            "title": "Pastel pinguino",
+            "foodTags": [
+                "Chocolate"
+            ],
+            "foodType": [
+                "Dessert"
+            ],
+            "code": "410074201",
+            "restaurant": "6530ebbcc9e72013e5b65933",
+            "rating": 5,
+            "ratingCount": "220",
+            "description": "Pingüinos are rich, chocolate cupcakes, topped with a silky chocolate ganache and filled with sweet.",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 109,
+                    "title": "Coca Cola",
+                    "price": "5.60"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Pastel_pinguino.jpg"
+            ],
+            "version": 2,
+            "category": "e825cdc8-7ac0-4aad-8603-c09fb98ccbbb",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "653168986",
+            "title": "Pastel Bubu",
+            "foodTags": [
+                "Chocolate"
+            ],
+            "foodType": [
+                "Dessert"
+            ],
+            "code": "410074201",
+            "restaurant": "6530ebbcc9e72013e5b65933",
+            "rating": 5,
+            "ratingCount": "220",
+            "description": "The paper doesn’t have any bad smell. Perfect size: these sheets of paper are perfectly square.",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 110,
+                    "title": "Water",
+                    "price": "3.60"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Pastel_Bubu.jpg"
+            ],
+            "version": 2,
+            "category": "e825cdc8-7ac0-4aad-8603-c09fb98ccbbb",
+            "time": "12 min",
+            "available": true
+        },
+        {
+            "id": "653168988",
+            "title": "Big burger",
+            "foodTags": [
+                "Bacon",
+                "Meat",
+                "Spicy"
+            ],
+            "foodType": [
+                "Lunch"
+            ],
+            "code": "410074201",
+            "restaurant": "6530eb66c9e72013e5b65931",
+            "rating": 5,
+            "ratingCount": "220",
+            "description": "Portland burger chain Little Big Burger is planning to hold a vote for union recognition next week, but an unlikely force is trying to stop the election",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 113,
+                    "title": "Meat Stick",
+                    "price": "4.60"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Big_burger.jpg"
+            ],
+            "version": 2,
+            "category": "b38e0a5d-5ad9-4a57-9619-efc97f0d843e",
+            "time": "10 min",
+            "available": true
+        },
+        {
+            "id": "653168989",
+            "title": "Grilled tenderloin",
+            "foodTags": [
+                "Bacon",
+                "Spicy",
+                "Meat"
+            ],
+            "foodType": [
+                "Lunch"
+            ],
+            "code": "410074201",
+            "restaurant": "6530eb66c9e72013e5b65931",
+            "rating": 5,
+            "ratingCount": "220",
+            "description": "This comprehensive guide will empower you with the knowledge and techniques necessary to achieve a grilled tenderloin steak that will tantalize your taste buds impress",
+            "price": 13.80,
+            "additives": [
+                {
+                    "id": 156,
+                    "title": "Extra Sauce",
+                    "price": "4.50"
+                },
+                {
+                    "id": 155,
+                    "title": "Sauce",
+                    "price": "4.50"
+                },
+                {
+                    "id": 157,
+                    "title": "Oregano",
+                    "price": "2.50"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Grilled_tenderloin.jpg"
+            ],
+            "version": 2,
+            "category": "b38e0a5d-5ad9-4a57-9619-efc97f0d843e",
+            "time": "10 min",
+            "available": true
+        },
+        {
+            "id": "653168e9f94c6496dc84f3bf",
+            "title": "Spaghetti Carbonara",
+            "foodTags": [
+                "Creamy",
+                "Egg",
+                "Italian",
+                "Pasta",
+                "Bacon"
+            ],
+            "foodType": [
+                "Lunch",
+                null,
+                "Main Course"
+            ],
+            "code": "41007428",
+            "restaurant": "6530ea6bc9e72013e5b6592d",
+            "rating": 4,
+            "ratingCount": "310",
+            "description": "A traditional Italian pasta dish with creamy egg sauce, pancetta, and cheese.",
+            "price": 14.99,
+            "additives": [
+                {
+                    "id": 5,
+                    "title": "Sugar",
+                    "price": "0.50"
+                },
+                {
+                    "id": 4,
+                    "title": "Cocoa",
+                    "price": "0.50"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Spaghetti_Carbonara.jpg"
+            ],
+            "version": 2,
+            "category": "3e550189-c9d4-43f6-9d93-8781ea952cbb",
+            "time": "20 min",
+            "available": false
+        },
+        {
+            "id": "65316a01f94c6496dc84f3c7",
+            "title": "Tropical Fruit Smoothie",
+            "foodTags": [
+                "Smoothie",
+                "Fruit",
+                "Refreshing",
+                "Sweet",
+                "Cold"
+            ],
+            "foodType": [
+                "Dessert",
+                "Breakfast",
+                "Drink",
+                "Vegan",
+                "Snack"
+            ],
+            "code": "41007428",
+            "restaurant": "6530ea6bc9e72013e5b6592d",
+            "rating": 4,
+            "ratingCount": "280",
+            "description": "A delightful blend of tropical fruits, creating the perfect sweet and refreshing drink.",
+            "price": 6.99,
+            "additives": [
+                {
+                    "id": 1,
+                    "title": "Ladyfingers",
+                    "price": "1.00"
+                }
+            ],
+            "imageUrl": [
+                "https://foodly-app.s3.us-east-2.amazonaws.com/Public/foods/Tropical_Fruit_Smoothie.jpg"
+            ],
+            "version": 0,
+            "category": "71681f7b-eef9-4337-a9c3-83246ac5af30",
+            "time": "25 min",
+            "available": false
+        }
+    ]
+}
