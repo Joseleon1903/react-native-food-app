@@ -135,7 +135,7 @@ export default function FoodPage({ route, navigation }: Props) {
 
                 <View style= {styles.containerPageRow}>
                     <Text style= {styles.title}>{foodItem.title}</Text>
-                    <Text style= {[styles.title ,{ color: COLORS.primary}]}>{(foodItem.price + totalPrice) * count} $</Text>
+                    <Text style= {[styles.title ,{ color: COLORS.primary}]}>{((foodItem.price + totalPrice) * count).toFixed(2)} $</Text>
                 </View>
 
                 <Text style={styles.small} >{foodItem.description}</Text>

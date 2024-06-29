@@ -17,4 +17,5 @@ export default interface Food{
     version: number,
     category: string,
     time:string
+    available: boolean
 }

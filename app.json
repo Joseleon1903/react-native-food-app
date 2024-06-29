@@ -23,16 +23,17 @@
         "backgroundColor": "#ffffff"
       },
       "config": {
-        "package": "com.dacarnage.foodly",
+        "package": "com.dacarnage.foodly"
       },
-      "permissions": [
-        "android.permission.FOREGROUND_SERVICE"
-      ],
       "package": "com.dacarnage.expofire"
-      
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9cd845d1-9d89-4448-b3d1-d50551c87e41"
+      }
     }
   }
 }

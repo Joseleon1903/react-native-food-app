@@ -54,7 +54,7 @@ export default function CartItemComponent({ cartItem, onDelete }: CartItemCompon
                     <View style={{flexDirection: 'column'}}>
                         <View style={{flex: 1, justifyContent:'center', alignItems: 'center' }}>
                             <Text style={styles.titleColumn} >Total Price</Text>
-                            <Text style={styles.contentColumn}>$ {cartItem.totalPrice}</Text>
+                            <Text style={styles.contentColumn}>$ {cartItem.totalPrice.toFixed(2)}</Text>
                         </View>
                     </View>
 

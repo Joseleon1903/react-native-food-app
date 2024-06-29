@@ -80,7 +80,7 @@ export default function  HomeHeader(){
                 <View style={{justifyContent: 'center', }}>
                     <Text style={styles.headerTextTwo}>{wallet.accountName}</Text>
                     <Text style={styles.headerTextTwo}>{wallet.currency}</Text>
-                    <Text style={styles.headerTextOne}>{wallet.balance} $</Text>
+                    <Text style={styles.headerTextOne}>{wallet.balance.toFixed(2)} $</Text>
                 </View>
             </View>
 

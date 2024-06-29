@@ -13,8 +13,10 @@ import CartItemComponent from '../components/CartItemComponent';
 import Divider from '../components/Divider';
 import EmptyCartAdvice from '../components/EmptyCartAdvice';
 import CustomModal, { ConfirmationType, ModalType } from '../components/CustomModal';
-import { OnlineServiceContext } from '../context/OnlineServiceContext';
-import { OnlineServiceContextType } from '../context/type/OnlineServiceContextType';
+import { LoginContextType } from '../context/type/LoginContextType';
+import { LoginContext } from '../context/LoginContext';
+import { WalletContextType } from '../context/type/WalletContextType';
+import { WalletContext } from '../context/WalletContext';
 
 type Props = NativeStackScreenProps<RootStackParamList, "FoodPage", "FoodNav">;
 
@@ -25,7 +27,10 @@ export default function Cart({ route, navigation }: Props) {
 
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
-  const {  onlineService, setOnlineService} = useContext(OnlineServiceContext) as OnlineServiceContextType;
+  const { profileObj, setProfileObj, login, setLogin} = useContext(LoginContext) as LoginContextType;
+
+  const {wallet, setWallet} = useContext(WalletContext) as WalletContextType;
+
 
   const [totalShoppingCart, setTotalShoppingCart] = useState<number>(0);
 
@@ -58,7 +63,7 @@ export default function Cart({ route, navigation }: Props) {
 
   const handlerConfirmationModal =()=>{
 
-    if(onlineService.isOnlineApi && onlineService.isInternetConnected){
+    if(login){
 
       setIsModalVisible(true);
 
@@ -70,6 +75,19 @@ export default function Cart({ route, navigation }: Props) {
 
   const onConfirmPurchase=()=>{
     console.log("purchase confirm");
+
+    console.log("balance : "+ wallet.balance);
+    console.log("totalShoppingCart: "+totalShoppingCart);
+
+    let result =  wallet.balance - totalShoppingCart;
+
+    if(result >= 0){
+      wallet.balance = result;
+      setWallet(wallet);
+    }else{
+      alert("you don't have enough money..");
+      return;
+    }
     handlerClear();
   }
  
@@ -77,7 +95,7 @@ export default function Cart({ route, navigation }: Props) {
     <SafeAreaView>
 
       <CustomModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} handlerConfirm={onConfirmPurchase} modalType={ModalType.warning}
-                    title='Comfirm your purchase' content={"Total : "+totalShoppingCart + " $"} confirmationType={ConfirmationType.confirmCancel} />
+                    title='Comfirm your purchase' content={"Total : "+totalShoppingCart.toFixed(2) + " $"} confirmationType={ConfirmationType.confirmCancel} />
 
       <View style={pages.viewOne}>
         <View style={pages.viewTwo}>
@@ -127,7 +145,7 @@ export default function Cart({ route, navigation }: Props) {
                 <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal: 30}}>
 
                   <Text style={styles.title}>Total: </Text>
-                  <Text style={styles.title}>$ {totalShoppingCart}</Text>
+                  <Text style={styles.title}>$ {totalShoppingCart.toFixed(2)}</Text>
 
                 </View>
 
