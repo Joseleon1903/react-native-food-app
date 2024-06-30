@@ -1,15 +1,24 @@
 import { StyleSheet,Image, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Category from '../types/Category';
 import { COLORS , SHADOWS} from '../constants/theme';
 
 type CategoryItemProps= {
     category: Category;
-    selected: string
+    selected: any
 };
 
 
 export default function CategoryItem ({category, selected}: CategoryItemProps){
+
+  useEffect(() =>{
+    console.log("selected change ");
+    console.log("selected: "+selected);
+
+
+
+  },[selected] );
+
 
   return (
     <View style={styles(category, selected).item}>
@@ -32,7 +41,7 @@ const styles =  (item : Category,selected : string ) => StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 5,
         borderWidth: 2,
-        borderColor: item.value ==selected? COLORS.secondary : 'transparent',
+        borderColor: item.value ===selected? COLORS.secondary : 'transparent',
         shadowColor: '#000',
         shadowOffset: {
           width: 0,

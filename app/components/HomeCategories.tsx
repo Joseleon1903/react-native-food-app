@@ -18,8 +18,8 @@ type ProfileScreenNavigationProp = NativeStackNavigationProp<
 >;
 
 type HomeCategoriesProps= {
-    category?: string;
-    choise? : string
+    category?: any;
+    choise? : any
 }
 
 export default function HomeCategories( {category , choise }: HomeCategoriesProps) {

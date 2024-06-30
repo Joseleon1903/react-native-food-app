@@ -69,7 +69,7 @@ export default function ChoicesList({choices, setSelectedChoice, setSelectedSect
         fontFamily:'bold'
     },
     item:{
-      backgroundColor: selected == item?.value ? COLORS.secondary : COLORS.lightWhite,
+      backgroundColor: selected === item?.value ? COLORS.secondary : COLORS.lightWhite,
       height: 40,
       borderRadius: 12,
       marginHorizontal: 8,

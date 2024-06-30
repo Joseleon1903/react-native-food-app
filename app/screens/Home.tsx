@@ -44,9 +44,9 @@ export default function Home({ route, navigation }: Props) {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedSection, setSelectedSection] = useState(null);
-  const [selectedValue, setSelectedValue] = useState<string>("");
+  const [selectedValue, setSelectedValue] = useState(null);
 
-  const [selectedChoice, setSelectedChoice] = useState<string>("");
+  const [selectedChoice, setSelectedChoice] = useState(null);
   const [selectedChoiceSection, setSelectedChoiceSection] = useState(null);
 
   const choisesArray = choicesList;
